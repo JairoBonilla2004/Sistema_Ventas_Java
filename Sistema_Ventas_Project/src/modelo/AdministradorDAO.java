@@ -1,0 +1,218 @@
+package modelo;
+
+import com.mongodb.MongoException;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
+import com.mongodb.client.model.Filters;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+import org.bson.types.ObjectId;
+import utils.DBConexion;
+
+/**
+ *
+ * @author Jairo Smith Bonilla
+ */
+public class AdministradorDAO implements PersonaDAO<Administrador> {
+
+    private final MongoCollection<Document> collection;
+
+    public AdministradorDAO() {
+        DBConexion dBConexion = DBConexion.getInstance("Sistema_Ventas");
+        collection = dBConexion.getDatabase().getCollection("Administradores");
+    }
+
+    public boolean verificarCamposCorrectosUsuario(Administrador administrador) {
+        Document filtro = new Document("$and", Arrays.asList(
+                new Document("administrador", administrador.getNombre_usuario()),
+                new Document("contraseña", administrador.getContraseña())));
+        MongoCursor<Document> cursor = collection.find(filtro).iterator();
+        while (cursor.hasNext()) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean enviarPesonasDB(Administrador administrador) {
+        boolean respuesta = false;
+        try {
+            Document document = new Document("nombre", administrador.getNombre())
+                    .append("administrador", administrador.getNombre_usuario())
+                    .append("contraseña", administrador.getContraseña())
+                    .append("telefono", administrador.getTelefono())
+                    .append("cargo", administrador.getCargo())
+                    .append("sueldo", administrador.getSueldo())
+                    .append("apellido", administrador.getApellido());
+            collection.insertOne(document);
+            respuesta = true;
+        } catch (MongoException mongoException) {
+            System.out.println("No se pudo enviar los administradores: " + mongoException);
+        }
+        return respuesta;
+    }
+
+    @Override
+    public boolean verificarPersonaExistente(String keyBusqueda, String user_administrador) {
+        boolean respuesta = false;
+        try {
+            Document filtro = new Document(keyBusqueda, user_administrador);
+            MongoCursor<Document> cursor = collection.find(filtro).iterator();
+            respuesta = cursor.hasNext();
+        } catch (MongoException mongoException) {
+            System.out.println("No se pudo realizar la consulta: " + mongoException);
+        }
+        return respuesta;
+    }
+
+    @Override
+    public List<Administrador> extraerPersonas() {
+        List<Administrador> administradores = new ArrayList<>();
+        try {
+            MongoCursor<Document> cursor = collection.find().iterator();
+            while (cursor.hasNext()) {
+                Document documento_administrador = cursor.next();
+                Administrador administrador = new Administrador(
+                        documento_administrador.getObjectId("_id").toString(),
+                        documento_administrador.getString("nombre"),
+                        documento_administrador.getString("apellido"),
+                        documento_administrador.getString("administrador"),
+                        documento_administrador.getString("contraseña"),
+                        documento_administrador.getInteger("telefono"),
+                        documento_administrador.getString("cargo"),
+                        documento_administrador.getDouble("sueldo"));
+                administradores.add(administrador);
+
+            }
+        } catch (MongoException mongoException) {
+            System.out.println("No se pudo extraer los administradores " + mongoException);
+        }
+        return administradores;
+    }
+
+    @Override
+    public List<Administrador> buscarPersonasPorTextoRegEx(String textoBuscado) {
+        List<Administrador> administradores = new ArrayList<>();
+        try {
+            Bson filtroRegex = Filters.or(
+                    Filters.regex("nombre", "^" + textoBuscado, "i"));
+            MongoCursor<Document> cursor = collection.find(filtroRegex).iterator();
+            while (cursor.hasNext()) {
+                Document documento_administrador = cursor.next();
+                Administrador administrador = new Administrador(
+                        documento_administrador.getObjectId("_id").toString(),
+                        documento_administrador.getString("nombre"),
+                        documento_administrador.getString("apellido"),
+                        documento_administrador.getString("administrador"),
+                        documento_administrador.getString("contraseña"),
+                        documento_administrador.getInteger("telefono"),
+                        documento_administrador.getString("cargo"),
+                        documento_administrador.getDouble("sueldo"));
+                administradores.add(administrador);
+            }
+
+        } catch (MongoException mongoException) {
+            System.out.println("No se pudo extrar los administradores de la base de datos " + mongoException);
+        }
+        return administradores;
+    }
+
+    @Override
+    public Administrador extraerPersonaID(String id) {
+        Administrador administrador = null;
+        try {
+            ObjectId objectId = new ObjectId(id);
+            Document filtro = new Document("_id", objectId);
+            MongoCursor<Document> cursor = collection.find(filtro).iterator();
+            if (cursor.hasNext()) {
+                Document document_database = cursor.next();
+                administrador = new Administrador(
+                        document_database.getString("cargo"),
+                        document_database.getDouble("sueldo"),
+                        document_database.getString("nombre"),
+                        document_database.getString("apellido"),
+                        document_database.getString("administrador"),
+                        document_database.getString("contraseña"),
+                        document_database.getInteger("telefono"));
+
+            }
+
+        } catch (MongoException mongoException) {
+            System.out.println("no se pudo extrar el Administrador: " + mongoException);
+        }
+        return administrador;
+    }
+
+    @Override
+    public boolean actualizarDatos(Administrador administrador) {
+        boolean respuesta = false;
+        try {
+            ObjectId objectId = new ObjectId(administrador.getId());
+            Document filtro = new Document("_id", objectId);
+            MongoCursor<Document> cursor = collection.find(filtro).iterator();
+            if (cursor.hasNext()) {
+                Document datos_actualizar = new Document("$set", new Document(
+                        "nombre", administrador.getNombre())
+                        .append("apellido", administrador.getApellido())
+                        .append("administrador", administrador.getNombre_usuario())
+                        .append("telefono", administrador.getTelefono())
+                        .append("cargo", administrador.getCargo())
+                        .append("sueldo", administrador.getSueldo()));
+                collection.updateOne(filtro, datos_actualizar);
+                respuesta = true;
+            }
+        } catch (MongoException mongoException) {
+            System.out.println("No se pudo actualizar los datos del administrador" + mongoException);
+        }
+        return respuesta;
+    }
+
+    public boolean actualizarContraseñaAdministrador(String id, String nueva_contraseña) {
+        boolean respuesta = false;
+        try {
+            ObjectId objectId = new ObjectId(id);
+            Document filtro = new Document("_id", objectId);
+            MongoCursor<Document> cursor = collection.find(filtro).iterator();
+            if (cursor.hasNext()) {
+                Document administrador_acturalizado = new Document("$set", new Document(
+                        "contraseña", nueva_contraseña));
+                collection.updateOne(filtro, administrador_acturalizado);
+                respuesta = true;
+            }
+
+        } catch (MongoException mongoException) {
+            System.out.println("No se pudo actualizar la contraseña " + mongoException);
+        }
+        return respuesta;
+    }
+
+    @Override
+    public boolean eliminarPersona(String tipo) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public String buscarAdministradorPorNombreYapellido(String nombre, String apellido) {
+        String cedula = null;
+        Administrador administrador;
+        try {
+            Document document = new Document("$and", Arrays.asList(new Document("nombre", nombre),
+                    new Document("apellido", apellido)));
+            MongoCursor<Document> cursor = collection.find(document).iterator();
+            if (cursor.hasNext()) {
+                Document documentDB = cursor.next();
+                administrador = new Administrador();
+                administrador.setNombre_usuario(documentDB.getString("administrador"));
+                cedula = administrador.getNombre_usuario();
+            }
+
+        } catch (MongoException e) {
+            System.out.println("No se puedo extraer el cliente porque " + e);
+        }
+        return cedula;
+    }
+    
+
+}
