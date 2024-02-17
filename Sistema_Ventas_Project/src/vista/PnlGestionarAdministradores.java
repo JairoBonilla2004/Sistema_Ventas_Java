@@ -4,6 +4,11 @@
  */
 package vista;
 
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Jairo Smith Bonilla Hidalgo
@@ -13,9 +18,46 @@ public class PnlGestionarAdministradores extends javax.swing.JPanel {
     /**
      * Creates new form PnlGestionarAdministradores
      */
-    public PnlGestionarAdministradores() {
+    private String nombreUsuario;
+    public PnlGestionarAdministradores(String nombreUsuario) {
         initComponents();
+        this.nombreUsuario = nombreUsuario;
     }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+
+    public JButton getBtnEliminar1() {
+        return btnEliminar1;
+    }
+
+    public JButton getBtnIntroduccion1() {
+        return btnIntroduccion1;
+    }
+
+    public JButton getBtnNuevoUsuario() {
+        return btnNuevoUsuario;
+    }
+
+    public JPanel getPnlContenido() {
+        return pnlContenido;
+    }
+
+    public JTable getTblAdministradores() {
+        return tblAdministradores;
+    }
+
+    public JTextField getTxtBuscarAdministradores() {
+        return txtBuscarAdministradores;
+    }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,9 +72,9 @@ public class PnlGestionarAdministradores extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         btnNuevoUsuario = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txtBuscarAdministradores = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblAdministradores = new javax.swing.JTable();
         btnIntroduccion1 = new javax.swing.JButton();
         btnEliminar1 = new javax.swing.JButton();
 
@@ -58,13 +100,13 @@ public class PnlGestionarAdministradores extends javax.swing.JPanel {
         btnNuevoUsuario.setIconTextGap(15);
         pnlContenido.add(btnNuevoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 530, 130, 30));
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField1.setText("Ingrese el nombre del administrador que desea buscar");
-        jTextField1.setBorder(null);
-        pnlContenido.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 760, 20));
+        txtBuscarAdministradores.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtBuscarAdministradores.setForeground(new java.awt.Color(153, 153, 153));
+        txtBuscarAdministradores.setText("Ingrese el nombre del administrador que desea buscar");
+        txtBuscarAdministradores.setBorder(null);
+        pnlContenido.add(txtBuscarAdministradores, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 760, 20));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblAdministradores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -75,7 +117,7 @@ public class PnlGestionarAdministradores extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblAdministradores);
 
         pnlContenido.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 1000, 400));
 
@@ -123,8 +165,8 @@ public class PnlGestionarAdministradores extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel pnlContenido;
+    private javax.swing.JTable tblAdministradores;
+    private javax.swing.JTextField txtBuscarAdministradores;
     // End of variables declaration//GEN-END:variables
 }

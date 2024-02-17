@@ -18,9 +18,10 @@ public class Main {
         FlatMaterialLighterIJTheme.setup();
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         FrmLogin frmLogin = new FrmLogin();
+        frmLogin.setVisible(true);
         ControllerLogin controllerLogin = new ControllerLogin(usuarioDAO, frmLogin);
         controllerLogin.iniciarFRM();
-        frmLogin.setVisible(true);
+        
     }
     
 }

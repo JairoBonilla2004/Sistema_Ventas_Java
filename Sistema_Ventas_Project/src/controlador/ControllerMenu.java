@@ -3,9 +3,13 @@ package controlador;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+import modelo.Administrador;
+import modelo.AdministradorDAO;
 import modelo.UsuarioDAO;
 import vista.FrmMenu;
 import vista.PnlBienvenida;
+import vista.PnlGestionarAdministradores;
 
 /**
  *
@@ -33,7 +37,7 @@ public final class ControllerMenu implements  ActionListener{
         }
         
         if(e.getSource() == frmMenu.getBtnAdministrador()){
-            
+            verificarAdministrador();
         }
     }
     
@@ -56,6 +60,26 @@ public final class ControllerMenu implements  ActionListener{
         this.frmMenu.getPnlContenido().add(pnlBienvenida, BorderLayout.CENTER);
         this.frmMenu.getPnlContenido().revalidate();
         this.frmMenu.getPnlContenido().repaint();
+    }
+    
+    public void verificarAdministrador() {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        boolean usuarioExistente = usuarioDAO.verificarPersonaExistente("usuario",frmMenu.getNombreDeUsuario());
+        if (usuarioExistente == true) {
+            JOptionPane.showMessageDialog(null, "USTED ESTÁ REGISTRADO COMO EMPLEADO NO PUEDE ACCEDER A ESTA OPCIÓN", "ADVERTENCIA", JOptionPane.ERROR_MESSAGE);
+        } else {
+            PnlGestionarAdministradores pnlAdministrador = new PnlGestionarAdministradores(frmMenu.getNombreDeUsuario());
+            pnlAdministrador.setSize(1000, 600);
+            pnlAdministrador.setLocation(0, 0);
+            frmMenu.getPnlContenido().removeAll();
+            frmMenu.getPnlContenido().add(pnlAdministrador, BorderLayout.CENTER);
+            frmMenu.getPnlContenido().revalidate();
+            frmMenu.getPnlContenido().repaint();
+            AdministradorDAO administradorDAO = new AdministradorDAO();
+            Administrador administrador = new Administrador();
+            ControllerGestionarAdministradores controllerGestionarAdministradores = new ControllerGestionarAdministradores(pnlAdministrador, administradorDAO, administrador);
+            controllerGestionarAdministradores.inicializarDatos();
+        }
     }
     
 }
