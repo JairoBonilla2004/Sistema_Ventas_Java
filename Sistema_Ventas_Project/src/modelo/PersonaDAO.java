@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  *
- * @author ACER
+ * @author Jairo Smith Bonilla Hidalgo
  */
 public interface PersonaDAO<T> {
     

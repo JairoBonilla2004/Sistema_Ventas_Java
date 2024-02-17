@@ -17,8 +17,9 @@ import vista.FrmMenu;
 
 /**
  *
- * @author ACER
+ * @author Jairo Smith Bonilla Hidalgo
  */
+
 public class ControllerLogin implements MouseListener, KeyListener {
 
     private final UsuarioDAO usuarioDAO;

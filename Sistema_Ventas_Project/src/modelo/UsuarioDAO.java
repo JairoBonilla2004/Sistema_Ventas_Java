@@ -14,7 +14,7 @@ import utils.DBConexion;
 
 /**
  *
- * @author Jairo Smith Bonilla
+ * @author Jairo Smith Bonilla Hidalgo
  */
 public class UsuarioDAO implements PersonaDAO<Usuario> {
 

@@ -6,10 +6,11 @@ package vista;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
- * @author ACER
+ * @author Jairo Smith Bonilla Hidalgo
  */
 public class FrmMenu extends javax.swing.JFrame {
 
@@ -59,6 +60,9 @@ public class FrmMenu extends javax.swing.JFrame {
         this.lblCargo = lblCargo;
     }
     
+    public JPanel getPnlContenido() {
+        return pnlContenido;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -87,6 +91,7 @@ public class FrmMenu extends javax.swing.JFrame {
         lblNombreUsuarioLoing = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         lblCargo = new javax.swing.JLabel();
+        pnlContenido = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -244,6 +249,21 @@ public class FrmMenu extends javax.swing.JFrame {
         lblCargo.setText("jLabel6");
         jPanel1.add(lblCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 120, 180, -1));
 
+        pnlContenido.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout pnlContenidoLayout = new javax.swing.GroupLayout(pnlContenido);
+        pnlContenido.setLayout(pnlContenidoLayout);
+        pnlContenidoLayout.setHorizontalGroup(
+            pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1000, Short.MAX_VALUE)
+        );
+        pnlContenidoLayout.setVerticalGroup(
+            pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(pnlContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, 1000, 600));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -282,5 +302,6 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblNombreUsuarioLoing;
+    private javax.swing.JPanel pnlContenido;
     // End of variables declaration//GEN-END:variables
 }

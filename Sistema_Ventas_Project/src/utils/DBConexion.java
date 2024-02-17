@@ -7,7 +7,7 @@ import com.mongodb.client.MongoDatabase;
 
 /**
  *
- * @author Jairo Smith Bonilla
+ * @author Jairo Smith Bonilla Hidalgo
  */
 public class DBConexion {
 

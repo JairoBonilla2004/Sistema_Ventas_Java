@@ -8,7 +8,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author ACER
+ * @author Jairo Smith Bonilla Hidalgo
  */
 public class FrmLogin extends javax.swing.JFrame {
 

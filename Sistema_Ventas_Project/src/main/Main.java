@@ -11,7 +11,7 @@ import vista.FrmLogin;
 
 /**
  *
- * @author ACER
+ * @author Jairo Smith Bonilla Hidalgo
  */
 public class Main {
     public static void main(String[] args) {

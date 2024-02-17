@@ -1,9 +1,8 @@
 package modelo;
 
-
 /**
  *
- * @author Jairo Smith Bonilla
+ * @author Jairo Smith Bonilla Hidalgo
  */
 public class Administrador extends Usuario{
     

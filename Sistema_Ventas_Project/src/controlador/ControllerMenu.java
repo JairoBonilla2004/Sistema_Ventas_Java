@@ -5,10 +5,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import modelo.UsuarioDAO;
 import vista.FrmMenu;
+import vista.PnlBienvenida;
 
 /**
  *
- * @author ACER
+ * @author Jairo Smith Bonilla Hidalgo
  */
 public final class ControllerMenu implements  ActionListener{
     
@@ -28,7 +29,7 @@ public final class ControllerMenu implements  ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == frmMenu.getBtnIntroduccion()){
-            
+            iniciarPnlBienvenida();
         }
         
         if(e.getSource() == frmMenu.getBtnAdministrador()){
@@ -47,5 +48,14 @@ public final class ControllerMenu implements  ActionListener{
         }
     }
     
+    public void iniciarPnlBienvenida() {
+        PnlBienvenida pnlBienvenida = new PnlBienvenida();
+        pnlBienvenida.setSize(970, 510);
+        pnlBienvenida.setLocation(0, 0);
+        this.frmMenu.getPnlContenido().removeAll();
+        this.frmMenu.getPnlContenido().add(pnlBienvenida, BorderLayout.CENTER);
+        this.frmMenu.getPnlContenido().revalidate();
+        this.frmMenu.getPnlContenido().repaint();
+    }
     
 }
