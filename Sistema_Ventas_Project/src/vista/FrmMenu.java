@@ -4,18 +4,61 @@
  */
 package vista;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+
 /**
  *
  * @author ACER
  */
 public class FrmMenu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FrmMenu
-     */
-    public FrmMenu() {
+    private String nombreDeUsuario;
+    public FrmMenu(String nombreDeUsuario) {
         initComponents();
+        this.nombreDeUsuario = nombreDeUsuario;
     }
+
+    public String getNombreDeUsuario() {
+        return nombreDeUsuario;
+    }
+
+    public void setNombreDeUsuario(String nombreDeUsuario) {
+        this.nombreDeUsuario = nombreDeUsuario;
+    }
+
+    public JButton getBtnAdministrador() {
+        return btnAdministrador;
+    }
+
+    public void setBtnAdministrador(JButton btnAdministrador) {
+        this.btnAdministrador = btnAdministrador;
+    }
+
+    public JButton getBtnIntroduccion() {
+        return btnIntroduccion;
+    }
+
+    public void setBtnIntroduccion(JButton btnIntroduccion) {
+        this.btnIntroduccion = btnIntroduccion;
+    }
+
+    public JLabel getLblNombreUsuarioLoing() {
+        return lblNombreUsuarioLoing;
+    }
+
+    public void setLblNombreUsuarioLoing(JLabel lblNombreUsuarioLoing) {
+        this.lblNombreUsuarioLoing = lblNombreUsuarioLoing;
+    }
+
+    public JLabel getLblCargo() {
+        return lblCargo;
+    }
+
+    public void setLblCargo(JLabel lblCargo) {
+        this.lblCargo = lblCargo;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,8 +73,8 @@ public class FrmMenu extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
+        btnIntroduccion = new javax.swing.JButton();
+        btnAdministrador = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
@@ -40,6 +83,10 @@ public class FrmMenu extends javax.swing.JFrame {
         jButton18 = new javax.swing.JButton();
         jButton19 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        lblNombreUsuarioLoing = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        lblCargo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,29 +111,29 @@ public class FrmMenu extends javax.swing.JFrame {
         jButton10.setIconTextGap(15);
         jPanel2.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 690, 280, 60));
 
-        jButton11.setBackground(new java.awt.Color(21, 101, 192));
-        jButton11.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jButton11.setForeground(new java.awt.Color(255, 255, 255));
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-actualizar-25.png"))); // NOI18N
-        jButton11.setText("INTRODUCCIÓN");
-        jButton11.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
-        jButton11.setBorderPainted(false);
-        jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton11.setIconTextGap(15);
-        jPanel2.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 280, 60));
+        btnIntroduccion.setBackground(new java.awt.Color(21, 101, 192));
+        btnIntroduccion.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btnIntroduccion.setForeground(new java.awt.Color(255, 255, 255));
+        btnIntroduccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-actualizar-25.png"))); // NOI18N
+        btnIntroduccion.setText("INTRODUCCIÓN");
+        btnIntroduccion.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnIntroduccion.setBorderPainted(false);
+        btnIntroduccion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnIntroduccion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnIntroduccion.setIconTextGap(15);
+        jPanel2.add(btnIntroduccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 280, 60));
 
-        jButton12.setBackground(new java.awt.Color(21, 101, 192));
-        jButton12.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jButton12.setForeground(new java.awt.Color(255, 255, 255));
-        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-gerente-35.png"))); // NOI18N
-        jButton12.setText("ADMINISTRADORES");
-        jButton12.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
-        jButton12.setBorderPainted(false);
-        jButton12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton12.setIconTextGap(15);
-        jPanel2.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 280, 60));
+        btnAdministrador.setBackground(new java.awt.Color(21, 101, 192));
+        btnAdministrador.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btnAdministrador.setForeground(new java.awt.Color(255, 255, 255));
+        btnAdministrador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-gerente-35.png"))); // NOI18N
+        btnAdministrador.setText("ADMINISTRADORES");
+        btnAdministrador.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnAdministrador.setBorderPainted(false);
+        btnAdministrador.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAdministrador.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnAdministrador.setIconTextGap(15);
+        jPanel2.add(btnAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 280, 60));
 
         jButton13.setBackground(new java.awt.Color(21, 101, 192));
         jButton13.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
@@ -177,6 +224,26 @@ public class FrmMenu extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/encabezado.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 1000, 150));
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-refrescar-25.png"))); // NOI18N
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 120, -1, -1));
+
+        lblNombreUsuarioLoing.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNombreUsuarioLoing.setText("jLabel5");
+        jPanel1.add(lblNombreUsuarioLoing, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 120, 190, 30));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-usuario-30.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 120, 50, 30));
+
+        lblCargo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblCargo.setForeground(new java.awt.Color(204, 0, 51));
+        lblCargo.setText("jLabel6");
+        jPanel1.add(lblCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 120, 180, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -191,12 +258,15 @@ public class FrmMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    }//GEN-LAST:event_jLabel3MouseClicked
+
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdministrador;
+    private javax.swing.JButton btnIntroduccion;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
@@ -206,7 +276,11 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JButton jButton19;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblCargo;
+    private javax.swing.JLabel lblNombreUsuarioLoing;
     // End of variables declaration//GEN-END:variables
 }

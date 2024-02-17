@@ -13,15 +13,16 @@ import modelo.AdministradorDAO;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
 import vista.FrmLogin;
+import vista.FrmMenu;
 
 /**
  *
  * @author ACER
  */
-public class ControllerLogin implements MouseListener, KeyListener{
-    
-    private UsuarioDAO usuarioDAO;
-    private FrmLogin frmLogin;
+public class ControllerLogin implements MouseListener, KeyListener {
+
+    private final UsuarioDAO usuarioDAO;
+    private final FrmLogin frmLogin;
 
     public ControllerLogin(UsuarioDAO usuarioDAO, FrmLogin frmLogin) {
         this.usuarioDAO = usuarioDAO;
@@ -35,17 +36,17 @@ public class ControllerLogin implements MouseListener, KeyListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(e.getSource() == frmLogin.getBtnIniciar_Sesion()){
+        if (e.getSource() == frmLogin.getBtnIniciar_Sesion()) {
             verificarUsuarioContraseñaCorrectos();
         }
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        if(e.getSource() == frmLogin.getTxtUsuario()){
+        if (e.getSource() == frmLogin.getTxtUsuario()) {
             vaciarCamposUsuario();
         }
-        if(e.getSource() == frmLogin.getPswContraseña()){
+        if (e.getSource() == frmLogin.getPswContraseña()) {
             vaciarCampoContraseña();
         }
     }
@@ -72,16 +73,16 @@ public class ControllerLogin implements MouseListener, KeyListener{
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if(e.getSource() == frmLogin.getTxtUsuario()){
+        if (e.getSource() == frmLogin.getTxtUsuario()) {
             validarDatos();
         }
-        
-        if(e.getSource() == frmLogin.getPswContraseña()){
+
+        if (e.getSource() == frmLogin.getPswContraseña()) {
             validarDatos();
         }
     }
-    
-    public void vaciarCamposUsuario(){
+
+    public void vaciarCamposUsuario() {
         if (frmLogin.getTxtUsuario().getText().equals("Ingrese su nombre de usuario")) {
             frmLogin.getTxtUsuario().setText("");
             frmLogin.getTxtUsuario().setForeground(Color.BLACK);
@@ -92,8 +93,8 @@ public class ControllerLogin implements MouseListener, KeyListener{
 
         }
     }
-    
-    public void vaciarCampoContraseña(){
+
+    public void vaciarCampoContraseña() {
         if (frmLogin.getPswContraseña().getText().equals("**************************")) {
             frmLogin.getPswContraseña().setText("");
             frmLogin.getPswContraseña().setForeground(Color.BLACK);
@@ -103,8 +104,8 @@ public class ControllerLogin implements MouseListener, KeyListener{
             frmLogin.getTxtUsuario().setText("Ingrese su nombre de usuario");
         }
     }
-    
-        public void verificarUsuarioContraseñaCorrectos() {
+
+    public void verificarUsuarioContraseñaCorrectos() {
         Usuario usuario = new Usuario(frmLogin.getTxtUsuario().getText(), frmLogin.getPswContraseña().getText());
         Administrador administrador = new Administrador(frmLogin.getTxtUsuario().getText(), frmLogin.getPswContraseña().getText());
         AdministradorDAO administradorDAO = new AdministradorDAO();
@@ -112,13 +113,17 @@ public class ControllerLogin implements MouseListener, KeyListener{
         boolean respuestaAdministrador = administradorDAO.verificarCamposCorrectosUsuario(administrador);
         if (respuestaUsuario) {
             frmLogin.setVisible(false);
-           // FrmMenu frmMenu = new FrmMenu(txtUsuario.getText());
-          //  frmMenu.setVisible(true);
+            FrmMenu frmMenu = new FrmMenu(frmLogin.getTxtUsuario().getText());
+            ControllerMenu controllerMenu = new ControllerMenu(frmMenu);
+            controllerMenu.iniciar();
+            frmMenu.setVisible(true);
         } else {
             if (respuestaAdministrador) {
-                frmLogin.setVisible (false);
-            //    FrmMenu frmMenu = new FrmMenu(txtUsuario.getText());
-              //  frmMenu.setVisible(true);
+                frmLogin.setVisible(false);
+                FrmMenu frmMenu = new FrmMenu(frmLogin.getTxtUsuario().getText());
+                ControllerMenu controllerMenu = new ControllerMenu(frmMenu);
+                controllerMenu.iniciar();
+                frmMenu.setVisible(true);
             }
         }
 
@@ -139,8 +144,8 @@ public class ControllerLogin implements MouseListener, KeyListener{
         frmLogin.getTxtUsuario().setText("Ingrese su nombre de usuario");
         frmLogin.getPswContraseña().setText("**************************");
     }
-    
-        public void validarDatos() {
+
+    public void validarDatos() {
         if (frmLogin.getTxtUsuario().getText().isEmpty() || frmLogin.getTxtUsuario().getText().equals("Ingrese su nombre de usuario")) {
             frmLogin.getLblUsuario().setText("Campo Obligatorio");
             mostrarImagenAlertaUsuario();
@@ -164,7 +169,7 @@ public class ControllerLogin implements MouseListener, KeyListener{
             frmLogin.getBtnIniciar_Sesion().setEnabled(true);
         }
     }
-    
+
     public void mostrarImagenAlertaUsuario() {
         java.net.URL imageURL = getClass().getResource("/img/alert.png");
         if (imageURL != null) {
@@ -195,11 +200,10 @@ public class ControllerLogin implements MouseListener, KeyListener{
             ImageIcon icono = new ImageIcon(imageURL);
             frmLogin.getLblAlertaContraseña().setIcon(icono);
         }
-    }    
-    
-    public void iniciarFRM(){
+    }
+
+    public void iniciarFRM() {
         frmLogin.setLocationRelativeTo(null);
     }
-    
-    
+
 }
