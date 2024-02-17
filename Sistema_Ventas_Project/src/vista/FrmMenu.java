@@ -60,6 +60,11 @@ public class FrmMenu extends javax.swing.JFrame {
         return pnlContenido;
     }
 
+    public JButton getBtnCerrarSesion() {
+        return btnCerrarSesion;
+    }
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -72,7 +77,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton10 = new javax.swing.JButton();
+        btnCerrarSesion = new javax.swing.JButton();
         btnIntroduccion = new javax.swing.JButton();
         btnAdministrador = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
@@ -100,17 +105,17 @@ public class FrmMenu extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pngwing.com (6).png"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
 
-        jButton10.setBackground(new java.awt.Color(21, 101, 192));
-        jButton10.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jButton10.setForeground(new java.awt.Color(255, 255, 255));
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-cerrar-sesión-35.png"))); // NOI18N
-        jButton10.setText("CERRAR SESION");
-        jButton10.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
-        jButton10.setBorderPainted(false);
-        jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton10.setIconTextGap(15);
-        jPanel2.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 690, 280, 60));
+        btnCerrarSesion.setBackground(new java.awt.Color(21, 101, 192));
+        btnCerrarSesion.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btnCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
+        btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-cerrar-sesión-35.png"))); // NOI18N
+        btnCerrarSesion.setText("CERRAR SESION");
+        btnCerrarSesion.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnCerrarSesion.setBorderPainted(false);
+        btnCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCerrarSesion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnCerrarSesion.setIconTextGap(15);
+        jPanel2.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 690, 280, 60));
 
         btnIntroduccion.setBackground(new java.awt.Color(21, 101, 192));
         btnIntroduccion.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
@@ -281,8 +286,8 @@ public class FrmMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdministrador;
+    private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btnIntroduccion;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;

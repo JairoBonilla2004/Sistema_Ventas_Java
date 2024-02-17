@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import modelo.Administrador;
 import modelo.AdministradorDAO;
 import modelo.UsuarioDAO;
+import vista.FrmLogin;
 import vista.FrmMenu;
 import vista.PnlBienvenida;
 import vista.PnlGestionarAdministradores;
@@ -23,6 +24,7 @@ public final class ControllerMenu implements  ActionListener{
         this.frmMenu.getLblNombreUsuarioLoing().setText(this.frmMenu.getNombreDeUsuario());
         llenarLbl();
         this.frmMenu.getBtnIntroduccion().addActionListener(this);
+        this.frmMenu.getBtnCerrarSesion().addActionListener(this);
         this.frmMenu.getBtnAdministrador().addActionListener(this);
     }
     
@@ -38,6 +40,15 @@ public final class ControllerMenu implements  ActionListener{
         
         if(e.getSource() == frmMenu.getBtnAdministrador()){
             verificarAdministrador();
+        }
+        
+        if(e.getSource() == frmMenu.getBtnCerrarSesion()){
+            frmMenu.setVisible(false);
+            FrmLogin frmLogin = new FrmLogin();
+            frmLogin.setVisible(true);
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            ControllerLogin controllerLogin = new ControllerLogin(usuarioDAO, frmLogin);
+            controllerLogin.iniciarFRM();
         }
     }
     
