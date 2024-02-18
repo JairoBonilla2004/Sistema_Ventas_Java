@@ -25,6 +25,9 @@ public class ControllerGestionarAdministradores implements MouseListener, KeyLis
         this.pnlGestionarAdministradores = pnlGestionarAdministradores;
         this.administradorDAO = administradorDAO;
         this.administrador = administrador;
+        this.pnlGestionarAdministradores.getTxtBuscarAdministradores().addMouseListener(this);
+        this.pnlGestionarAdministradores.getTblAdministradores().addMouseListener(this);
+        this.pnlGestionarAdministradores.getTxtBuscarAdministradores().addKeyListener(this);
     }
 
     @Override
@@ -33,10 +36,19 @@ public class ControllerGestionarAdministradores implements MouseListener, KeyLis
 
     @Override
     public void mousePressed(MouseEvent e) {
+        if(e.getSource() == pnlGestionarAdministradores.getTxtBuscarAdministradores()){
+            animacionTextoBusqueda();
+        }
+        if(e.getSource() == pnlGestionarAdministradores.getTblAdministradores()){
+        String nombre_fila = obtenerCampoFilaSeleccionado(1);
+        pnlGestionarAdministradores.getTxtBuscarAdministradores().setForeground(Color.BLACK);
+        pnlGestionarAdministradores.getTxtBuscarAdministradores().setText(nombre_fila);
+        }
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
+       
     }
 
     @Override
@@ -57,6 +69,9 @@ public class ControllerGestionarAdministradores implements MouseListener, KeyLis
 
     @Override
     public void keyReleased(KeyEvent e) {
+        if(e.getSource() ==  pnlGestionarAdministradores.getTxtBuscarAdministradores()){
+            buscarAdministrador();
+        }
     }
     
     public void inicializarDatos(){
@@ -87,6 +102,36 @@ public class ControllerGestionarAdministradores implements MouseListener, KeyLis
         pnlGestionarAdministradores.getTblAdministradores().setFocusable(false);
     }
     
+    public void animacionTextoBusqueda() {
+        if (pnlGestionarAdministradores.getTxtBuscarAdministradores().getText().equals("Ingrese el nombre del administrador que desea buscar")) {
+            pnlGestionarAdministradores.getTxtBuscarAdministradores().setText("");
+            pnlGestionarAdministradores.getTxtBuscarAdministradores().setForeground(Color.BLACK);
+        }
+    }
     
+    public String obtenerCampoFilaSeleccionado(int columna) {
+        int filaSeleccionada = pnlGestionarAdministradores.getTblAdministradores().getSelectedRow();
+        if (filaSeleccionada >= 0) {
+            Object nombreAdministrador = pnlGestionarAdministradores.getTblAdministradores().getValueAt(filaSeleccionada, columna);
+            if (nombreAdministrador != null) {
+                return nombreAdministrador.toString();
+            }
+        }
+        return null;
+    }
+    
+    public void buscarAdministrador(){
+        vaciarTabla(modelo_tabla);
+        List<Administrador> administradoresDB = administradorDAO.buscarPersonasPorTextoRegEx(pnlGestionarAdministradores.getTxtBuscarAdministradores().getText());
+        for(Administrador a : administradoresDB){
+            Object [] fila= {a.getId(), a.getNombre(), a.getApellido(), a.getNombre_usuario(), a.getTelefono(), a.getCargo(), a.getSueldo()};
+            modelo_tabla.addRow(fila);
+        }
+        pnlGestionarAdministradores.getTblAdministradores().setModel(modelo_tabla);
+    }
+    
+    public void vaciarTabla(DefaultTableModel modeloTabla) {
+        modeloTabla.setRowCount(0); // Vaciar la tabla
+    }
     
 }
