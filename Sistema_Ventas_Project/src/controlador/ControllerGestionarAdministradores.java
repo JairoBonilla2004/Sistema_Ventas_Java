@@ -149,6 +149,9 @@ public class ControllerGestionarAdministradores implements MouseListener, KeyLis
             pnlGestionarAdministradores.getPnlContenido().add(pnlNuevoAdministrador, BorderLayout.CENTER);
             pnlGestionarAdministradores.getPnlContenido().revalidate();
             pnlGestionarAdministradores.getPnlContenido().repaint();
+            Administrador administrador = new Administrador();
+            ControllerNuevoAdministrador controllerNuevoAdministrador = new ControllerNuevoAdministrador(pnlNuevoAdministrador, administradorDAO, administrador);
+            controllerNuevoAdministrador.iniciarComponentes();
         } else {
             JOptionPane.showMessageDialog(null, "SOLO LOS ADMINISTRADORES PUEDEN AÑADIR NUEVOS ADIMINISTRADORES", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
         }

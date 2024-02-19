@@ -4,6 +4,10 @@
  */
 package vista;
 
+import javax.swing.JButton;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Jairo Smith Bonilla Hidalgo
@@ -16,6 +20,43 @@ public class PnlNuevoAdministrador extends javax.swing.JPanel {
     public PnlNuevoAdministrador() {
         initComponents();
     }
+
+    public JTextField getTxtApellido() {
+        return txtApellido;
+    }
+
+    public JTextField getTxtCargo() {
+        return txtCargo;
+    }
+
+    public JTextField getTxtCedula() {
+        return txtCedula;
+    }
+
+    public JPasswordField getPswContrasenia() {
+        return pswContrasenia;
+    }
+
+    public JTextField getTxtNombre() {
+        return txtNombre;
+    }
+
+    public JTextField getTxtSueldo() {
+        return txtSueldo;
+    }
+
+    public JTextField getTxtTelefono() {
+        return txtTelefono;
+    }
+
+    public JButton getBtnGuardar() {
+        return btnGuardar;
+    }
+
+    public JTextField getTxtNombreUsuario() {
+        return txtNombreUsuario;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,14 +93,15 @@ public class PnlNuevoAdministrador extends javax.swing.JPanel {
         jSeparator8 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txtCedula = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        txtNombreUsuario = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
+        txtTelefono = new javax.swing.JTextField();
+        txtCargo = new javax.swing.JTextField();
+        txtSueldo = new javax.swing.JTextField();
+        pswContrasenia = new javax.swing.JPasswordField();
+        btnGuardar = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -148,52 +190,64 @@ public class PnlNuevoAdministrador extends javax.swing.JPanel {
         jSeparator6.setForeground(new java.awt.Color(51, 153, 255));
         jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, 290, 20));
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField1.setText("Ingrese la cédula del Administrador");
-        jTextField1.setBorder(null);
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 455, 300, -1));
+        txtCedula.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtCedula.setForeground(new java.awt.Color(153, 153, 153));
+        txtCedula.setText("Ingrese la cédula del Administrador");
+        txtCedula.setBorder(null);
+        jPanel1.add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 455, 300, -1));
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField2.setText("Ingrese su nombre");
-        jTextField2.setBorder(null);
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 135, 300, -1));
+        txtNombre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtNombre.setForeground(new java.awt.Color(153, 153, 153));
+        txtNombre.setText("Ingrese su nombre");
+        txtNombre.setBorder(null);
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 135, 300, -1));
 
-        jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField4.setText("Ingrese el nombre del administrador");
-        jTextField4.setBorder(null);
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 355, 300, -1));
+        txtNombreUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtNombreUsuario.setForeground(new java.awt.Color(153, 153, 153));
+        txtNombreUsuario.setText("Ingrese el nombre del administrador");
+        txtNombreUsuario.setBorder(null);
+        jPanel1.add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 355, 300, -1));
 
-        jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField5.setText("Ingrese el apellido del usuario");
-        jTextField5.setBorder(null);
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 245, 300, -1));
+        txtApellido.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtApellido.setForeground(new java.awt.Color(153, 153, 153));
+        txtApellido.setText("Ingrese el apellido del usuario");
+        txtApellido.setBorder(null);
+        jPanel1.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 245, 300, -1));
 
-        jTextField6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField6.setText("Ingrese su número de telefono");
-        jTextField6.setBorder(null);
-        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 290, 20));
+        txtTelefono.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtTelefono.setForeground(new java.awt.Color(153, 153, 153));
+        txtTelefono.setText("Ingrese su número de telefono");
+        txtTelefono.setBorder(null);
+        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 290, 20));
 
-        jTextField7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField7.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField7.setText("Ingrese su cargo en la empresa");
-        jTextField7.setBorder(null);
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, 290, 20));
+        txtCargo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtCargo.setForeground(new java.awt.Color(153, 153, 153));
+        txtCargo.setText("Ingrese su cargo en la empresa");
+        txtCargo.setBorder(null);
+        jPanel1.add(txtCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, 290, 20));
 
-        jTextField8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField8.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField8.setText("Sueldo del Administrador");
-        jTextField8.setBorder(null);
-        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 360, 290, 20));
+        txtSueldo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtSueldo.setForeground(new java.awt.Color(153, 153, 153));
+        txtSueldo.setText("Sueldo del Administrador");
+        txtSueldo.setBorder(null);
+        jPanel1.add(txtSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 360, 290, 20));
 
-        jPasswordField1.setForeground(new java.awt.Color(153, 153, 153));
-        jPasswordField1.setText("*******************************");
-        jPasswordField1.setBorder(null);
-        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 460, 290, 20));
+        pswContrasenia.setForeground(new java.awt.Color(153, 153, 153));
+        pswContrasenia.setText("*******************************");
+        pswContrasenia.setBorder(null);
+        jPanel1.add(pswContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 460, 290, 20));
+
+        btnGuardar.setBackground(new java.awt.Color(21, 101, 192));
+        btnGuardar.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-actualizar-25.png"))); // NOI18N
+        btnGuardar.setText("GUARDAR");
+        btnGuardar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnGuardar.setBorderPainted(false);
+        btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnGuardar.setIconTextGap(15);
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 510, 280, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -209,9 +263,9 @@ public class PnlNuevoAdministrador extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -220,13 +274,6 @@ public class PnlNuevoAdministrador extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JLabel lblAlertaApellido;
     private javax.swing.JLabel lblAlertaCargo;
     private javax.swing.JLabel lblAlertaCedula;
@@ -243,5 +290,13 @@ public class PnlNuevoAdministrador extends javax.swing.JPanel {
     private javax.swing.JLabel lblTituloNombre;
     private javax.swing.JLabel lblTituloSueldo;
     private javax.swing.JLabel lblTituloTelefono;
+    private javax.swing.JPasswordField pswContrasenia;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtCargo;
+    private javax.swing.JTextField txtCedula;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNombreUsuario;
+    private javax.swing.JTextField txtSueldo;
+    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }
