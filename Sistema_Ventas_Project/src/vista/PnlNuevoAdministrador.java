@@ -5,6 +5,7 @@
 package vista;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -56,7 +57,32 @@ public class PnlNuevoAdministrador extends javax.swing.JPanel {
     public JTextField getTxtNombreUsuario() {
         return txtNombreUsuario;
     }
-    
+
+    public JLabel getLblTextoAlertaNombre() {
+        return lblTextoAlertaNombre;
+    }
+
+    public JLabel getLblTextoAlertaApellido() {
+        return lblTextoAlertaApellido;
+    }
+
+    public JLabel getLblAlertaTextoCargo() {
+        return lblAlertaTextoCargo;
+    }
+
+    public JLabel getLblAlertaTextoSueldo() {
+        return lblAlertaTextoSueldo;
+    }
+
+    public JLabel getLblAlertaTextoTelefono() {
+        return lblAlertaTextoTelefono;
+    }
+
+    public JLabel getLblTextoAlertaCedula() {
+        return lblTextoAlertaCedula;
+    }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -102,6 +128,12 @@ public class PnlNuevoAdministrador extends javax.swing.JPanel {
         txtSueldo = new javax.swing.JTextField();
         pswContrasenia = new javax.swing.JPasswordField();
         btnGuardar = new javax.swing.JButton();
+        lblTextoAlertaNombre = new javax.swing.JLabel();
+        lblTextoAlertaApellido = new javax.swing.JLabel();
+        lblTextoAlertaCedula = new javax.swing.JLabel();
+        lblAlertaTextoSueldo = new javax.swing.JLabel();
+        lblAlertaTextoCargo = new javax.swing.JLabel();
+        lblAlertaTextoTelefono = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -238,16 +270,21 @@ public class PnlNuevoAdministrador extends javax.swing.JPanel {
         jPanel1.add(pswContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 460, 290, 20));
 
         btnGuardar.setBackground(new java.awt.Color(21, 101, 192));
-        btnGuardar.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btnGuardar.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-actualizar-25.png"))); // NOI18N
         btnGuardar.setText("GUARDAR");
         btnGuardar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         btnGuardar.setBorderPainted(false);
         btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnGuardar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnGuardar.setIconTextGap(15);
-        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 510, 280, 60));
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 510, 300, 60));
+        jPanel1.add(lblTextoAlertaNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 166, 300, 20));
+        jPanel1.add(lblTextoAlertaApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 276, 300, 20));
+        jPanel1.add(lblTextoAlertaCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 486, 300, 20));
+        jPanel1.add(lblAlertaTextoSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 386, 290, 20));
+        jPanel1.add(lblAlertaTextoCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 276, 290, 20));
+        jPanel1.add(lblAlertaTextoTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(508, 166, 290, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -281,8 +318,14 @@ public class PnlNuevoAdministrador extends javax.swing.JPanel {
     private javax.swing.JLabel lblAlertaNombre;
     private javax.swing.JLabel lblAlertaSueldo;
     private javax.swing.JLabel lblAlertaTelefono;
+    private javax.swing.JLabel lblAlertaTextoCargo;
+    private javax.swing.JLabel lblAlertaTextoSueldo;
+    private javax.swing.JLabel lblAlertaTextoTelefono;
     private javax.swing.JLabel lblAlertaUsuario;
     private javax.swing.JLabel lblCedula;
+    private javax.swing.JLabel lblTextoAlertaApellido;
+    private javax.swing.JLabel lblTextoAlertaCedula;
+    private javax.swing.JLabel lblTextoAlertaNombre;
     private javax.swing.JLabel lblTituloAdministrador;
     private javax.swing.JLabel lblTituloApellido;
     private javax.swing.JLabel lblTituloCargo;

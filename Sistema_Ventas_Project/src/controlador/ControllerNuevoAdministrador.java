@@ -1,6 +1,8 @@
 package controlador;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import modelo.Administrador;
@@ -11,8 +13,8 @@ import vista.PnlNuevoAdministrador;
  *
  * @author Jairo Smith Bonilla Hidalgo
  */
-public class ControllerNuevoAdministrador implements MouseListener{
-    
+public class ControllerNuevoAdministrador implements MouseListener, KeyListener {
+
     private PnlNuevoAdministrador pnlNuevoAdministrador;
     private AdministradorDAO administradorDAO;
     private Administrador administrador;
@@ -29,9 +31,15 @@ public class ControllerNuevoAdministrador implements MouseListener{
         this.pnlNuevoAdministrador.getPswContrasenia().addMouseListener(this);
         this.pnlNuevoAdministrador.getTxtSueldo().addMouseListener(this);
         this.pnlNuevoAdministrador.getTxtTelefono().addMouseListener(this);
+        this.pnlNuevoAdministrador.getTxtNombre().addKeyListener(this);
+        this.pnlNuevoAdministrador.getTxtApellido().addKeyListener(this);
+        this.pnlNuevoAdministrador.getTxtCedula().addKeyListener(this);
+        this.pnlNuevoAdministrador.getTxtTelefono().addKeyListener(this);
+        this.pnlNuevoAdministrador.getTxtSueldo().addKeyListener(this);
+
     }
-    
-    public void iniciarComponentes(){
+
+    public void iniciarComponentes() {
         pnlNuevoAdministrador.getTxtNombre().setBackground(Color.WHITE);
         pnlNuevoAdministrador.getTxtApellido().setBackground(Color.WHITE);
         pnlNuevoAdministrador.getTxtNombreUsuario().setBackground(Color.WHITE);
@@ -48,34 +56,35 @@ public class ControllerNuevoAdministrador implements MouseListener{
 
     @Override
     public void mousePressed(MouseEvent e) {
-        if(e.getSource() == pnlNuevoAdministrador.getTxtNombre()){
+
+        if (e.getSource() == pnlNuevoAdministrador.getTxtNombre()) {
             animmacionTextoNombre();
         }
-        
-        if(e.getSource() == pnlNuevoAdministrador.getTxtApellido()){
+
+        if (e.getSource() == pnlNuevoAdministrador.getTxtApellido()) {
             animacionTextoApellido();
         }
-        
-        if(e.getSource() == pnlNuevoAdministrador.getTxtNombreUsuario()){
+
+        if (e.getSource() == pnlNuevoAdministrador.getTxtNombreUsuario()) {
             animacionTextoUsuarioAdministrador();
         }
-        
-        if(e.getSource() == pnlNuevoAdministrador.getTxtCedula()){
+
+        if (e.getSource() == pnlNuevoAdministrador.getTxtCedula()) {
             animacionTextoCedula();
         }
-        if(e.getSource() == pnlNuevoAdministrador.getTxtTelefono()){
+        if (e.getSource() == pnlNuevoAdministrador.getTxtTelefono()) {
             animacionTextoTelefono();
         }
-        
-        if(e.getSource() == pnlNuevoAdministrador.getTxtCargo()){
+
+        if (e.getSource() == pnlNuevoAdministrador.getTxtCargo()) {
             animmacionTextoCargo();
         }
-        
-        if(e.getSource() == pnlNuevoAdministrador.getTxtSueldo()){
+
+        if (e.getSource() == pnlNuevoAdministrador.getTxtSueldo()) {
             animacionTextoSueldo();
         }
-        
-        if(e.getSource() == pnlNuevoAdministrador.getPswContrasenia()){
+
+        if (e.getSource() == pnlNuevoAdministrador.getPswContrasenia()) {
             animmacionPswContraseña();
         }
     }
@@ -91,7 +100,8 @@ public class ControllerNuevoAdministrador implements MouseListener{
     @Override
     public void mouseExited(MouseEvent e) {
     }
-     public void animmacionTextoNombre() {
+
+    public void animmacionTextoNombre() {
         if (pnlNuevoAdministrador.getTxtNombre().getText().equals("Ingrese su nombre")) {
             pnlNuevoAdministrador.getTxtNombre().setText("");
             pnlNuevoAdministrador.getTxtNombre().setForeground(Color.BLACK);
@@ -357,7 +367,7 @@ public class ControllerNuevoAdministrador implements MouseListener{
             pnlNuevoAdministrador.getTxtNombre().setForeground(Color.GRAY);
             pnlNuevoAdministrador.getTxtNombre().setText("Ingrese su nombre");
         }
-        
+
         if (pnlNuevoAdministrador.getTxtTelefono().getText().isEmpty()) {
             pnlNuevoAdministrador.getTxtTelefono().setForeground(Color.GRAY);
             pnlNuevoAdministrador.getTxtTelefono().setText("Ingrese su número de telefono");
@@ -382,7 +392,6 @@ public class ControllerNuevoAdministrador implements MouseListener{
             pnlNuevoAdministrador.getTxtCargo().setForeground(Color.GRAY);
             pnlNuevoAdministrador.getTxtCargo().setText("Ingrese su cargo en la empresa");
         }
-        
 
         if (pnlNuevoAdministrador.getTxtCedula().getText().isEmpty()) {
             pnlNuevoAdministrador.getTxtCedula().setForeground(Color.GRAY);
@@ -390,7 +399,7 @@ public class ControllerNuevoAdministrador implements MouseListener{
         }
 
     }
-    
+
     public void animacionTextoCedula() {
         if (pnlNuevoAdministrador.getTxtCedula().getText().equals("Ingrese la cédula del Administrador")) {
             pnlNuevoAdministrador.getTxtCedula().setText("");
@@ -435,7 +444,109 @@ public class ControllerNuevoAdministrador implements MouseListener{
 
     }
 
+    @Override
+    public void keyTyped(KeyEvent e) {
+        if (e.getSource() == pnlNuevoAdministrador.getTxtNombre()) {
+            char c = e.getKeyChar();
+            if (!Character.isLetter(c) && c != 8) {
+                e.consume();
+                pnlNuevoAdministrador.getLblTextoAlertaNombre().setForeground(Color.red);
+                pnlNuevoAdministrador.getLblTextoAlertaNombre().setText("Solo se permiten caracteres");
+
+            } else {
+                pnlNuevoAdministrador.getLblTextoAlertaNombre().setText("");
+            }
+        } else {
+            pnlNuevoAdministrador.getLblTextoAlertaNombre().setText("");
+        }
+
+        if (e.getSource() == pnlNuevoAdministrador.getTxtApellido()) {
+            char c = e.getKeyChar();
+            if (!Character.isLetter(c) && c != 8) {
+                e.consume();
+                pnlNuevoAdministrador.getLblTextoAlertaApellido().setForeground(Color.red);
+                pnlNuevoAdministrador.getLblTextoAlertaApellido().setText("Solo se permiten caracteres");
+            } else {
+                pnlNuevoAdministrador.getLblTextoAlertaApellido().setText("");
+            }
+
+        } else {
+            pnlNuevoAdministrador.getLblTextoAlertaApellido().setText("");
+        }
+
+        if (e.getSource() == pnlNuevoAdministrador.getTxtCedula()) {
+            char c = e.getKeyChar();
+            if (!Character.isDigit(c) && c != 8) {
+                e.consume();
+                pnlNuevoAdministrador.getLblTextoAlertaCedula().setForeground(Color.red);
+                pnlNuevoAdministrador.getLblTextoAlertaCedula().setText("Solo se permiten dígitos");
+            } else {
+                pnlNuevoAdministrador.getLblTextoAlertaCedula().setText("");
+                if (pnlNuevoAdministrador.getTxtCedula().getText().length() >= 10) {
+                    e.consume();
+                    pnlNuevoAdministrador.getLblTextoAlertaCedula().setForeground(Color.red);
+                    pnlNuevoAdministrador.getLblTextoAlertaCedula().setText("La cédula debe tener solo 10 dígitos");
+                }
+            }
+
+        } else {
+            pnlNuevoAdministrador.getLblTextoAlertaCedula().setText("");
+        }
+        
+        if(e.getSource() == pnlNuevoAdministrador.getTxtTelefono()){
+             char c = e.getKeyChar();
+            if (!Character.isDigit(c) && c != 8) {
+                e.consume();
+                pnlNuevoAdministrador.getLblAlertaTextoTelefono().setForeground(Color.red);
+                pnlNuevoAdministrador.getLblAlertaTextoTelefono().setText("Solo se permiten dígitos");
+            } else {
+                pnlNuevoAdministrador.getLblAlertaTextoTelefono().setText("");
+                if (pnlNuevoAdministrador.getTxtTelefono().getText().length() >= 10) {
+                    e.consume();
+                    pnlNuevoAdministrador.getLblAlertaTextoTelefono().setForeground(Color.red);
+                    pnlNuevoAdministrador.getLblAlertaTextoTelefono().setText("La teléfono debe tener solo 10 dígitos");
+                }
+            }
+        }
+    }
     
-            
-    
+    public static boolean esSueldoValido(String sueldo) {
+        boolean puntoEncontrado = false;
+
+        if (sueldo.isEmpty()) {
+            return false;
+        }
+
+        for (int i = 0; i < sueldo.length(); i++) {
+            char c = sueldo.charAt(i);
+            if (!Character.isDigit(c) && c != '.') {
+                return false; // Carácter no válido encontrado
+            }
+            if (c == '.') {
+                if (puntoEncontrado || i == 0 || i == sueldo.length() - 1) {
+                    return false; // Más de un punto o punto al principio o al final encontrado
+                }
+                puntoEncontrado = true;
+            }
+        }
+
+        return true;
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        if(e.getSource() == pnlNuevoAdministrador.getTxtSueldo()){
+            if(!esSueldoValido(pnlNuevoAdministrador.getTxtSueldo().getText())){
+                pnlNuevoAdministrador.getLblAlertaTextoSueldo().setForeground(Color.red);
+                pnlNuevoAdministrador.getLblAlertaTextoSueldo().setText("El sueldo no tiene el formato correcto");
+            }else{
+                pnlNuevoAdministrador.getLblAlertaTextoSueldo().setText("");
+            }
+        }
+    }
+
 }
