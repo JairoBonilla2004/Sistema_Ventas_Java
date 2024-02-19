@@ -1,16 +1,19 @@
 
 package controlador;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Administrador;
 import modelo.AdministradorDAO;
 import vista.PnlGestionarAdministradores;
+import vista.PnlNuevoAdministrador;
 
 /**
  *
@@ -19,19 +22,21 @@ import vista.PnlGestionarAdministradores;
 public class ControllerGestionarAdministradores implements MouseListener, KeyListener{
     private final PnlGestionarAdministradores pnlGestionarAdministradores;
     private final AdministradorDAO administradorDAO;
-    private  Administrador administrador;
     private final DefaultTableModel modelo_tabla = new DefaultTableModel();
-    public ControllerGestionarAdministradores(PnlGestionarAdministradores pnlGestionarAdministradores, AdministradorDAO administradorDAO, Administrador administrador) {
+    public ControllerGestionarAdministradores(PnlGestionarAdministradores pnlGestionarAdministradores, AdministradorDAO administradorDAO) {
         this.pnlGestionarAdministradores = pnlGestionarAdministradores;
         this.administradorDAO = administradorDAO;
-        this.administrador = administrador;
         this.pnlGestionarAdministradores.getTxtBuscarAdministradores().addMouseListener(this);
         this.pnlGestionarAdministradores.getTblAdministradores().addMouseListener(this);
         this.pnlGestionarAdministradores.getTxtBuscarAdministradores().addKeyListener(this);
+        this.pnlGestionarAdministradores.getBtnNuevoUsuario().addMouseListener(this);
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        if(e.getSource() == pnlGestionarAdministradores.getBtnNuevoUsuario()){
+            añadirNuevoUsuario();
+        }
     }
 
     @Override
@@ -132,6 +137,22 @@ public class ControllerGestionarAdministradores implements MouseListener, KeyLis
     
     public void vaciarTabla(DefaultTableModel modeloTabla) {
         modeloTabla.setRowCount(0); // Vaciar la tabla
+    }
+    
+    public void añadirNuevoUsuario() {
+        boolean respuesta = administradorDAO.verificarPersonaExistente("administrador",pnlGestionarAdministradores.getNombreUsuario());
+        if (respuesta) {
+            PnlNuevoAdministrador pnlNuevoAdministrador = new PnlNuevoAdministrador();
+            pnlNuevoAdministrador.setSize(1000, 600);
+            pnlNuevoAdministrador.setLocation(0, 0);
+            pnlGestionarAdministradores.getPnlContenido().removeAll();
+            pnlGestionarAdministradores.getPnlContenido().add(pnlNuevoAdministrador, BorderLayout.CENTER);
+            pnlGestionarAdministradores.getPnlContenido().revalidate();
+            pnlGestionarAdministradores.getPnlContenido().repaint();
+        } else {
+            JOptionPane.showMessageDialog(null, "SOLO LOS ADMINISTRADORES PUEDEN AÑADIR NUEVOS ADIMINISTRADORES", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+        }
+
     }
     
 }

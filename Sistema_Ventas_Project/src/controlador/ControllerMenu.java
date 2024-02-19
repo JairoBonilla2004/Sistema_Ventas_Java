@@ -87,8 +87,7 @@ public final class ControllerMenu implements  ActionListener{
             frmMenu.getPnlContenido().revalidate();
             frmMenu.getPnlContenido().repaint();
             AdministradorDAO administradorDAO = new AdministradorDAO();
-            Administrador administrador = new Administrador();
-            ControllerGestionarAdministradores controllerGestionarAdministradores = new ControllerGestionarAdministradores(pnlAdministrador, administradorDAO, administrador);
+            ControllerGestionarAdministradores controllerGestionarAdministradores = new ControllerGestionarAdministradores(pnlAdministrador, administradorDAO);
             controllerGestionarAdministradores.inicializarDatos();
         }
     }

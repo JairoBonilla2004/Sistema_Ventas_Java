@@ -79,14 +79,11 @@ public class PnlGestionarAdministradores extends javax.swing.JPanel {
         btnEliminar1 = new javax.swing.JButton();
 
         pnlContenido.setBackground(new java.awt.Color(255, 255, 255));
-        pnlContenido.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         jLabel1.setText("ADMINISTRADORES");
-        pnlContenido.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         jSeparator1.setForeground(new java.awt.Color(51, 153, 255));
-        pnlContenido.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 800, 30));
 
         btnNuevoUsuario.setBackground(new java.awt.Color(21, 101, 192));
         btnNuevoUsuario.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
@@ -98,13 +95,11 @@ public class PnlGestionarAdministradores extends javax.swing.JPanel {
         btnNuevoUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNuevoUsuario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnNuevoUsuario.setIconTextGap(15);
-        pnlContenido.add(btnNuevoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 530, 130, 30));
 
         txtBuscarAdministradores.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtBuscarAdministradores.setForeground(new java.awt.Color(153, 153, 153));
         txtBuscarAdministradores.setText("Ingrese el nombre del administrador que desea buscar");
         txtBuscarAdministradores.setBorder(null);
-        pnlContenido.add(txtBuscarAdministradores, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 760, 20));
 
         tblAdministradores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,8 +114,6 @@ public class PnlGestionarAdministradores extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblAdministradores);
 
-        pnlContenido.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 1000, 400));
-
         btnIntroduccion1.setBackground(new java.awt.Color(21, 101, 192));
         btnIntroduccion1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         btnIntroduccion1.setForeground(new java.awt.Color(255, 255, 255));
@@ -131,7 +124,6 @@ public class PnlGestionarAdministradores extends javax.swing.JPanel {
         btnIntroduccion1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnIntroduccion1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnIntroduccion1.setIconTextGap(15);
-        pnlContenido.add(btnIntroduccion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 60, 130, 30));
 
         btnEliminar1.setBackground(new java.awt.Color(21, 101, 192));
         btnEliminar1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
@@ -143,7 +135,50 @@ public class PnlGestionarAdministradores extends javax.swing.JPanel {
         btnEliminar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminar1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnEliminar1.setIconTextGap(15);
-        pnlContenido.add(btnEliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 530, 130, 30));
+
+        javax.swing.GroupLayout pnlContenidoLayout = new javax.swing.GroupLayout(pnlContenido);
+        pnlContenido.setLayout(pnlContenidoLayout);
+        pnlContenidoLayout.setHorizontalGroup(
+            pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlContenidoLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1))
+            .addGroup(pnlContenidoLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(txtBuscarAdministradores, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addComponent(btnIntroduccion1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pnlContenidoLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pnlContenidoLayout.createSequentialGroup()
+                .addGap(680, 680, 680)
+                .addComponent(btnNuevoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(btnEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        pnlContenidoLayout.setVerticalGroup(
+            pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlContenidoLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1)
+                .addGap(7, 7, 7)
+                .addGroup(pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlContenidoLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(txtBuscarAdministradores, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnIntroduccion1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlContenidoLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(20, 20, 20)
+                .addGroup(pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnNuevoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -153,7 +188,7 @@ public class PnlGestionarAdministradores extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlContenido, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
+            .addComponent(pnlContenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
