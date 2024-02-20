@@ -14,9 +14,9 @@ import vista.PnlNuevoAdministrador;
  *
  * @author Jairo Smith Bonilla Hidalgo
  */
-public class ControllerNuevoAdministrador implements MouseListener, KeyListener {
+public final class ControllerNuevoAdministrador implements MouseListener, KeyListener {
 
-    private PnlNuevoAdministrador pnlNuevoAdministrador;
+    private final PnlNuevoAdministrador pnlNuevoAdministrador;
     private AdministradorDAO administradorDAO;
     private Administrador administrador;
 
@@ -24,12 +24,19 @@ public class ControllerNuevoAdministrador implements MouseListener, KeyListener 
         this.pnlNuevoAdministrador = pnlNuevoAdministrador;
         this.administradorDAO = administradorDAO;
         this.administrador = administrador;
+        inicializarMauseAndKeyListener();
+
+    }
+    
+    public void inicializarMauseAndKeyListener(){
         this.pnlNuevoAdministrador.getTxtNombre().addMouseListener(this);
         this.pnlNuevoAdministrador.getTxtApellido().addMouseListener(this);
         this.pnlNuevoAdministrador.getTxtNombreUsuario().addMouseListener(this);
         this.pnlNuevoAdministrador.getTxtCargo().addMouseListener(this);
+        this.pnlNuevoAdministrador.getTxtCargo().addKeyListener(this);
         this.pnlNuevoAdministrador.getTxtCedula().addMouseListener(this);
         this.pnlNuevoAdministrador.getPswContrasenia().addMouseListener(this);
+        this.pnlNuevoAdministrador.getPswContrasenia().addKeyListener(this);
         this.pnlNuevoAdministrador.getTxtSueldo().addMouseListener(this);
         this.pnlNuevoAdministrador.getTxtTelefono().addMouseListener(this);
         this.pnlNuevoAdministrador.getTxtNombre().addKeyListener(this);
@@ -37,7 +44,6 @@ public class ControllerNuevoAdministrador implements MouseListener, KeyListener 
         this.pnlNuevoAdministrador.getTxtCedula().addKeyListener(this);
         this.pnlNuevoAdministrador.getTxtTelefono().addKeyListener(this);
         this.pnlNuevoAdministrador.getTxtSueldo().addKeyListener(this);
-
     }
 
     public void iniciarComponentes() {
@@ -481,12 +487,17 @@ public class ControllerNuevoAdministrador implements MouseListener, KeyListener 
                 e.consume();
                 pnlNuevoAdministrador.getLblTextoAlertaCedula().setForeground(Color.red);
                 pnlNuevoAdministrador.getLblTextoAlertaCedula().setText("Solo se permiten dígitos");
+                mostrarImagenAlertaCedula();
             } else {
                 pnlNuevoAdministrador.getLblTextoAlertaCedula().setText("");
+                mostrarImagenBlancaCedula();
                 if (pnlNuevoAdministrador.getTxtCedula().getText().length() >= 10) {
                     e.consume();
                     pnlNuevoAdministrador.getLblTextoAlertaCedula().setForeground(Color.red);
                     pnlNuevoAdministrador.getLblTextoAlertaCedula().setText("La cédula debe tener solo 10 dígitos");
+                    mostrarImagenAlertaCedula();
+                }else{
+                    mostrarImagenBlancaCedula();
                 }
             }
 
@@ -518,7 +529,7 @@ public class ControllerNuevoAdministrador implements MouseListener, KeyListener 
        }
     }
     
-    public static boolean esSueldoValido(String sueldo) {
+    public  boolean esSueldoValido(String sueldo) {
         boolean puntoEncontrado = false;
 
         if (sueldo.isEmpty()) {
@@ -548,6 +559,7 @@ public class ControllerNuevoAdministrador implements MouseListener, KeyListener 
     @Override
     public void keyReleased(KeyEvent e) {
         if(e.getSource() == pnlNuevoAdministrador.getTxtSueldo()){
+            validarDatos();
             if(!esSueldoValido(pnlNuevoAdministrador.getTxtSueldo().getText())){
                 pnlNuevoAdministrador.getLblAlertaTextoSueldo().setForeground(Color.red);
                 pnlNuevoAdministrador.getLblAlertaTextoSueldo().setText("El sueldo no tiene el formato correcto");
@@ -555,6 +567,41 @@ public class ControllerNuevoAdministrador implements MouseListener, KeyListener 
                 pnlNuevoAdministrador.getLblAlertaTextoSueldo().setText("");
             }
         }
+        if(e.getSource() == pnlNuevoAdministrador.getTxtNombre()){
+            validarDatos();
+        }
+        
+        if(e.getSource() == pnlNuevoAdministrador.getTxtApellido()){
+            validarDatos();
+        }
+        
+        if(e.getSource() == pnlNuevoAdministrador.getTxtNombreUsuario()){
+            validarDatos();
+        }
+        if(e.getSource() == pnlNuevoAdministrador.getTxtCedula()){
+            validarDatos();
+        }
+        
+        if(e.getSource() == pnlNuevoAdministrador.getTxtCargo()){
+            validarDatos();
+        }
+        
+        if(e.getSource() == pnlNuevoAdministrador.getTxtCargo()){
+            validarDatos();
+        }
+        
+        if(e.getSource() == pnlNuevoAdministrador.getTxtSueldo()){
+            validarDatos();
+        }
+        
+        if(e.getSource() == pnlNuevoAdministrador.getPswContrasenia()){
+            validarDatos();
+        }
+        
+        if(e.getSource() == pnlNuevoAdministrador.getTxtTelefono()){
+            validarDatos();
+        }
+        
     }
     
     public void mostrarImagenAlertaUsuario() {
@@ -693,5 +740,71 @@ public class ControllerNuevoAdministrador implements MouseListener, KeyListener 
         }
         return icono;
     }
+    
+        public void validarDatos() {
+        if (pnlNuevoAdministrador.getTxtNombre().getText().equals("Ingrese su nombre") || pnlNuevoAdministrador.getTxtNombre().getText().isEmpty()) {
+            mostrarImagenAlertaNombre();
+        } else {
+            mostrarImagenBlancaNombre();
+        }
+
+        if (pnlNuevoAdministrador.getTxtApellido().getText().equals("Ingrese el apellido del usuario") || pnlNuevoAdministrador.getTxtApellido().getText().isEmpty()) {
+            mostrarImagenAlertaApellido();
+        } else {
+            mostrarImagenBlancaApellido();
+        }
+
+        if (pnlNuevoAdministrador.getTxtCedula().getText().equals("Ingrese la cédula del Administrador") || pnlNuevoAdministrador.getTxtCedula().getText().isEmpty()) {
+            mostrarImagenAlertaCedula();
+        } else {
+            mostrarImagenBlancaCedula();
+        }
+
+        if (pnlNuevoAdministrador.getTxtNombreUsuario().getText().equals("Ingrese el nombre del administrador") || pnlNuevoAdministrador.getTxtNombreUsuario().getText().isEmpty()) {
+            mostrarImagenAlertaUsuario();
+        } else {
+            mostrarImagenBlancaUsuario();
+        }
+
+        if (pnlNuevoAdministrador.getPswContrasenia().getText().equals("*******************************") || pnlNuevoAdministrador.getPswContrasenia().getText().isEmpty()) {
+            mostrarImagenAlertaContraseña();
+        } else {
+            mostrarImagenBlancaContraseña();
+        }
+
+        if (pnlNuevoAdministrador.getTxtTelefono().getText().equals("Ingrese su número de telefono") || pnlNuevoAdministrador.getTxtTelefono().getText().isEmpty()) {
+            mostrarImagenAlertaTelefono();
+        } else {
+            mostrarImagenBlancaTelefono();
+        }
+
+        if (pnlNuevoAdministrador.getTxtCargo().getText().equals("Ingrese su cargo en la empresa") || pnlNuevoAdministrador.getTxtCargo().getText().isEmpty()) {
+            mostrarImagenAlertaCargo();
+        } else {
+            mostrarImagenBlancaCargo();
+        }
+
+        if (pnlNuevoAdministrador.getTxtSueldo().getText().equals("Sueldo del Administrador") || pnlNuevoAdministrador.getTxtSueldo().getText().isEmpty()) {
+            mostrarImagenAlertaSueldo();
+        } else {
+            mostrarImagenBlancaSueldo();
+        }
+
+        if (pnlNuevoAdministrador.getTxtNombre().getText().equals("Ingrese su nombre") || pnlNuevoAdministrador.getTxtNombre().getText().isEmpty()
+                || pnlNuevoAdministrador.getTxtApellido().getText().equals("Ingrese el apellido del usuario") || pnlNuevoAdministrador.getTxtApellido().getText().isEmpty()
+                || pnlNuevoAdministrador.getTxtNombreUsuario().getText().equals("Ingrese el nombre del administrador") || pnlNuevoAdministrador.getTxtNombreUsuario().getText().isEmpty()
+                || pnlNuevoAdministrador.getPswContrasenia().getText().equals("*******************************") || pnlNuevoAdministrador.getPswContrasenia().getText().isEmpty()
+                || pnlNuevoAdministrador.getTxtTelefono().getText().equals("Ingrese su número de telefono") || pnlNuevoAdministrador.getTxtTelefono().getText().isEmpty()
+                || pnlNuevoAdministrador.getTxtCargo().getText().equals("Ingrese su cargo en la empresa") || pnlNuevoAdministrador.getTxtCargo().getText().isEmpty()
+                || pnlNuevoAdministrador.getTxtSueldo().getText().equals("Sueldo del Administrador") || pnlNuevoAdministrador.getTxtSueldo().getText().isEmpty()
+                || pnlNuevoAdministrador.getTxtCedula().getText().equals("Ingrese la cédula del Administrador") || pnlNuevoAdministrador.getTxtCedula().getText().isEmpty()) {
+            pnlNuevoAdministrador.getBtnGuardar().setEnabled(false);
+
+        } else {
+            pnlNuevoAdministrador.getBtnGuardar().setEnabled(true);
+        }
+
+    }
+
 
 }
