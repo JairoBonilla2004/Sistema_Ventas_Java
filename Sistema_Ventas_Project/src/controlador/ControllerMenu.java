@@ -26,6 +26,7 @@ public final class ControllerMenu implements  ActionListener{
         this.frmMenu.getBtnIntroduccion().addActionListener(this);
         this.frmMenu.getBtnCerrarSesion().addActionListener(this);
         this.frmMenu.getBtnAdministrador().addActionListener(this);
+        iniciarPnlBienvenida();
     }
     
     public void iniciar(){
