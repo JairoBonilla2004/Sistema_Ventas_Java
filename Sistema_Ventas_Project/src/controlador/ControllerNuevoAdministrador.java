@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.ImageIcon;
 import modelo.Administrador;
 import modelo.AdministradorDAO;
 import vista.PnlNuevoAdministrador;
@@ -508,6 +509,13 @@ public class ControllerNuevoAdministrador implements MouseListener, KeyListener 
                 }
             }
         }
+        
+       if(e.getSource() == pnlNuevoAdministrador.getTxtSueldo()){
+           char  c = e.getKeyChar();
+           if(Character.isSpaceChar(c)){
+               e.consume();
+           }
+       }
     }
     
     public static boolean esSueldoValido(String sueldo) {
@@ -547,6 +555,143 @@ public class ControllerNuevoAdministrador implements MouseListener, KeyListener 
                 pnlNuevoAdministrador.getLblAlertaTextoSueldo().setText("");
             }
         }
+    }
+    
+    public void mostrarImagenAlertaUsuario() {
+        java.net.URL imageURL = getClass().getResource("/img/alert.png");
+        if (imageURL != null) {
+            ImageIcon icono = new ImageIcon(imageURL);
+            pnlNuevoAdministrador.getLblAlertaUsuario().setIcon(icono);
+        }
+    }
+
+    public void mostrarImagenBlancaUsuario() {
+        java.net.URL imageURL = getClass().getResource("/img/whiteSeen.png");
+        if (imageURL != null) {
+            ImageIcon icono = new ImageIcon(imageURL);
+            pnlNuevoAdministrador.getLblAlertaUsuario().setIcon(icono);
+        }
+    }
+
+    public void mostrarImagenAlertaContraseña() {
+        java.net.URL imageURL = getClass().getResource("/img/alert.png"); //ruta de la imagen a cargar
+        if (imageURL != null) {
+            ImageIcon icono = new ImageIcon(imageURL);
+            pnlNuevoAdministrador.getLblAlertaContraseña().setIcon(icono);
+        }
+    }
+
+    public void mostrarImagenBlancaContraseña() {
+        java.net.URL imageURL = getClass().getResource("/img/whiteSeen.png");
+        if (imageURL != null) {
+            ImageIcon icono = new ImageIcon(imageURL);
+            pnlNuevoAdministrador.getLblAlertaContraseña().setIcon(icono);
+        }
+    }
+
+    public void mostrarImagenAlertaNombre() {
+        java.net.URL imageURL = getClass().getResource("/img/alert.png"); //ruta de la imagen a cargar
+        if (imageURL != null) {
+            ImageIcon icono = new ImageIcon(imageURL);
+            pnlNuevoAdministrador.getLblAlertaNombre().setIcon(icono);
+        }
+    }
+
+    public void mostrarImagenBlancaNombre() {
+        java.net.URL imageURL = getClass().getResource("/img/whiteSeen.png"); //ruta de la imagen a cargar
+        if (imageURL != null) {
+            ImageIcon icono = new ImageIcon(imageURL);
+            pnlNuevoAdministrador.getLblAlertaNombre().setIcon(icono);
+        }
+    }
+
+    public void mostrarImagenAlertaApellido() {
+        java.net.URL imageURL = getClass().getResource("/img/alert.png"); //ruta de la imagen a cargar
+        if (imageURL != null) {
+            ImageIcon icono = new ImageIcon(imageURL);
+            pnlNuevoAdministrador.getLblAlertaApellido().setIcon(icono);
+        }
+    }
+
+    public void mostrarImagenBlancaApellido() {
+        java.net.URL imageURL = getClass().getResource("/img/whiteSeen.png"); //ruta de la imagen a cargar
+        if (imageURL != null) {
+            ImageIcon icono = new ImageIcon(imageURL);
+            pnlNuevoAdministrador.getLblAlertaApellido().setIcon(icono);
+        }
+    }
+
+    public void mostrarImagenAlertaTelefono() {
+        java.net.URL imageURL = getClass().getResource("/img/alert.png"); //ruta de la imagen a cargar
+        if (imageURL != null) {
+            ImageIcon icono = new ImageIcon(imageURL);
+            pnlNuevoAdministrador.getLblAlertaTelefono().setIcon(icono);
+        }
+    }
+
+    public void mostrarImagenBlancaTelefono() {
+        java.net.URL imageURL = getClass().getResource("/img/whiteSeen.png"); //ruta de la imagen a cargar
+        if (imageURL != null) {
+            ImageIcon icono = new ImageIcon(imageURL);
+            pnlNuevoAdministrador.getLblAlertaTelefono().setIcon(icono);
+        }
+    }
+
+    public void mostrarImagenAlertaCargo() {
+        java.net.URL imageURL = getClass().getResource("/img/alert.png"); //ruta de la imagen a cargar
+        if (imageURL != null) {
+            ImageIcon icono = new ImageIcon(imageURL);
+            pnlNuevoAdministrador.getLblAlertaCargo().setIcon(icono);
+        }
+    }
+
+    public void mostrarImagenBlancaCargo() {
+        java.net.URL imageURL = getClass().getResource("/img/whiteSeen.png"); //ruta de la imagen a cargar
+        if (imageURL != null) {
+            ImageIcon icono = new ImageIcon(imageURL);
+            pnlNuevoAdministrador.getLblAlertaCargo().setIcon(icono);
+        }
+    }
+
+    public void mostrarImagenAlertaSueldo() {
+        java.net.URL imageURL = getClass().getResource("/img/alert.png"); //ruta de la imagen a cargar
+        if (imageURL != null) {
+            ImageIcon icono = new ImageIcon(imageURL);
+            pnlNuevoAdministrador.getLblAlertaSueldo().setIcon(icono);
+        }
+    }
+
+    public void mostrarImagenBlancaSueldo() {
+        java.net.URL imageURL = getClass().getResource("/img/whiteSeen.png"); //ruta de la imagen a cargar
+        if (imageURL != null) {
+            ImageIcon icono = new ImageIcon(imageURL);
+            pnlNuevoAdministrador.getLblAlertaSueldo().setIcon(icono);
+        }
+    }
+
+    public void mostrarImagenAlertaCedula() {
+        java.net.URL imageURL = getClass().getResource("/img/alert.png"); //ruta de la imagen a cargar
+        if (imageURL != null) {
+            ImageIcon icono = new ImageIcon(imageURL);
+            pnlNuevoAdministrador.getLblAlertaCedula().setIcon(icono);
+        }
+    }
+
+    public void mostrarImagenBlancaCedula() {
+        java.net.URL imageURL = getClass().getResource("/img/whiteSeen.png"); //ruta de la imagen a cargar
+        if (imageURL != null) {
+            ImageIcon icono = new ImageIcon(imageURL);
+            pnlNuevoAdministrador.getLblAlertaCedula().setIcon(icono);
+        }
+    }
+
+    public ImageIcon activarVistoVerde() {
+        java.net.URL imageURL = getClass().getResource("/img/greenSeen.png");
+        ImageIcon icono = null;
+        if (imageURL != null) {
+            icono = new ImageIcon(imageURL);
+        }
+        return icono;
     }
 
 }

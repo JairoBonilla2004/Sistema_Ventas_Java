@@ -82,6 +82,38 @@ public class PnlNuevoAdministrador extends javax.swing.JPanel {
         return lblTextoAlertaCedula;
     }
 
+    public JLabel getLblAlertaApellido() {
+        return lblAlertaApellido;
+    }
+
+    public JLabel getLblAlertaCargo() {
+        return lblAlertaCargo;
+    }
+
+    public JLabel getLblAlertaCedula() {
+        return lblAlertaCedula;
+    }
+
+    public JLabel getLblAlertaContraseña() {
+        return lblAlertaContraseña;
+    }
+
+    public JLabel getLblAlertaNombre() {
+        return lblAlertaNombre;
+    }
+
+    public JLabel getLblAlertaSueldo() {
+        return lblAlertaSueldo;
+    }
+
+    public JLabel getLblAlertaTelefono() {
+        return lblAlertaTelefono;
+    }
+
+    public JLabel getLblAlertaUsuario() {
+        return lblAlertaUsuario;
+    }
+
 
 
     /**
