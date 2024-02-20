@@ -27,11 +27,12 @@ public final class ControllerNuevoAdministrador implements MouseListener, KeyLis
         inicializarMauseAndKeyListener();
 
     }
-    
-    public void inicializarMauseAndKeyListener(){
+
+    public void inicializarMauseAndKeyListener() {
         this.pnlNuevoAdministrador.getTxtNombre().addMouseListener(this);
         this.pnlNuevoAdministrador.getTxtApellido().addMouseListener(this);
         this.pnlNuevoAdministrador.getTxtNombreUsuario().addMouseListener(this);
+        this.pnlNuevoAdministrador.getTxtNombreUsuario().addKeyListener(this);
         this.pnlNuevoAdministrador.getTxtCargo().addMouseListener(this);
         this.pnlNuevoAdministrador.getTxtCargo().addKeyListener(this);
         this.pnlNuevoAdministrador.getTxtCedula().addMouseListener(this);
@@ -61,37 +62,53 @@ public final class ControllerNuevoAdministrador implements MouseListener, KeyLis
     public void mouseClicked(MouseEvent e) {
     }
 
+    void vaciarLblTextoValidaciones() {
+        pnlNuevoAdministrador.getLblTextoAlertaApellido().setText("");
+        pnlNuevoAdministrador.getLblTextoAlertaCedula().setText("");
+        pnlNuevoAdministrador.getLblAlertaTextoTelefono().setText("");
+        pnlNuevoAdministrador.getLblTextoAlertaNombre().setText("");
+
+    }
+
     @Override
     public void mousePressed(MouseEvent e) {
 
         if (e.getSource() == pnlNuevoAdministrador.getTxtNombre()) {
+            vaciarLblTextoValidaciones();
             animmacionTextoNombre();
         }
 
         if (e.getSource() == pnlNuevoAdministrador.getTxtApellido()) {
+            vaciarLblTextoValidaciones();
             animacionTextoApellido();
         }
 
         if (e.getSource() == pnlNuevoAdministrador.getTxtNombreUsuario()) {
+            vaciarLblTextoValidaciones();
             animacionTextoUsuarioAdministrador();
         }
 
         if (e.getSource() == pnlNuevoAdministrador.getTxtCedula()) {
+            vaciarLblTextoValidaciones();
             animacionTextoCedula();
         }
         if (e.getSource() == pnlNuevoAdministrador.getTxtTelefono()) {
+            vaciarLblTextoValidaciones();
             animacionTextoTelefono();
         }
 
         if (e.getSource() == pnlNuevoAdministrador.getTxtCargo()) {
+            vaciarLblTextoValidaciones();
             animmacionTextoCargo();
         }
 
         if (e.getSource() == pnlNuevoAdministrador.getTxtSueldo()) {
+            vaciarLblTextoValidaciones();
             animacionTextoSueldo();
         }
 
         if (e.getSource() == pnlNuevoAdministrador.getPswContrasenia()) {
+            vaciarLblTextoValidaciones();
             animmacionPswContraseña();
         }
     }
@@ -463,8 +480,6 @@ public final class ControllerNuevoAdministrador implements MouseListener, KeyLis
             } else {
                 pnlNuevoAdministrador.getLblTextoAlertaNombre().setText("");
             }
-        } else {
-            pnlNuevoAdministrador.getLblTextoAlertaNombre().setText("");
         }
 
         if (e.getSource() == pnlNuevoAdministrador.getTxtApellido()) {
@@ -477,8 +492,6 @@ public final class ControllerNuevoAdministrador implements MouseListener, KeyLis
                 pnlNuevoAdministrador.getLblTextoAlertaApellido().setText("");
             }
 
-        } else {
-            pnlNuevoAdministrador.getLblTextoAlertaApellido().setText("");
         }
 
         if (e.getSource() == pnlNuevoAdministrador.getTxtCedula()) {
@@ -496,17 +509,15 @@ public final class ControllerNuevoAdministrador implements MouseListener, KeyLis
                     pnlNuevoAdministrador.getLblTextoAlertaCedula().setForeground(Color.red);
                     pnlNuevoAdministrador.getLblTextoAlertaCedula().setText("La cédula debe tener solo 10 dígitos");
                     mostrarImagenAlertaCedula();
-                }else{
+                } else {
                     mostrarImagenBlancaCedula();
                 }
             }
 
-        } else {
-            pnlNuevoAdministrador.getLblTextoAlertaCedula().setText("");
         }
-        
-        if(e.getSource() == pnlNuevoAdministrador.getTxtTelefono()){
-             char c = e.getKeyChar();
+
+        if (e.getSource() == pnlNuevoAdministrador.getTxtTelefono()) {
+            char c = e.getKeyChar();
             if (!Character.isDigit(c) && c != 8) {
                 e.consume();
                 pnlNuevoAdministrador.getLblAlertaTextoTelefono().setForeground(Color.red);
@@ -520,16 +531,16 @@ public final class ControllerNuevoAdministrador implements MouseListener, KeyLis
                 }
             }
         }
-        
-       if(e.getSource() == pnlNuevoAdministrador.getTxtSueldo()){
-           char  c = e.getKeyChar();
-           if(Character.isSpaceChar(c)){
-               e.consume();
-           }
-       }
+
+        if (e.getSource() == pnlNuevoAdministrador.getTxtSueldo()) {
+            char c = e.getKeyChar();
+            if (Character.isSpaceChar(c)) {
+                e.consume();
+            }
+        }
     }
-    
-    public  boolean esSueldoValido(String sueldo) {
+
+    public boolean esSueldoValido(String sueldo) {
         boolean puntoEncontrado = false;
 
         if (sueldo.isEmpty()) {
@@ -558,52 +569,52 @@ public final class ControllerNuevoAdministrador implements MouseListener, KeyLis
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if(e.getSource() == pnlNuevoAdministrador.getTxtSueldo()){
+        if (e.getSource() == pnlNuevoAdministrador.getTxtSueldo()) {
             validarDatos();
-            if(!esSueldoValido(pnlNuevoAdministrador.getTxtSueldo().getText())){
+            if (!esSueldoValido(pnlNuevoAdministrador.getTxtSueldo().getText())) {
                 pnlNuevoAdministrador.getLblAlertaTextoSueldo().setForeground(Color.red);
                 pnlNuevoAdministrador.getLblAlertaTextoSueldo().setText("El sueldo no tiene el formato correcto");
             }else{
                 pnlNuevoAdministrador.getLblAlertaTextoSueldo().setText("");
             }
         }
-        if(e.getSource() == pnlNuevoAdministrador.getTxtNombre()){
+        if (e.getSource() == pnlNuevoAdministrador.getTxtNombre()) {
             validarDatos();
         }
-        
-        if(e.getSource() == pnlNuevoAdministrador.getTxtApellido()){
+
+        if (e.getSource() == pnlNuevoAdministrador.getTxtApellido()) {
             validarDatos();
         }
-        
-        if(e.getSource() == pnlNuevoAdministrador.getTxtNombreUsuario()){
+
+        if (e.getSource() == pnlNuevoAdministrador.getTxtNombreUsuario()) {
             validarDatos();
         }
-        if(e.getSource() == pnlNuevoAdministrador.getTxtCedula()){
+        if (e.getSource() == pnlNuevoAdministrador.getTxtCedula()) {
             validarDatos();
         }
-        
-        if(e.getSource() == pnlNuevoAdministrador.getTxtCargo()){
+
+        if (e.getSource() == pnlNuevoAdministrador.getTxtCargo()) {
             validarDatos();
         }
-        
-        if(e.getSource() == pnlNuevoAdministrador.getTxtCargo()){
+
+        if (e.getSource() == pnlNuevoAdministrador.getTxtCargo()) {
             validarDatos();
         }
-        
-        if(e.getSource() == pnlNuevoAdministrador.getTxtSueldo()){
+
+        if (e.getSource() == pnlNuevoAdministrador.getTxtSueldo()) {
             validarDatos();
         }
-        
-        if(e.getSource() == pnlNuevoAdministrador.getPswContrasenia()){
+
+        if (e.getSource() == pnlNuevoAdministrador.getPswContrasenia()) {
             validarDatos();
         }
-        
-        if(e.getSource() == pnlNuevoAdministrador.getTxtTelefono()){
+
+        if (e.getSource() == pnlNuevoAdministrador.getTxtTelefono()) {
             validarDatos();
         }
-        
+
     }
-    
+
     public void mostrarImagenAlertaUsuario() {
         java.net.URL imageURL = getClass().getResource("/img/alert.png");
         if (imageURL != null) {
@@ -740,8 +751,8 @@ public final class ControllerNuevoAdministrador implements MouseListener, KeyLis
         }
         return icono;
     }
-    
-        public void validarDatos() {
+
+    public void validarDatos() {
         if (pnlNuevoAdministrador.getTxtNombre().getText().equals("Ingrese su nombre") || pnlNuevoAdministrador.getTxtNombre().getText().isEmpty()) {
             mostrarImagenAlertaNombre();
         } else {
@@ -797,7 +808,8 @@ public final class ControllerNuevoAdministrador implements MouseListener, KeyLis
                 || pnlNuevoAdministrador.getTxtTelefono().getText().equals("Ingrese su número de telefono") || pnlNuevoAdministrador.getTxtTelefono().getText().isEmpty()
                 || pnlNuevoAdministrador.getTxtCargo().getText().equals("Ingrese su cargo en la empresa") || pnlNuevoAdministrador.getTxtCargo().getText().isEmpty()
                 || pnlNuevoAdministrador.getTxtSueldo().getText().equals("Sueldo del Administrador") || pnlNuevoAdministrador.getTxtSueldo().getText().isEmpty()
-                || pnlNuevoAdministrador.getTxtCedula().getText().equals("Ingrese la cédula del Administrador") || pnlNuevoAdministrador.getTxtCedula().getText().isEmpty()) {
+                || pnlNuevoAdministrador.getTxtCedula().getText().equals("Ingrese la cédula del Administrador") || pnlNuevoAdministrador.getTxtCedula().getText().isEmpty()
+                || !pnlNuevoAdministrador.getLblAlertaTextoSueldo().getText().isEmpty()) {
             pnlNuevoAdministrador.getBtnGuardar().setEnabled(false);
 
         } else {
@@ -805,6 +817,5 @@ public final class ControllerNuevoAdministrador implements MouseListener, KeyLis
         }
 
     }
-
 
 }
