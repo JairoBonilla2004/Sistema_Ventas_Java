@@ -825,6 +825,7 @@ public final class ControllerNuevoAdministrador implements MouseListener, KeyLis
         }
 
     }
+
     public void vaciarTextos() {
         pnlNuevoAdministrador.getTxtNombreUsuario().setText("Ingrese el nombre del administrador");
         pnlNuevoAdministrador.getTxtApellido().setText("Ingrese el apellido del usuario");
@@ -836,7 +837,7 @@ public final class ControllerNuevoAdministrador implements MouseListener, KeyLis
         pnlNuevoAdministrador.getTxtCedula().setText("Ingrese la cédula del Administrador");
         cambiarColeresLetras(Color.GRAY);
     }
-    
+
     public void cambiarColorTextos(Color color) {
         pnlNuevoAdministrador.getTxtNombreUsuario().setBackground(color);
         pnlNuevoAdministrador.getTxtApellido().setBackground(color);
@@ -847,7 +848,7 @@ public final class ControllerNuevoAdministrador implements MouseListener, KeyLis
         pnlNuevoAdministrador.getTxtSueldo().setBackground(color);
         pnlNuevoAdministrador.getTxtCedula().setBackground(color);
     }
-    
+
     public void cambiarColeresLetras(Color color) {
         pnlNuevoAdministrador.getTxtNombreUsuario().setForeground(color);
         pnlNuevoAdministrador.getTxtApellido().setForeground(color);
@@ -866,27 +867,34 @@ public final class ControllerNuevoAdministrador implements MouseListener, KeyLis
         boolean administradorExistente = administradorDAO.verificarPersonaExistente("administrador", pnlNuevoAdministrador.getTxtNombreUsuario().getText());
         boolean usuarioExistente = usuarioDAO.verificarPersonaExistente("usuario", pnlNuevoAdministrador.getTxtNombreUsuario().getText());
         boolean cedulaExistente = administradorDAO.verificarPersonaExistente("cedula", pnlNuevoAdministrador.getTxtCedula().getText());
+        boolean cargoExistente = administradorDAO.verificarPersonaExistente("cargo", pnlNuevoAdministrador.getTxtCargo().getText());
         System.out.println(cedulaExistente);
         if (!cedulaExistente) {
             if (!administradorExistente && !usuarioExistente) {
-                administrador.setCargo(pnlNuevoAdministrador.getTxtCargo().getText());
-                administrador.setSueldo(sueldo);
-                administrador.setNombre(pnlNuevoAdministrador.getTxtNombre().getText());
-                administrador.setApellido(pnlNuevoAdministrador.getTxtApellido().getText());
-                administrador.setNombre_usuario(pnlNuevoAdministrador.getTxtNombreUsuario().getText());
-                administrador.setContraseña(pnlNuevoAdministrador.getPswContrasenia().getText());
-                administrador.setTelefono(telefono);
-                administrador.setCedula(pnlNuevoAdministrador.getTxtCedula().getText());
-                if (administradorDAO.enviarPesonasDB(administrador)) {
-                    JOptionPane.showMessageDialog(
-                            null,
-                            "   ADMINISTRADOR REGISTRADO CON ÉXITO",
-                            "MESSAGE",
-                            JOptionPane.INFORMATION_MESSAGE,
-                            activarVistoVerde());
-                    vaciarTextos();
-                    validarDatos();
+                if (!cargoExistente) {
+                    administrador.setCargo(pnlNuevoAdministrador.getTxtCargo().getText());
+                    administrador.setSueldo(sueldo);
+                    administrador.setNombre(pnlNuevoAdministrador.getTxtNombre().getText());
+                    administrador.setApellido(pnlNuevoAdministrador.getTxtApellido().getText());
+                    administrador.setNombre_usuario(pnlNuevoAdministrador.getTxtNombreUsuario().getText());
+                    administrador.setContraseña(pnlNuevoAdministrador.getPswContrasenia().getText());
+                    administrador.setTelefono(telefono);
+                    administrador.setCedula(pnlNuevoAdministrador.getTxtCedula().getText());
+                    if (administradorDAO.enviarPesonasDB(administrador)) {
+                        JOptionPane.showMessageDialog(
+                                null,
+                                "   ADMINISTRADOR REGISTRADO CON ÉXITO",
+                                "MESSAGE",
+                                JOptionPane.INFORMATION_MESSAGE,
+                                activarVistoVerde());
+                        vaciarTextos();
+                        validarDatos();
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "ESTE CARGO YA SE ENCUENTRA REGISTRADO\n                   DIGITE OTRO CARGO!", "MESSAGE", JOptionPane.ERROR_MESSAGE);
                 }
+
             } else {
                 JOptionPane.showMessageDialog(null, "ESTE NOMBRE DE USUARIO YA ESTÁ REGISTRADO EN USUARIOS O ADMINISTRADORES\n                   DIGITE OTRO NOMBRE DE ADMINISTRADOR!", "MESSAGE", JOptionPane.ERROR_MESSAGE);
                 pnlNuevoAdministrador.getTxtNombreUsuario().setText("Ingrese el nombre del administrador");

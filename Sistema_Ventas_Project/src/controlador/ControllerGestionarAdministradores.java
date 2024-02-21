@@ -88,7 +88,7 @@ public class ControllerGestionarAdministradores implements MouseListener, KeyLis
     public void llenarTabla() {
         List<Administrador> administradores = administradorDAO.extraerPersonas();
         for (Administrador a : administradores) {
-            Object fila[] = {a.getId(), a.getNombre(), a.getApellido(), a.getNombre_usuario(), a.getTelefono(), a.getCargo(), a.getSueldo()};
+            Object fila[] = {a.getCedula(), a.getNombre(), a.getApellido(), a.getNombre_usuario(), a.getTelefono(), a.getCargo(), a.getSueldo()};
             modelo_tabla.addRow(fila);
         }
         pnlGestionarAdministradores.getTblAdministradores().setModel(modelo_tabla);
@@ -100,7 +100,7 @@ public class ControllerGestionarAdministradores implements MouseListener, KeyLis
     }
     
     public void inicializarNombresTablas() {
-        String nombres[] = {"ID", "NOMBRE", "APELLIDO", "ADMINISTRADOR", "TELEFONO", "CARGO", "SUELDO"};
+        String nombres[] = {"CÉDULA", "NOMBRE", "APELLIDO", "ADMINISTRADOR", "TELEFONO", "CARGO", "SUELDO"};
         modelo_tabla.setColumnIdentifiers(nombres);
         pnlGestionarAdministradores.getTblAdministradores().setModel(modelo_tabla);
         pnlGestionarAdministradores.getTblAdministradores().setDefaultEditor(Object.class, null);

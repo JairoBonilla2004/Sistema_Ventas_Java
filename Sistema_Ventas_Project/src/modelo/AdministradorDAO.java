@@ -48,7 +48,7 @@ public class AdministradorDAO implements PersonaDAO<Administrador> {
                     .append("sueldo", administrador.getSueldo())
                     .append("apellido", administrador.getApellido())
                     .append("cedula", administrador.getCedula());
-        
+
             collection.insertOne(document);
             respuesta = true;
         } catch (MongoException mongoException) {
@@ -86,6 +86,7 @@ public class AdministradorDAO implements PersonaDAO<Administrador> {
                         documento_administrador.getInteger("telefono"),
                         documento_administrador.getString("cargo"),
                         documento_administrador.getDouble("sueldo"));
+                administrador.setCedula(documento_administrador.getString("cedula"));
                 administradores.add(administrador);
 
             }
@@ -215,6 +216,5 @@ public class AdministradorDAO implements PersonaDAO<Administrador> {
         }
         return cedula;
     }
-    
 
 }
