@@ -6,8 +6,10 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import modelo.Administrador;
 import modelo.AdministradorDAO;
+import modelo.UsuarioDAO;
 import vista.PnlNuevoAdministrador;
 
 /**
@@ -45,6 +47,8 @@ public final class ControllerNuevoAdministrador implements MouseListener, KeyLis
         this.pnlNuevoAdministrador.getTxtCedula().addKeyListener(this);
         this.pnlNuevoAdministrador.getTxtTelefono().addKeyListener(this);
         this.pnlNuevoAdministrador.getTxtSueldo().addKeyListener(this);
+        this.pnlNuevoAdministrador.getBtnGuardar().addMouseListener(this);
+        this.pnlNuevoAdministrador.getBtnGuardar().setEnabled(false);
     }
 
     public void iniciarComponentes() {
@@ -60,6 +64,9 @@ public final class ControllerNuevoAdministrador implements MouseListener, KeyLis
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        if (e.getSource() == pnlNuevoAdministrador.getBtnGuardar()) {
+            enviarDatosDB();
+        }
     }
 
     void vaciarLblTextoValidaciones() {
@@ -574,7 +581,7 @@ public final class ControllerNuevoAdministrador implements MouseListener, KeyLis
             if (!esSueldoValido(pnlNuevoAdministrador.getTxtSueldo().getText())) {
                 pnlNuevoAdministrador.getLblAlertaTextoSueldo().setForeground(Color.red);
                 pnlNuevoAdministrador.getLblAlertaTextoSueldo().setText("El sueldo no tiene el formato correcto");
-            }else{
+            } else {
                 pnlNuevoAdministrador.getLblAlertaTextoSueldo().setText("");
             }
         }
@@ -814,6 +821,84 @@ public final class ControllerNuevoAdministrador implements MouseListener, KeyLis
 
         } else {
             pnlNuevoAdministrador.getBtnGuardar().setEnabled(true);
+        }
+
+    }
+    public void vaciarTextos() {
+        pnlNuevoAdministrador.getTxtNombreUsuario().setText("Ingrese el nombre del administrador");
+        pnlNuevoAdministrador.getTxtApellido().setText("Ingrese el apellido del usuario");
+        pnlNuevoAdministrador.getTxtCargo().setText("Ingrese su cargo en la empresa");
+        pnlNuevoAdministrador.getTxtNombre().setText("Ingrese su nombre");
+        pnlNuevoAdministrador.getTxtSueldo().setText("Sueldo del Administrador");
+        pnlNuevoAdministrador.getTxtTelefono().setText("Ingrese su número de telefono");
+        pnlNuevoAdministrador.getPswContrasenia().setText("*******************************");
+        pnlNuevoAdministrador.getTxtCedula().setText("Ingrese la cédula del Administrador");
+        cambiarColeresLetras(Color.GRAY);
+    }
+    
+    public void cambiarColorTextos(Color color) {
+        pnlNuevoAdministrador.getTxtNombreUsuario().setBackground(color);
+        pnlNuevoAdministrador.getTxtApellido().setBackground(color);
+        pnlNuevoAdministrador.getTxtNombre().setBackground(color);
+        pnlNuevoAdministrador.getTxtTelefono().setBackground(color);
+        pnlNuevoAdministrador.getPswContrasenia().setBackground(color);
+        pnlNuevoAdministrador.getTxtCargo().setBackground(color);
+        pnlNuevoAdministrador.getTxtSueldo().setBackground(color);
+        pnlNuevoAdministrador.getTxtCedula().setBackground(color);
+    }
+    
+    public void cambiarColeresLetras(Color color) {
+        pnlNuevoAdministrador.getTxtNombreUsuario().setForeground(color);
+        pnlNuevoAdministrador.getTxtApellido().setForeground(color);
+        pnlNuevoAdministrador.getTxtNombre().setForeground(color);
+        pnlNuevoAdministrador.getTxtTelefono().setForeground(color);
+        pnlNuevoAdministrador.getPswContrasenia().setForeground(color);
+        pnlNuevoAdministrador.getTxtCargo().setForeground(color);
+        pnlNuevoAdministrador.getTxtSueldo().setForeground(color);
+        pnlNuevoAdministrador.getTxtCedula().setForeground(color);
+    }
+
+    public void enviarDatosDB() {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        double sueldo = Double.parseDouble(pnlNuevoAdministrador.getTxtSueldo().getText());
+        int telefono = Integer.parseInt(pnlNuevoAdministrador.getTxtTelefono().getText());
+        boolean administradorExistente = administradorDAO.verificarPersonaExistente("administrador", pnlNuevoAdministrador.getTxtNombreUsuario().getText());
+        boolean usuarioExistente = usuarioDAO.verificarPersonaExistente("usuario", pnlNuevoAdministrador.getTxtNombreUsuario().getText());
+        boolean cedulaExistente = administradorDAO.verificarPersonaExistente("cedula", pnlNuevoAdministrador.getTxtCedula().getText());
+        System.out.println(cedulaExistente);
+        if (!cedulaExistente) {
+            if (!administradorExistente && !usuarioExistente) {
+                administrador.setCargo(pnlNuevoAdministrador.getTxtCargo().getText());
+                administrador.setSueldo(sueldo);
+                administrador.setNombre(pnlNuevoAdministrador.getTxtNombre().getText());
+                administrador.setApellido(pnlNuevoAdministrador.getTxtApellido().getText());
+                administrador.setNombre_usuario(pnlNuevoAdministrador.getTxtNombreUsuario().getText());
+                administrador.setContraseña(pnlNuevoAdministrador.getPswContrasenia().getText());
+                administrador.setTelefono(telefono);
+                administrador.setCedula(pnlNuevoAdministrador.getTxtCedula().getText());
+                if (administradorDAO.enviarPesonasDB(administrador)) {
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "   ADMINISTRADOR REGISTRADO CON ÉXITO",
+                            "MESSAGE",
+                            JOptionPane.INFORMATION_MESSAGE,
+                            activarVistoVerde());
+                    vaciarTextos();
+                    validarDatos();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "ESTE NOMBRE DE USUARIO YA ESTÁ REGISTRADO EN USUARIOS O ADMINISTRADORES\n                   DIGITE OTRO NOMBRE DE ADMINISTRADOR!", "MESSAGE", JOptionPane.ERROR_MESSAGE);
+                pnlNuevoAdministrador.getTxtNombreUsuario().setText("Ingrese el nombre del administrador");
+                pnlNuevoAdministrador.getTxtNombreUsuario().setForeground(Color.GRAY);
+                validarDatos();
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "ESTE NÚMERO DE C.I YA SE ENCUENTRA REGISTRADO\n                   VERIFIQUE EL NÚMERO DE CÉDULA!", "MESSAGE", JOptionPane.ERROR_MESSAGE);
+            pnlNuevoAdministrador.getTxtCedula().setText("Ingrese la cédula del Administrador");
+            pnlNuevoAdministrador.getTxtCedula().setForeground(Color.GRAY);
+            validarDatos();
+
         }
 
     }

@@ -46,7 +46,9 @@ public class AdministradorDAO implements PersonaDAO<Administrador> {
                     .append("telefono", administrador.getTelefono())
                     .append("cargo", administrador.getCargo())
                     .append("sueldo", administrador.getSueldo())
-                    .append("apellido", administrador.getApellido());
+                    .append("apellido", administrador.getApellido())
+                    .append("cedula", administrador.getCedula());
+        
             collection.insertOne(document);
             respuesta = true;
         } catch (MongoException mongoException) {
