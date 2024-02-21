@@ -65,6 +65,7 @@ public final class ControllerNuevoAdministrador implements MouseListener, KeyLis
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() == pnlNuevoAdministrador.getBtnGuardar()) {
+            vaciarLblTextoValidaciones();
             enviarDatosDB();
         }
     }
