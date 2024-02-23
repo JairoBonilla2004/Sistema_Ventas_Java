@@ -44,7 +44,7 @@
                   <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
                   <Component id="txtBuscarAdministradores" min="-2" pref="760" max="-2" attributes="0"/>
                   <EmptySpace min="60" pref="60" max="-2" attributes="0"/>
-                  <Component id="btnIntroduccion1" min="-2" pref="130" max="-2" attributes="0"/>
+                  <Component id="btnActualizar" min="-2" pref="130" max="-2" attributes="0"/>
               </Group>
               <Group type="102" attributes="0">
                   <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
@@ -70,7 +70,7 @@
                           <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                           <Component id="txtBuscarAdministradores" min="-2" pref="20" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="btnIntroduccion1" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="btnActualizar" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jSeparator1" min="-2" pref="30" max="-2" attributes="0"/>
@@ -167,7 +167,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="btnIntroduccion1">
+        <Component class="javax.swing.JButton" name="btnActualizar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="c0" green="65" red="15" type="rgb"/>

@@ -3,6 +3,7 @@ package vista;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -11,9 +12,19 @@ import javax.swing.JPanel;
 public class FrmMenu extends javax.swing.JFrame {
 
     private String nombreDeUsuario;
+    private ObjectId objectID;
     public FrmMenu(String nombreDeUsuario) {
         initComponents();
         this.nombreDeUsuario = nombreDeUsuario;
+       
+    }
+    
+    public void setObjectID(ObjectId objectID){
+        this.objectID = objectID;
+    }
+    
+    public ObjectId getObjectId(){
+        return  objectID;
     }
 
     public String getNombreDeUsuario() {

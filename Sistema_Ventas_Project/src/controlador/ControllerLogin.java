@@ -122,6 +122,7 @@ public class ControllerLogin implements MouseListener, KeyListener {
             if (respuestaAdministrador) {
                 frmLogin.setVisible(false);
                 FrmMenu frmMenu = new FrmMenu(frmLogin.getTxtUsuario().getText());
+                frmMenu.setObjectID(administradorDAO.buscarAdministradorPorUsuario(frmLogin.getTxtUsuario().getText()).getObjectID());
                 ControllerMenu controllerMenu = new ControllerMenu(frmMenu);
                 controllerMenu.iniciar();
                 frmMenu.setVisible(true);

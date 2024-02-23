@@ -58,7 +58,7 @@ public class AdministradorDAO implements PersonaDAO<Administrador> {
     }
 
     @Override
-    public boolean verificarPersonaExistente(String keyBusqueda, String user_administrador) {
+    public <TypeBusqueda> boolean verificarPersonaExistente(String keyBusqueda, TypeBusqueda user_administrador) {
         boolean respuesta = false;
         try {
             Document filtro = new Document(keyBusqueda, user_administrador);
@@ -216,5 +216,24 @@ public class AdministradorDAO implements PersonaDAO<Administrador> {
         }
         return cedula;
     }
+
+    public Administrador buscarAdministradorPorUsuario(String userAdministrador) {
+        Document filtro = new Document("administrador", userAdministrador);
+        Administrador administrador =null;
+        try {
+            MongoCursor<Document> cursor = collection.find(filtro).iterator();
+            if(cursor.hasNext()){
+                administrador = new Administrador();
+                Document documento = cursor.next();
+                administrador.setObject(documento.getObjectId("_id"));
+                administrador.setNombre_usuario(documento.getString("administradir"));
+            }
+        } catch (MongoException e) {
+            System.out.println("No se pudo buscar el administrador "+e);
+        }
+        return administrador;
+    }
+
+   
 
 }

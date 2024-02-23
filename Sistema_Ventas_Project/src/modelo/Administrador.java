@@ -1,5 +1,7 @@
 package modelo;
 
+import org.bson.types.ObjectId;
+
 /**
  *
  * @author Jairo Smith Bonilla Hidalgo
@@ -7,6 +9,7 @@ package modelo;
 public class Administrador extends Usuario{
     
     private String cargo;
+    private ObjectId object;
     private double sueldo;
     public Administrador(String id, String nombre, String Apellido, String nombre_usuario, String contraseña, int telefono, String cargo, double sueldo){
         super(id, nombre, Apellido, nombre_usuario, contraseña, telefono);
@@ -18,6 +21,14 @@ public class Administrador extends Usuario{
         super(nombre, Apellido, nombre_usuario, contraseña, telefono);
         this.cargo = cargo;
         this.sueldo = sueldo;
+    }
+
+    public void setObject(ObjectId object) {
+        this.object = object;
+    }
+    
+    public ObjectId getObjectID(){
+        return object;
     }
 
     public Administrador(String nombre_usuario, String contraseña) {

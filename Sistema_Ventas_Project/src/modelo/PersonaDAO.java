@@ -10,7 +10,7 @@ public interface PersonaDAO<T> {
     
     public  boolean enviarPesonasDB(T tipo);
 
-    public  boolean verificarPersonaExistente(String keyBusqueda, String tipoBusqueda);
+    public  <TypeBusqueda> boolean verificarPersonaExistente(String keyBusqueda, TypeBusqueda typeBusqueda);
 
     public  List<T> extraerPersonas();
 

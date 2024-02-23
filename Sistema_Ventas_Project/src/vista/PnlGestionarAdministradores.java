@@ -36,8 +36,8 @@ public class PnlGestionarAdministradores extends javax.swing.JPanel {
         return btnEliminar1;
     }
 
-    public JButton getBtnIntroduccion1() {
-        return btnIntroduccion1;
+    public JButton getBtnActualizar() {
+        return btnActualizar;
     }
 
     public JButton getBtnNuevoUsuario() {
@@ -75,7 +75,7 @@ public class PnlGestionarAdministradores extends javax.swing.JPanel {
         txtBuscarAdministradores = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAdministradores = new javax.swing.JTable();
-        btnIntroduccion1 = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
         btnEliminar1 = new javax.swing.JButton();
 
         pnlContenido.setBackground(new java.awt.Color(255, 255, 255));
@@ -114,16 +114,16 @@ public class PnlGestionarAdministradores extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblAdministradores);
 
-        btnIntroduccion1.setBackground(new java.awt.Color(21, 101, 192));
-        btnIntroduccion1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        btnIntroduccion1.setForeground(new java.awt.Color(255, 255, 255));
-        btnIntroduccion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-actualizar-25.png"))); // NOI18N
-        btnIntroduccion1.setText("Actualizar");
-        btnIntroduccion1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
-        btnIntroduccion1.setBorderPainted(false);
-        btnIntroduccion1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnIntroduccion1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnIntroduccion1.setIconTextGap(15);
+        btnActualizar.setBackground(new java.awt.Color(21, 101, 192));
+        btnActualizar.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-actualizar-25.png"))); // NOI18N
+        btnActualizar.setText("Actualizar");
+        btnActualizar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnActualizar.setBorderPainted(false);
+        btnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnActualizar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnActualizar.setIconTextGap(15);
 
         btnEliminar1.setBackground(new java.awt.Color(21, 101, 192));
         btnEliminar1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
@@ -147,7 +147,7 @@ public class PnlGestionarAdministradores extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addComponent(txtBuscarAdministradores, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60)
-                .addComponent(btnIntroduccion1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(pnlContenidoLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -168,7 +168,7 @@ public class PnlGestionarAdministradores extends javax.swing.JPanel {
                     .addGroup(pnlContenidoLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(txtBuscarAdministradores, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnIntroduccion1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlContenidoLayout.createSequentialGroup()
@@ -194,8 +194,8 @@ public class PnlGestionarAdministradores extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnEliminar1;
-    private javax.swing.JButton btnIntroduccion1;
     private javax.swing.JButton btnNuevoUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

@@ -7,6 +7,7 @@ package vista;
 import javax.accessibility.AccessibleContext;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 
@@ -119,6 +120,11 @@ public class PnlActualizarAdministradores extends javax.swing.JPanel {
         return txtTelefono;
     }
 
+    public JPanel getPnlContenido() {
+        return pnlContenido;
+    }
+    
+
     
     
 
@@ -131,7 +137,7 @@ public class PnlActualizarAdministradores extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        pnlContenido = new javax.swing.JPanel();
         lblTituloTelefono = new javax.swing.JLabel();
         lblTituloAdministrador = new javax.swing.JLabel();
         lblTituloApellido = new javax.swing.JLabel();
@@ -164,124 +170,124 @@ public class PnlActualizarAdministradores extends javax.swing.JPanel {
         btnCambiarContrasenia = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlContenido.setBackground(new java.awt.Color(255, 255, 255));
+        pnlContenido.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTituloTelefono.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTituloTelefono.setText("TELEFONO");
-        jPanel1.add(lblTituloTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, -1, -1));
+        pnlContenido.add(lblTituloTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, -1, -1));
 
         lblTituloAdministrador.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTituloAdministrador.setText("USUARIO ADMINISTRADOR");
-        jPanel1.add(lblTituloAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
+        pnlContenido.add(lblTituloAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
 
         lblTituloApellido.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTituloApellido.setText("APELLIDO");
-        jPanel1.add(lblTituloApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
+        pnlContenido.add(lblTituloApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
         lblTituloNombre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTituloNombre.setText("NOMBRE");
-        jPanel1.add(lblTituloNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+        pnlContenido.add(lblTituloNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         lblTituloCargo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTituloCargo.setText("CARGO");
-        jPanel1.add(lblTituloCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, -1, -1));
+        pnlContenido.add(lblTituloCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, -1, -1));
 
         lblTituloSueldo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTituloSueldo.setText("SUELDO");
-        jPanel1.add(lblTituloSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, -1, -1));
+        pnlContenido.add(lblTituloSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, -1, -1));
 
         jSeparator2.setForeground(new java.awt.Color(51, 153, 255));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 300, 20));
+        pnlContenido.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 300, 20));
 
         jSeparator3.setForeground(new java.awt.Color(51, 153, 255));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 300, 20));
+        pnlContenido.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 300, 20));
 
         jSeparator4.setForeground(new java.awt.Color(51, 153, 255));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 300, 20));
+        pnlContenido.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 300, 20));
 
         jSeparator7.setForeground(new java.awt.Color(51, 153, 255));
-        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 300, 20));
+        pnlContenido.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 300, 20));
 
         lblAlertaTelefono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alert.png"))); // NOI18N
-        jPanel1.add(lblAlertaTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 460, 20, 20));
+        pnlContenido.add(lblAlertaTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 460, 20, 20));
 
         lblAlertaAdministrador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alert.png"))); // NOI18N
-        jPanel1.add(lblAlertaAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, 20, 20));
+        pnlContenido.add(lblAlertaAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, 20, 20));
 
         lblAlertaApellido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alert.png"))); // NOI18N
-        jPanel1.add(lblAlertaApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, 20, 20));
+        pnlContenido.add(lblAlertaApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, 20, 20));
 
         lblAlertaNombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alert.png"))); // NOI18N
-        jPanel1.add(lblAlertaNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 20, 20));
+        pnlContenido.add(lblAlertaNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 20, 20));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
         jLabel1.setText("ACTUALIZAR DATOS");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        pnlContenido.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jSeparator8.setForeground(new java.awt.Color(51, 153, 255));
-        jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 290, 20));
+        pnlContenido.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 290, 20));
 
         jSeparator6.setForeground(new java.awt.Color(51, 153, 255));
-        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, 290, 20));
+        pnlContenido.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, 290, 20));
 
         lblAlertaSueldo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alert.png"))); // NOI18N
-        jPanel1.add(lblAlertaSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 250, 20, 20));
+        pnlContenido.add(lblAlertaSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 250, 20, 20));
 
         lblAlertaCargo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alert.png"))); // NOI18N
-        jPanel1.add(lblAlertaCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 140, 20, 20));
+        pnlContenido.add(lblAlertaCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 140, 20, 20));
 
         lblTituloCedula.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTituloCedula.setText("CÉDULA");
-        jPanel1.add(lblTituloCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 320, -1, -1));
+        pnlContenido.add(lblTituloCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 320, -1, -1));
 
         jSeparator9.setForeground(new java.awt.Color(51, 153, 255));
-        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 380, 290, 20));
+        pnlContenido.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 380, 290, 20));
 
         lblAlertaCedula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alert.png"))); // NOI18N
-        jPanel1.add(lblAlertaCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 360, 20, 20));
+        pnlContenido.add(lblAlertaCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 360, 20, 20));
 
         txtCedula.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtCedula.setForeground(new java.awt.Color(153, 153, 153));
         txtCedula.setText("Ingrese su cédula");
         txtCedula.setBorder(null);
-        jPanel1.add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 300, 20));
+        pnlContenido.add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 300, 20));
 
         txtNombre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(153, 153, 153));
         txtNombre.setText("Ingrese su nombre");
         txtNombre.setBorder(null);
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 300, 20));
+        pnlContenido.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 300, 20));
 
         txtApellido.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtApellido.setForeground(new java.awt.Color(153, 153, 153));
         txtApellido.setText("Ingrese su apellido");
         txtApellido.setBorder(null);
-        jPanel1.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 300, 20));
+        pnlContenido.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 300, 20));
 
         txtAdministrador.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtAdministrador.setForeground(new java.awt.Color(153, 153, 153));
         txtAdministrador.setText("Ingrese su usuario");
         txtAdministrador.setBorder(null);
-        jPanel1.add(txtAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 300, 20));
+        pnlContenido.add(txtAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 300, 20));
 
         txtTelefono.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtTelefono.setForeground(new java.awt.Color(153, 153, 153));
         txtTelefono.setText("Ingrese su número de teléfono");
         txtTelefono.setBorder(null);
-        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 300, 20));
+        pnlContenido.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 300, 20));
 
         txtCargo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtCargo.setForeground(new java.awt.Color(153, 153, 153));
         txtCargo.setText("Ingrese su cargo en la empresa");
         txtCargo.setBorder(null);
-        jPanel1.add(txtCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 140, 300, 20));
+        pnlContenido.add(txtCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 140, 300, 20));
 
         txtSueldo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtSueldo.setForeground(new java.awt.Color(153, 153, 153));
         txtSueldo.setText("Sueldo del Administrador");
         txtSueldo.setBorder(null);
-        jPanel1.add(txtSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 300, 20));
+        pnlContenido.add(txtSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 300, 20));
 
         btnCambiarContrasenia.setBackground(new java.awt.Color(21, 101, 192));
         btnCambiarContrasenia.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
@@ -291,7 +297,7 @@ public class PnlActualizarAdministradores extends javax.swing.JPanel {
         btnCambiarContrasenia.setBorderPainted(false);
         btnCambiarContrasenia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCambiarContrasenia.setIconTextGap(15);
-        jPanel1.add(btnCambiarContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 500, 320, 60));
+        pnlContenido.add(btnCambiarContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 500, 320, 60));
 
         btnGuardar.setBackground(new java.awt.Color(21, 101, 192));
         btnGuardar.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
@@ -301,17 +307,17 @@ public class PnlActualizarAdministradores extends javax.swing.JPanel {
         btnGuardar.setBorderPainted(false);
         btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGuardar.setIconTextGap(15);
-        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 410, 320, 60));
+        pnlContenido.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 410, 320, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+            .addComponent(pnlContenido, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addComponent(pnlContenido, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -320,7 +326,6 @@ public class PnlActualizarAdministradores extends javax.swing.JPanel {
     private javax.swing.JButton btnCambiarContrasenia;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -342,6 +347,7 @@ public class PnlActualizarAdministradores extends javax.swing.JPanel {
     private javax.swing.JLabel lblTituloNombre;
     private javax.swing.JLabel lblTituloSueldo;
     private javax.swing.JLabel lblTituloTelefono;
+    private javax.swing.JPanel pnlContenido;
     private javax.swing.JTextField txtAdministrador;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCargo;

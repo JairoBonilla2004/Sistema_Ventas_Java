@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import modelo.Administrador;
 import modelo.AdministradorDAO;
 import modelo.UsuarioDAO;
 import vista.FrmLogin;
@@ -90,6 +89,7 @@ public final class ControllerMenu implements  ActionListener{
             AdministradorDAO administradorDAO = new AdministradorDAO();
             ControllerGestionarAdministradores controllerGestionarAdministradores = new ControllerGestionarAdministradores(pnlAdministrador, administradorDAO);
             controllerGestionarAdministradores.inicializarDatos();
+            controllerGestionarAdministradores.setObjectID(frmMenu.getObjectId());
         }
     }
     

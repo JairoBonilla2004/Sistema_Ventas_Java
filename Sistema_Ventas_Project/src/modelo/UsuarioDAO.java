@@ -63,9 +63,9 @@ public class UsuarioDAO implements PersonaDAO<Usuario> {
     }
 
     @Override
-    public boolean verificarPersonaExistente(String keyBusqueda, String usuario) {
+    public <TypeBusqueda>boolean verificarPersonaExistente(String keyBusqueda, TypeBusqueda typeBusqueda) {
         boolean respuesta = true;
-        Document filtro = new Document(keyBusqueda, usuario);
+        Document filtro = new Document(keyBusqueda, typeBusqueda);
         MongoCursor<Document> cursor = usuarioCollection.find(filtro).iterator();
         try {
             respuesta = cursor.hasNext();//rettorna true si existe un usuario con ese nombre
