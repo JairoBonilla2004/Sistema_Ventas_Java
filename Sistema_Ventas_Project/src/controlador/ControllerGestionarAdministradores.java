@@ -142,7 +142,7 @@ public class ControllerGestionarAdministradores implements MouseListener, KeyLis
         vaciarTabla(modelo_tabla);
         List<Administrador> administradoresDB = administradorDAO.buscarPersonasPorTextoRegEx(pnlGestionarAdministradores.getTxtBuscarAdministradores().getText());
         for (Administrador a : administradoresDB) {
-            Object[] fila = {a.getId(), a.getNombre(), a.getApellido(), a.getNombre_usuario(), a.getTelefono(), a.getCargo(), a.getSueldo()};
+            Object[] fila = {a.getCedula(), a.getNombre(), a.getApellido(), a.getNombre_usuario(), a.getTelefono(), a.getCargo(), a.getSueldo()};
             modelo_tabla.addRow(fila);
         }
         pnlGestionarAdministradores.getTblAdministradores().setModel(modelo_tabla);

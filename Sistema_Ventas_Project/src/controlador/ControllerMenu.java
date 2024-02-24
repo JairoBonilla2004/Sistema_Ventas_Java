@@ -43,7 +43,8 @@ public final class ControllerMenu implements  ActionListener{
         }
         
         if(e.getSource() == frmMenu.getBtnCerrarSesion()){
-            frmMenu.setVisible(false);
+            frmMenu.dispose();
+            FrmMenu.reiniciarInstancia();
             FrmLogin frmLogin = new FrmLogin();
             frmLogin.setVisible(true);
             UsuarioDAO usuarioDAO = new UsuarioDAO();

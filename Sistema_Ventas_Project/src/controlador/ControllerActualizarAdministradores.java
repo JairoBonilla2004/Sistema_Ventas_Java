@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import modelo.Administrador;
 import modelo.AdministradorDAO;
+import modelo.UsuarioDAO;
 import vista.FrmMenu;
 import vista.PnlActualizarAdministradores;
 
@@ -479,11 +480,25 @@ public class ControllerActualizarAdministradores implements MouseListener{
             frmMenu.getLblNombreUsuarioLoing().setVisible(true);
         }
     }
+    
+    public void guardarDatosActualizados(){
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        boolean administrador_existente = administradorDAO.verificarPersonaExistente("administrador",pnlActualizarAdministradores.getTxtAdministrador().getText());
+        boolean usuario_existente = usuarioDAO.verificarPersonaExistente("administrador",pnlActualizarAdministradores.getTxtAdministrador().getText());
+        if (administrador_existente == false && usuario_existente == false) {
+            actualizar();
+        } else {
+            JOptionPane.showMessageDialog(null, "ESTE NOMBRE DE USUARIO YA ESTÁ REGISTRADO EN USUARIOS O ADMINISTRADORES\n               DIGITE OTRO NOMBRE DE USUARIO!", "MESSAGE", JOptionPane.ERROR_MESSAGE);
+            pnlActualizarAdministradores.getTxtAdministrador().setForeground(Color.GRAY);
+            pnlActualizarAdministradores.getTxtAdministrador().setText("Ingrese el nombre del administrador");
+            validarDatos();
+        }
+    }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         if(e.getSource() == pnlActualizarAdministradores.getBtnGuardar()){
-            actualizar();
+            guardarDatosActualizados();
         }
     }
 

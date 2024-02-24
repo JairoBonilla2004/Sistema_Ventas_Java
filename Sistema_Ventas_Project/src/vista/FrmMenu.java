@@ -27,6 +27,10 @@ public class FrmMenu extends javax.swing.JFrame {
         return frmMenu;
     }
     
+    public static  void reiniciarInstancia(){
+        frmMenu = null;
+    }
+    
     public void setObjectID(ObjectId objectID){
         this.objectID = objectID;
     }
