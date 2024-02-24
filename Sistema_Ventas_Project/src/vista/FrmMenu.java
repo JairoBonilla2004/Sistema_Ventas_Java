@@ -13,10 +13,18 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private String nombreDeUsuario;
     private ObjectId objectID;
-    public FrmMenu(String nombreDeUsuario) {
+    private static FrmMenu frmMenu= null;
+    private FrmMenu(String nombreDeUsuario) {
         initComponents();
         this.nombreDeUsuario = nombreDeUsuario;
        
+    }
+    
+    public static FrmMenu getInstance(String nombreUsuario){
+        if(frmMenu == null){
+           frmMenu = new FrmMenu(nombreUsuario);
+        }
+        return frmMenu;
     }
     
     public void setObjectID(ObjectId objectID){

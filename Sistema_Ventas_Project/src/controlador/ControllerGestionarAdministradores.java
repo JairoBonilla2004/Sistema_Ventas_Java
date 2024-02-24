@@ -172,11 +172,9 @@ public class ControllerGestionarAdministradores implements MouseListener, KeyLis
     }
 
     public void mostrarPnlActualizacionAdministrador() {
-        String id = ontenerCedulaSeleccionada();
         String usuario_administrador = obtenerCampoFilaSeleccionado(3);
         Administrador administrador = administradorDAO.buscarAdministradorPorUsuario(usuario_administrador);
-        System.out.println("administrador"+administrador.getObjectID()+"  usuario que ingresó"+objectId);
-        if ((id != null) && (usuario_administrador != null)) {
+        if (usuario_administrador != null) {
             if (objectId.equals(administrador.getObjectID())) {
                 PnlActualizarAdministradores pnlActualizarAdministrador = new PnlActualizarAdministradores();
                 pnlActualizarAdministrador.setSize(1000, 600);
@@ -185,6 +183,9 @@ public class ControllerGestionarAdministradores implements MouseListener, KeyLis
                 pnlGestionarAdministradores.getPnlContenido().add(pnlActualizarAdministrador, BorderLayout.CENTER);
                 pnlGestionarAdministradores.getPnlContenido().revalidate();
                 pnlGestionarAdministradores.getPnlContenido().repaint();
+                String objectString = String.valueOf(objectId);
+                ControllerActualizarAdministradores controllerActualizarAdministradores = new ControllerActualizarAdministradores(pnlActualizarAdministrador, administradorDAO, objectString);
+                controllerActualizarAdministradores.iniciar();
 
             } else {
                 JOptionPane.showMessageDialog(null, "NO ES PERMITIDO MODIFICAR LOS DATOS DE OTROS ADMINISTRADORES", "MESSAGE", JOptionPane.ERROR_MESSAGE);
@@ -193,18 +194,6 @@ public class ControllerGestionarAdministradores implements MouseListener, KeyLis
         } else {
             JOptionPane.showMessageDialog(null, "SELECCIONE UNA FILA DE LA TABLA", "MESSAGE", JOptionPane.ERROR_MESSAGE);
         }
-
-    }
-
-    public String ontenerCedulaSeleccionada() {
-        int filaSeleccionada = pnlGestionarAdministradores.getTblAdministradores().getSelectedRow();
-        if (filaSeleccionada >= 0) {
-            Object id = pnlGestionarAdministradores.getTblAdministradores().getValueAt(filaSeleccionada, 0);
-            if (id != null) {
-                return id.toString();
-            }
-        }
-        return null;
 
     }
 

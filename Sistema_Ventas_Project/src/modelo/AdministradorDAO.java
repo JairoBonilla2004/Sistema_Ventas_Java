@@ -4,6 +4,7 @@ import com.mongodb.MongoException;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.result.UpdateResult;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -140,6 +141,7 @@ public class AdministradorDAO implements PersonaDAO<Administrador> {
                         document_database.getString("administrador"),
                         document_database.getString("contraseña"),
                         document_database.getInteger("telefono"));
+                administrador.setCedula(document_database.getString("cedula"));
 
             }
 
@@ -164,8 +166,10 @@ public class AdministradorDAO implements PersonaDAO<Administrador> {
                         .append("telefono", administrador.getTelefono())
                         .append("cargo", administrador.getCargo())
                         .append("sueldo", administrador.getSueldo()));
-                collection.updateOne(filtro, datos_actualizar);
-                respuesta = true;
+                UpdateResult updateResult = collection.updateOne(filtro, datos_actualizar);
+                if(updateResult.getModifiedCount()>=1){
+                    respuesta = true;
+                }
             }
         } catch (MongoException mongoException) {
             System.out.println("No se pudo actualizar los datos del administrador" + mongoException);

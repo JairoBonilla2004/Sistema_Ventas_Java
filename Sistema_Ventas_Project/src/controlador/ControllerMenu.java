@@ -50,6 +50,10 @@ public final class ControllerMenu implements  ActionListener{
             ControllerLogin controllerLogin = new ControllerLogin(usuarioDAO, frmLogin);
             controllerLogin.iniciarFRM();
         }
+        
+        if(e.getSource() == frmMenu.getLblNombreUsuarioLoing()){
+            frmMenu.getLblNombreUsuarioLoing().setVisible(true);
+        }
     }
     
     
