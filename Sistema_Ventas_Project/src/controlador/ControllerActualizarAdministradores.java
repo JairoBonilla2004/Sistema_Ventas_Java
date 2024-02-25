@@ -5,6 +5,8 @@
 package controlador;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
@@ -20,7 +22,8 @@ import vista.PnlActualizarAdministradores;
  *
  * @author Jairo Smith Bonilla Hidalgo
  */
-public class ControllerActualizarAdministradores implements MouseListener{
+public class ControllerActualizarAdministradores implements MouseListener, KeyListener {
+
     private PnlActualizarAdministradores pnlActualizarAdministradores;
     private AdministradorDAO administradorDAO;
     private String id;
@@ -30,14 +33,29 @@ public class ControllerActualizarAdministradores implements MouseListener{
         this.administradorDAO = administradorDAO;
         this.id = id;
         this.pnlActualizarAdministradores.getBtnGuardar().addMouseListener(this);
+        this.pnlActualizarAdministradores.getTxtNombre().addKeyListener(this);
+        this.pnlActualizarAdministradores.getTxtApellido().addKeyListener(this);
+        this.pnlActualizarAdministradores.getTxtAdministrador().addKeyListener(this);
+        this.pnlActualizarAdministradores.getTxtTelefono().addKeyListener(this);
+        this.pnlActualizarAdministradores.getTxtCargo().addKeyListener(this);
+        this.pnlActualizarAdministradores.getTxtSueldo().addKeyListener(this);
+        this.pnlActualizarAdministradores.getTxtCedula().addKeyListener(this);
+        this.pnlActualizarAdministradores.getTxtNombre().addMouseListener(this);
+        this.pnlActualizarAdministradores.getTxtApellido().addMouseListener(this);
+        this.pnlActualizarAdministradores.getTxtAdministrador().addMouseListener(this);
+        this.pnlActualizarAdministradores.getTxtTelefono().addMouseListener(this);
+        this.pnlActualizarAdministradores.getTxtCargo().addMouseListener(this);
+        this.pnlActualizarAdministradores.getTxtSueldo().addMouseListener(this);
+        this.pnlActualizarAdministradores.getTxtCedula().addMouseListener(this);
+
     }
-    
-    public void iniciar(){
+
+    public void iniciar() {
         cambiarColeresLetras(Color.GRAY);
         cambiarColorTextos(Color.WHITE);
         extraerDatosAdministrador();
     }
-    
+
     public void extraerDatosAdministrador() {
         Administrador nuevo_administrador = administradorDAO.extraerPersonaID(id);
         String telefono = String.valueOf(nuevo_administrador.getTelefono());
@@ -51,7 +69,7 @@ public class ControllerActualizarAdministradores implements MouseListener{
         pnlActualizarAdministradores.getTxtCedula().setText(nuevo_administrador.getCedula());
         cambiarColeresLetras(Color.BLACK);
     }
-    
+
     public void cambiarColorTextos(Color color) {
         pnlActualizarAdministradores.getTxtAdministrador().setBackground(color);
         pnlActualizarAdministradores.getTxtApellido().setBackground(color);
@@ -61,7 +79,7 @@ public class ControllerActualizarAdministradores implements MouseListener{
         pnlActualizarAdministradores.getTxtSueldo().setBackground(color);
         pnlActualizarAdministradores.getTxtCedula().setBackground(color);
     }
-    
+
     public void cambiarColeresLetras(Color color) {
         pnlActualizarAdministradores.getTxtAdministrador().setForeground(color);
         pnlActualizarAdministradores.getTxtApellido().setForeground(color);
@@ -71,7 +89,7 @@ public class ControllerActualizarAdministradores implements MouseListener{
         pnlActualizarAdministradores.getTxtSueldo().setForeground(color);
         pnlActualizarAdministradores.getTxtCedula().setForeground(color);
     }
-    
+
     public void cambiarLbl() {
         pnlActualizarAdministradores.getLblTituloNombre().setForeground(Color.BLACK);
         pnlActualizarAdministradores.getLblTituloAdministrador().setForeground(Color.BLACK);
@@ -80,7 +98,8 @@ public class ControllerActualizarAdministradores implements MouseListener{
         pnlActualizarAdministradores.getLblTituloCargo().setForeground(Color.BLACK);
         pnlActualizarAdministradores.getLblTituloSueldo().setForeground(Color.BLACK);
     }
-     public void mostrarImagenAlertaAdministrador() {
+
+    public void mostrarImagenAlertaAdministrador() {
         java.net.URL imageURL = getClass().getResource("/img/alert.png");
         if (imageURL != null) {
             ImageIcon icono = new ImageIcon(imageURL);
@@ -191,15 +210,16 @@ public class ControllerActualizarAdministradores implements MouseListener{
             pnlActualizarAdministradores.getLblAlertaSueldo().setIcon(icono);
         }
     }
-    
+
     public ImageIcon activarVistoVerde() {
         java.net.URL imageURL = getClass().getResource("/img/greenSeen.png");
         ImageIcon icono = null;
         if (imageURL != null) {
-             icono = new ImageIcon(imageURL);
+            icono = new ImageIcon(imageURL);
         }
         return icono;
     }
+
     public void animmacionTextoNombre() {
         if (pnlActualizarAdministradores.getTxtNombre().getText().equals("Ingrese su nombre")) {
             pnlActualizarAdministradores.getTxtNombre().setText("");
@@ -232,8 +252,8 @@ public class ControllerActualizarAdministradores implements MouseListener{
 
         }
     }
-    
-        public void validarDatos() {
+
+    public void validarDatos() {
         if (pnlActualizarAdministradores.getTxtNombre().getText().equals("Ingrese su nombre") || pnlActualizarAdministradores.getTxtNombre().getText().isEmpty()) {
             mostrarImagenAlertaNombre();
         } else {
@@ -284,7 +304,6 @@ public class ControllerActualizarAdministradores implements MouseListener{
 
     }
 
-
     public void animacionTextoApellido() {
         if (pnlActualizarAdministradores.getTxtApellido().getText().equals("Ingrese el apellido del usuario")) {
             pnlActualizarAdministradores.getTxtApellido().setText("");
@@ -314,6 +333,11 @@ public class ControllerActualizarAdministradores implements MouseListener{
         if (pnlActualizarAdministradores.getTxtSueldo().getText().isEmpty()) {
             pnlActualizarAdministradores.getTxtSueldo().setForeground(Color.GRAY);
             pnlActualizarAdministradores.getTxtSueldo().setText("Sueldo del Administrador");
+        }
+        
+        if(pnlActualizarAdministradores.getTxtCedula().getText().isEmpty()){
+            pnlActualizarAdministradores.getTxtCedula().setForeground(Color.GRAY);
+            pnlActualizarAdministradores.getTxtCedula().setText("Ingrese su cédula");
         }
     }
 
@@ -347,6 +371,11 @@ public class ControllerActualizarAdministradores implements MouseListener{
             pnlActualizarAdministradores.getTxtSueldo().setForeground(Color.GRAY);
             pnlActualizarAdministradores.getTxtSueldo().setText("Sueldo del Administrador");
         }
+        
+        if(pnlActualizarAdministradores.getTxtCedula().getText().isEmpty()){
+            pnlActualizarAdministradores.getTxtCedula().setForeground(Color.GRAY);
+            pnlActualizarAdministradores.getTxtCedula().setText("Ingrese su cédula");
+        }
 
     }
 
@@ -375,19 +404,24 @@ public class ControllerActualizarAdministradores implements MouseListener{
             pnlActualizarAdministradores.getTxtSueldo().setForeground(Color.GRAY);
             pnlActualizarAdministradores.getTxtSueldo().setText("Sueldo del Administrador");
         }
-        
+
         if (pnlActualizarAdministradores.getTxtAdministrador().getText().isEmpty()) {
             pnlActualizarAdministradores.getTxtAdministrador().setForeground(Color.GRAY);
             pnlActualizarAdministradores.getTxtAdministrador().setText("Ingrese el nombre del administrador");
         }
+        
+        if(pnlActualizarAdministradores.getTxtCedula().getText().isEmpty()){
+            pnlActualizarAdministradores.getTxtCedula().setForeground(Color.GRAY);
+            pnlActualizarAdministradores.getTxtCedula().setText("Ingrese su cédula");
+        }
     }
-  
+
     public void animacionTextoTelefono() {
         if (pnlActualizarAdministradores.getTxtTelefono().getText().equals("Ingrese su número de telefono")) {
             pnlActualizarAdministradores.getTxtTelefono().setText("");
             pnlActualizarAdministradores.getTxtTelefono().setForeground(Color.BLACK);
         }
-        
+
         if (pnlActualizarAdministradores.getTxtNombre().getText().isEmpty()) {
             pnlActualizarAdministradores.getTxtNombre().setForeground(Color.GRAY);
             pnlActualizarAdministradores.getTxtNombre().setText("Ingrese su nombre");
@@ -407,13 +441,17 @@ public class ControllerActualizarAdministradores implements MouseListener{
             pnlActualizarAdministradores.getTxtSueldo().setForeground(Color.GRAY);
             pnlActualizarAdministradores.getTxtSueldo().setText("Sueldo del Administrador");
         }
-        
+
         if (pnlActualizarAdministradores.getTxtAdministrador().getText().isEmpty()) {
             pnlActualizarAdministradores.getTxtAdministrador().setForeground(Color.GRAY);
             pnlActualizarAdministradores.getTxtAdministrador().setText("Ingrese el nombre del administrador");
         }
-
         
+        if(pnlActualizarAdministradores.getTxtCedula().getText().isEmpty()){
+            pnlActualizarAdministradores.getTxtCedula().setForeground(Color.GRAY);
+            pnlActualizarAdministradores.getTxtCedula().setText("Ingrese su cédula");
+        }
+
     }
 
     public void animacionTextoSueldo() {
@@ -421,8 +459,46 @@ public class ControllerActualizarAdministradores implements MouseListener{
             pnlActualizarAdministradores.getTxtSueldo().setText("");
             pnlActualizarAdministradores.getTxtSueldo().setForeground(Color.BLACK);
         }
+
+        if (pnlActualizarAdministradores.getTxtNombre().getText().isEmpty()) {
+            pnlActualizarAdministradores.getTxtNombre().setForeground(Color.GRAY);
+            pnlActualizarAdministradores.getTxtNombre().setText("Ingrese su nombre");
+        }
+
+        if (pnlActualizarAdministradores.getTxtApellido().getText().isEmpty()) {
+            pnlActualizarAdministradores.getTxtApellido().setForeground(Color.GRAY);
+            pnlActualizarAdministradores.getTxtApellido().setText("Ingrese el apellido del usuario");
+        }
+
+        if (pnlActualizarAdministradores.getTxtCargo().getText().isEmpty()) {
+            pnlActualizarAdministradores.getTxtCargo().setForeground(Color.GRAY);
+            pnlActualizarAdministradores.getTxtCargo().setText("Ingrese su cargo en la empresa");
+        }
+
+        if (pnlActualizarAdministradores.getTxtAdministrador().getText().isEmpty()) {
+            pnlActualizarAdministradores.getTxtAdministrador().setForeground(Color.GRAY);
+            pnlActualizarAdministradores.getTxtAdministrador().setText("Ingrese el nombre del administrador");
+        }
         
-         if (pnlActualizarAdministradores.getTxtNombre().getText().isEmpty()) {
+        if(pnlActualizarAdministradores.getTxtCedula().getText().isEmpty()){
+            pnlActualizarAdministradores.getTxtCedula().setForeground(Color.GRAY);
+            pnlActualizarAdministradores.getTxtCedula().setText("Ingrese su cédula");
+        }
+
+        if (pnlActualizarAdministradores.getTxtTelefono().getText().isEmpty()) {
+            pnlActualizarAdministradores.getTxtTelefono().setForeground(Color.GRAY);
+            pnlActualizarAdministradores.getTxtTelefono().setText("Ingrese su número de telefono");
+        }
+
+    }
+    
+     public void animacionTextoCedula() {
+        if (pnlActualizarAdministradores.getTxtCedula().getText().equals("Ingrese su cédula")) {
+            pnlActualizarAdministradores.getTxtCedula().setText("");
+            pnlActualizarAdministradores.getTxtCedula().setForeground(Color.BLACK);
+        }
+
+        if (pnlActualizarAdministradores.getTxtNombre().getText().isEmpty()) {
             pnlActualizarAdministradores.getTxtNombre().setForeground(Color.GRAY);
             pnlActualizarAdministradores.getTxtNombre().setText("Ingrese su nombre");
         }
@@ -441,19 +517,19 @@ public class ControllerActualizarAdministradores implements MouseListener{
             pnlActualizarAdministradores.getTxtSueldo().setForeground(Color.GRAY);
             pnlActualizarAdministradores.getTxtSueldo().setText("Sueldo del Administrador");
         }
-        
+
         if (pnlActualizarAdministradores.getTxtAdministrador().getText().isEmpty()) {
             pnlActualizarAdministradores.getTxtAdministrador().setForeground(Color.GRAY);
             pnlActualizarAdministradores.getTxtAdministrador().setText("Ingrese el nombre del administrador");
         }
-        
+
         if (pnlActualizarAdministradores.getTxtTelefono().getText().isEmpty()) {
             pnlActualizarAdministradores.getTxtTelefono().setForeground(Color.GRAY);
             pnlActualizarAdministradores.getTxtTelefono().setText("Ingrese su número de telefono");
         }
 
-        
     }
+
     public void actualizar() {
         JLabel lbl = new JLabel();
         Administrador administrador = new Administrador();
@@ -480,11 +556,11 @@ public class ControllerActualizarAdministradores implements MouseListener{
             frmMenu.getLblNombreUsuarioLoing().setVisible(true);
         }
     }
-    
-    public void guardarDatosActualizados(){
+
+    public void guardarDatosActualizados() {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
-        boolean administrador_existente = administradorDAO.verificarPersonaExistente("administrador",pnlActualizarAdministradores.getTxtAdministrador().getText());
-        boolean usuario_existente = usuarioDAO.verificarPersonaExistente("administrador",pnlActualizarAdministradores.getTxtAdministrador().getText());
+        boolean administrador_existente = administradorDAO.verificarPersonaExistente("administrador", pnlActualizarAdministradores.getTxtAdministrador().getText());
+        boolean usuario_existente = usuarioDAO.verificarPersonaExistente("administrador", pnlActualizarAdministradores.getTxtAdministrador().getText());
         if (administrador_existente == false && usuario_existente == false) {
             actualizar();
         } else {
@@ -497,13 +573,40 @@ public class ControllerActualizarAdministradores implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(e.getSource() == pnlActualizarAdministradores.getBtnGuardar()){
+        if (e.getSource() == pnlActualizarAdministradores.getBtnGuardar()) {
             guardarDatosActualizados();
         }
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
+        if(e.getSource() == pnlActualizarAdministradores.getTxtNombre()){
+            animmacionTextoNombre();
+        }
+        
+        if(e.getSource() == pnlActualizarAdministradores.getTxtApellido()){
+            animacionTextoApellido();
+        }
+        
+        if(e.getSource() == pnlActualizarAdministradores.getTxtAdministrador()){
+            animacionTextoUsuarioAdministrador();
+        }
+        
+        if(e.getSource() == pnlActualizarAdministradores.getTxtTelefono()){
+            animacionTextoTelefono();
+        }
+        
+        if(e.getSource() == pnlActualizarAdministradores.getTxtCargo()){
+            animmacionTextoCargo();
+        }
+        
+        if(e.getSource() == pnlActualizarAdministradores.getTxtSueldo()){
+            animacionTextoSueldo();
+        }
+        
+        if(e.getSource() == pnlActualizarAdministradores.getTxtCedula()){
+            animacionTextoCedula();
+        }
     }
 
     @Override
@@ -516,5 +619,18 @@ public class ControllerActualizarAdministradores implements MouseListener{
 
     @Override
     public void mouseExited(MouseEvent e) {
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
     }
 }
