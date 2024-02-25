@@ -173,7 +173,7 @@ public class ControllerGestionarAdministradores implements MouseListener, KeyLis
 
     public void mostrarPnlActualizacionAdministrador() {
         String usuario_administrador = obtenerCampoFilaSeleccionado(3);
-        Administrador administrador = administradorDAO.buscarAdministradorPorUsuario(usuario_administrador);
+        Administrador administrador = administradorDAO.buscarAdministradorPorUsuario("administrador",usuario_administrador);
         if (usuario_administrador != null) {
             if (objectId.equals(administrador.getObjectID())) {
                 PnlActualizarAdministradores pnlActualizarAdministrador = new PnlActualizarAdministradores();
