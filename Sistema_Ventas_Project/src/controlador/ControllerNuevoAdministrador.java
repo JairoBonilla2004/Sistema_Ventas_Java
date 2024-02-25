@@ -864,7 +864,6 @@ public final class ControllerNuevoAdministrador implements MouseListener, KeyLis
         boolean usuarioExistente = usuarioDAO.verificarPersonaExistente("usuario", pnlNuevoAdministrador.getTxtNombreUsuario().getText());
         boolean cedulaExistente = administradorDAO.verificarPersonaExistente("cedula", pnlNuevoAdministrador.getTxtCedula().getText());
         boolean cargoExistente = administradorDAO.verificarPersonaExistente("cargo", pnlNuevoAdministrador.getTxtCargo().getText());
-        System.out.println(cedulaExistente);
         if (!cedulaExistente) {
             if (!administradorExistente && !usuarioExistente) {
                 if (!cargoExistente) {
