@@ -16,6 +16,7 @@ import modelo.Administrador;
 import modelo.AdministradorDAO;
 import modelo.UsuarioDAO;
 import org.bson.types.ObjectId;
+import vista.FrmCambiarContraseña;
 import vista.FrmMenu;
 import vista.PnlActualizarAdministradores;
 
@@ -49,6 +50,7 @@ public class ControllerActualizarAdministradores implements MouseListener, KeyLi
         this.pnlActualizarAdministradores.getTxtSueldo().addMouseListener(this);
         this.pnlActualizarAdministradores.getTxtCedula().addMouseListener(this);
         this.pnlActualizarAdministradores.getBtnGuardar().setEnabled(false);
+        this.pnlActualizarAdministradores.getBtnCambiarContrasenia().addMouseListener(this);
     }
 
     public void iniciar() {
@@ -602,6 +604,10 @@ public class ControllerActualizarAdministradores implements MouseListener, KeyLi
         if (e.getSource() == pnlActualizarAdministradores.getBtnGuardar()) {
             guardarDatosActualizados();
         }
+        
+        if(e.getSource() == pnlActualizarAdministradores.getBtnCambiarContrasenia()){
+            inicairFrmCambiarContrasennia();
+        }
     }
 
     @Override
@@ -783,5 +789,12 @@ public class ControllerActualizarAdministradores implements MouseListener, KeyLi
         if (e.getSource() == pnlActualizarAdministradores.getTxtCedula()) {
             validarDatos();
         }
+    }
+    
+    public void inicairFrmCambiarContrasennia(){
+        FrmCambiarContraseña frmCambiarContraseña = new FrmCambiarContraseña(new ObjectId(id));
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        ControllerCambiarContrasenia controllerCambiarContrasenia = new ControllerCambiarContrasenia(frmCambiarContraseña, administradorDAO, usuarioDAO);
+        controllerCambiarContrasenia.iniciar("Administrador");
     }
 }

@@ -4,6 +4,11 @@
  */
 package vista;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPasswordField;
+import org.bson.types.ObjectId;
+
 /**
  *
  * @author Jairo Smith Bonilla Hidalgo
@@ -13,9 +18,45 @@ public class FrmCambiarContraseña extends javax.swing.JFrame {
     /**
      * Creates new form FrmCambiarContraseña
      */
-    public FrmCambiarContraseña() {
+    private ObjectId objectId;
+    public FrmCambiarContraseña(ObjectId objectID) {
         initComponents();
+        this.objectId = objectID;
     }
+
+    public JButton getBtnGuardar() {
+        return btnGuardar;
+    }
+
+    public JLabel getLblCargo() {
+        return lblCargo;
+    }
+
+    public JLabel getLblContrseñaActual() {
+        return lblContrseñaActual;
+    }
+
+    public JLabel getLblContrseñaAnterior() {
+        return lblContrseñaAnterior;
+    }
+
+    public JLabel getLblNombreApellido() {
+        return lblNombreApellido;
+    }
+
+    public JPasswordField getPswContraseniaActual() {
+        return pswContraseniaActual;
+    }
+
+    public JPasswordField getPswContraseniaAnterior() {
+        return pswContraseniaAnterior;
+    }
+
+    public ObjectId getObjectId() {
+        return objectId;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -82,7 +123,7 @@ public class FrmCambiarContraseña extends javax.swing.JFrame {
         lblCargo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblCargo.setForeground(new java.awt.Color(204, 0, 0));
         lblCargo.setText("jLabel4");
-        jPanel1.add(lblCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 70, 30));
+        jPanel1.add(lblCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 380, 30));
 
         btnGuardar.setBackground(new java.awt.Color(21, 101, 192));
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -102,6 +143,7 @@ public class FrmCambiarContraseña extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
 
