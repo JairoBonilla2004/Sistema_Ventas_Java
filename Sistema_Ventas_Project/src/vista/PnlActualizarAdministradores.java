@@ -33,7 +33,7 @@ public class PnlActualizarAdministradores extends javax.swing.JPanel {
     }
 
     public JSeparator getjSeparator9() {
-        return jSeparator9;
+        return jSeparator;
     }
 
     public JLabel getLblAlertaAdministrador() {
@@ -123,6 +123,35 @@ public class PnlActualizarAdministradores extends javax.swing.JPanel {
     public JPanel getPnlContenido() {
         return pnlContenido;
     }
+
+    public JLabel getLblTextoApellido() {
+        return lblTextoApellido;
+    }
+
+    public JLabel getLblTextoCargo() {
+        return lblTextoCargo;
+    }
+
+    public JLabel getLblTextoCedula() {
+        return lblTextoCedula;
+    }
+
+    public JLabel getLblTextoNombre() {
+        return lblTextoNombre;
+    }
+
+    public JLabel getLblTextoSueldo() {
+        return lblTextoSueldo;
+    }
+
+    public JLabel getLblTextoTelefono() {
+        return lblTextoTelefono;
+    }
+
+    public JLabel getLblTextoUsuarioAdministrador() {
+        return lblTextoUsuarioAdministrador;
+    }
+    
     
 
     
@@ -158,7 +187,7 @@ public class PnlActualizarAdministradores extends javax.swing.JPanel {
         lblAlertaSueldo = new javax.swing.JLabel();
         lblAlertaCargo = new javax.swing.JLabel();
         lblTituloCedula = new javax.swing.JLabel();
-        jSeparator9 = new javax.swing.JSeparator();
+        jSeparator = new javax.swing.JSeparator();
         lblAlertaCedula = new javax.swing.JLabel();
         txtCedula = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
@@ -169,6 +198,13 @@ public class PnlActualizarAdministradores extends javax.swing.JPanel {
         txtSueldo = new javax.swing.JTextField();
         btnCambiarContrasenia = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
+        lblTextoNombre = new javax.swing.JLabel();
+        lblTextoApellido = new javax.swing.JLabel();
+        lblTextoUsuarioAdministrador = new javax.swing.JLabel();
+        lblTextoTelefono = new javax.swing.JLabel();
+        lblTextoCargo = new javax.swing.JLabel();
+        lblTextoSueldo = new javax.swing.JLabel();
+        lblTextoCedula = new javax.swing.JLabel();
 
         pnlContenido.setBackground(new java.awt.Color(255, 255, 255));
         pnlContenido.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -241,8 +277,8 @@ public class PnlActualizarAdministradores extends javax.swing.JPanel {
         lblTituloCedula.setText("CÉDULA");
         pnlContenido.add(lblTituloCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 320, -1, -1));
 
-        jSeparator9.setForeground(new java.awt.Color(51, 153, 255));
-        pnlContenido.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 380, 290, 20));
+        jSeparator.setForeground(new java.awt.Color(51, 153, 255));
+        pnlContenido.add(jSeparator, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 380, 290, 20));
 
         lblAlertaCedula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alert.png"))); // NOI18N
         pnlContenido.add(lblAlertaCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 360, 20, 20));
@@ -297,7 +333,7 @@ public class PnlActualizarAdministradores extends javax.swing.JPanel {
         btnCambiarContrasenia.setBorderPainted(false);
         btnCambiarContrasenia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCambiarContrasenia.setIconTextGap(15);
-        pnlContenido.add(btnCambiarContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 500, 320, 60));
+        pnlContenido.add(btnCambiarContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 520, 320, 60));
 
         btnGuardar.setBackground(new java.awt.Color(21, 101, 192));
         btnGuardar.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
@@ -307,7 +343,14 @@ public class PnlActualizarAdministradores extends javax.swing.JPanel {
         btnGuardar.setBorderPainted(false);
         btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGuardar.setIconTextGap(15);
-        pnlContenido.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 410, 320, 60));
+        pnlContenido.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 440, 320, 60));
+        pnlContenido.add(lblTextoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 300, 20));
+        pnlContenido.add(lblTextoApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 300, 20));
+        pnlContenido.add(lblTextoUsuarioAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 300, 20));
+        pnlContenido.add(lblTextoTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 300, 20));
+        pnlContenido.add(lblTextoCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, 290, 20));
+        pnlContenido.add(lblTextoSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 276, 290, 20));
+        pnlContenido.add(lblTextoCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 380, 290, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -326,13 +369,13 @@ public class PnlActualizarAdministradores extends javax.swing.JPanel {
     private javax.swing.JButton btnCambiarContrasenia;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JSeparator jSeparator;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
-    private javax.swing.JSeparator jSeparator9;
     private javax.swing.JLabel lblAlertaAdministrador;
     private javax.swing.JLabel lblAlertaApellido;
     private javax.swing.JLabel lblAlertaCargo;
@@ -340,6 +383,13 @@ public class PnlActualizarAdministradores extends javax.swing.JPanel {
     private javax.swing.JLabel lblAlertaNombre;
     private javax.swing.JLabel lblAlertaSueldo;
     private javax.swing.JLabel lblAlertaTelefono;
+    private javax.swing.JLabel lblTextoApellido;
+    private javax.swing.JLabel lblTextoCargo;
+    private javax.swing.JLabel lblTextoCedula;
+    private javax.swing.JLabel lblTextoNombre;
+    private javax.swing.JLabel lblTextoSueldo;
+    private javax.swing.JLabel lblTextoTelefono;
+    private javax.swing.JLabel lblTextoUsuarioAdministrador;
     private javax.swing.JLabel lblTituloAdministrador;
     private javax.swing.JLabel lblTituloApellido;
     private javax.swing.JLabel lblTituloCargo;

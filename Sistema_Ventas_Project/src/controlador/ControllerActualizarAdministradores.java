@@ -647,7 +647,74 @@ public class ControllerActualizarAdministradores implements MouseListener, KeyLi
 
     @Override
     public void keyTyped(KeyEvent e) {
+        if (e.getSource() == pnlActualizarAdministradores.getTxtNombre()) {
+            char c = e.getKeyChar();
+            if (!Character.isLetter(c) && c != 8) {
+                e.consume();
+                pnlActualizarAdministradores.getLblTextoNombre().setForeground(Color.red);
+                pnlActualizarAdministradores.getLblTextoNombre().setText("Solo se permiten caracteres");
 
+            } else {
+                pnlActualizarAdministradores.getLblTextoNombre().setText("");
+            }
+        }
+
+        if (e.getSource() == pnlActualizarAdministradores.getTxtApellido()) {
+            char c = e.getKeyChar();
+            if (!Character.isLetter(c) && c != 8) {
+                e.consume();
+                pnlActualizarAdministradores.getLblTextoApellido().setForeground(Color.red);
+                pnlActualizarAdministradores.getLblTextoApellido().setText("Solo se permiten caracteres");
+            } else {
+                pnlActualizarAdministradores.getLblTextoApellido().setText("");
+            }
+
+        }
+
+        if (e.getSource() == pnlActualizarAdministradores.getTxtCedula()) {
+            char c = e.getKeyChar();
+            if (!Character.isDigit(c) && c != 8) {
+                e.consume();
+                pnlActualizarAdministradores.getLblTextoCedula().setForeground(Color.red);
+                pnlActualizarAdministradores.getLblTextoCedula().setText("Solo se permiten dígitos");
+                mostrarImagenAlertaCedula();
+            } else {
+                pnlActualizarAdministradores.getLblTextoCedula().setText("");
+                mostrarImagenBlancaCedula();
+                if (pnlActualizarAdministradores.getTxtCedula().getText().length() >= 10) {
+                    e.consume();
+                    pnlActualizarAdministradores.getLblTextoCedula().setForeground(Color.red);
+                    pnlActualizarAdministradores.getLblTextoCedula().setText("La cédula debe tener solo 10 dígitos");
+                    mostrarImagenAlertaCedula();
+                } else {
+                    mostrarImagenBlancaCedula();
+                }
+            }
+
+        }
+
+        if (e.getSource() == pnlActualizarAdministradores.getTxtTelefono()) {
+            char c = e.getKeyChar();
+            if (!Character.isDigit(c) && c != 8) {
+                e.consume();
+                pnlActualizarAdministradores.getLblTextoTelefono().setForeground(Color.red);
+                pnlActualizarAdministradores.getLblTextoTelefono().setText("Solo se permiten dígitos");
+            } else {
+                pnlActualizarAdministradores.getLblTextoTelefono().setText("");
+                if (pnlActualizarAdministradores.getTxtTelefono().getText().length() >= 10) {
+                    e.consume();
+                    pnlActualizarAdministradores.getLblTextoTelefono().setForeground(Color.red);
+                    pnlActualizarAdministradores.getLblTextoTelefono().setText("La teléfono debe tener solo 10 dígitos");
+                }
+            }
+        }
+
+        if (e.getSource() == pnlActualizarAdministradores.getTxtSueldo()) {
+            char c = e.getKeyChar();
+            if (Character.isSpaceChar(c)) {
+                e.consume();
+            }
+        }
     }
 
     @Override
@@ -673,6 +740,12 @@ public class ControllerActualizarAdministradores implements MouseListener, KeyLi
         }
         if (e.getSource() == pnlActualizarAdministradores.getTxtSueldo()) {
             validarDatos();
+            if (!ControllerNuevoAdministrador.esSueldoValido(pnlActualizarAdministradores.getTxtSueldo().getText())) {
+                pnlActualizarAdministradores.getLblTextoSueldo().setForeground(Color.red);
+                pnlActualizarAdministradores.getLblTextoSueldo().setText("El sueldo no tiene el formato correcto");
+            } else {
+                pnlActualizarAdministradores.getLblTextoSueldo().setText("");
+            }
         }
         if (e.getSource() == pnlActualizarAdministradores.getTxtCedula()) {
             validarDatos();

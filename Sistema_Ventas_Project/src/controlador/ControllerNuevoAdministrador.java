@@ -548,7 +548,7 @@ public final class ControllerNuevoAdministrador implements MouseListener, KeyLis
         }
     }
 
-    public boolean esSueldoValido(String sueldo) {
+    public static boolean esSueldoValido(String sueldo) {
         boolean puntoEncontrado = false;
 
         if (sueldo.isEmpty()) {
