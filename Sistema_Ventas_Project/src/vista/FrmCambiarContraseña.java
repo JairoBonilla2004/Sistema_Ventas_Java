@@ -35,8 +35,10 @@ public class FrmCambiarContraseña extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         lblContrseñaAnterior = new javax.swing.JLabel();
         lblContrseñaActual = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        pswContraseniaActual = new javax.swing.JPasswordField();
+        pswContraseniaAnterior = new javax.swing.JPasswordField();
+        lblCargo = new javax.swing.JLabel();
+        btnGuardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,41 +53,52 @@ public class FrmCambiarContraseña extends javax.swing.JFrame {
         jPanel1.add(lblNombreApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, -1));
 
         jLabel2.setText("CONTRASEÑA ANTERIOR:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
         jLabel1.setText("CONTRASEÑA ACTUAL:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
 
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 240, 20));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 240, 20));
 
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 240, 20));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 240, 20));
 
         lblContrseñaAnterior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alert.png"))); // NOI18N
-        jPanel1.add(lblContrseñaAnterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, 30, -1));
+        jPanel1.add(lblContrseñaAnterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, 30, -1));
 
         lblContrseñaActual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alert.png"))); // NOI18N
-        jPanel1.add(lblContrseñaActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 30, -1));
+        jPanel1.add(lblContrseñaActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, 30, -1));
 
-        jPasswordField1.setText("jPasswordField1");
-        jPasswordField1.setToolTipText("");
-        jPasswordField1.setBorder(null);
-        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 240, 20));
+        pswContraseniaActual.setText("********************");
+        pswContraseniaActual.setToolTipText("");
+        pswContraseniaActual.setBorder(null);
+        jPanel1.add(pswContraseniaActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 240, 20));
 
-        jPasswordField2.setText("jPasswordField1");
-        jPasswordField2.setBorder(null);
-        jPanel1.add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 240, 20));
+        pswContraseniaAnterior.setText("********************");
+        pswContraseniaAnterior.setBorder(null);
+        jPanel1.add(pswContraseniaAnterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 240, 20));
+
+        lblCargo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblCargo.setForeground(new java.awt.Color(204, 0, 0));
+        lblCargo.setText("jLabel4");
+        jPanel1.add(lblCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 70, 30));
+
+        btnGuardar.setBackground(new java.awt.Color(21, 101, 192));
+        btnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardar.setText("GUARDAR");
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, 110, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
         );
 
         pack();
@@ -94,16 +107,18 @@ public class FrmCambiarContraseña extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblContrseñaActual;
     private javax.swing.JLabel lblContrseñaAnterior;
     private javax.swing.JLabel lblNombreApellido;
+    private javax.swing.JPasswordField pswContraseniaActual;
+    private javax.swing.JPasswordField pswContraseniaAnterior;
     // End of variables declaration//GEN-END:variables
 }

@@ -148,11 +148,11 @@ public class FrmLogin extends javax.swing.JFrame {
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-contraseña-30.png"))); // NOI18N
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 380, -1, -1));
 
-        btnIniciar_Sesion.setBackground(new java.awt.Color(0, 51, 255));
+        btnIniciar_Sesion.setBackground(new java.awt.Color(21, 101, 192));
         btnIniciar_Sesion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnIniciar_Sesion.setForeground(new java.awt.Color(255, 255, 255));
         btnIniciar_Sesion.setText("Iniciar Sesión");
-        jPanel1.add(btnIniciar_Sesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 550, 150, 40));
+        jPanel1.add(btnIniciar_Sesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 500, 170, 50));
 
         pswContraseña.setForeground(new java.awt.Color(153, 153, 153));
         pswContraseña.setText("**************************");
@@ -173,7 +173,7 @@ public class FrmLogin extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
         );
 
         pack();
