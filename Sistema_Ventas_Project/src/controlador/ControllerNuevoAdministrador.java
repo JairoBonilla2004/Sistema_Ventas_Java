@@ -585,6 +585,7 @@ public final class ControllerNuevoAdministrador implements MouseListener, KeyLis
             } else {
                 pnlNuevoAdministrador.getLblAlertaTextoSueldo().setText("");
             }
+            validarDatos();
         }
         if (e.getSource() == pnlNuevoAdministrador.getTxtNombre()) {
             validarDatos();
@@ -606,10 +607,6 @@ public final class ControllerNuevoAdministrador implements MouseListener, KeyLis
         }
 
         if (e.getSource() == pnlNuevoAdministrador.getTxtCargo()) {
-            validarDatos();
-        }
-
-        if (e.getSource() == pnlNuevoAdministrador.getTxtSueldo()) {
             validarDatos();
         }
 
@@ -863,7 +860,6 @@ public final class ControllerNuevoAdministrador implements MouseListener, KeyLis
     public void enviarDatosDB() {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         double sueldo = Double.parseDouble(pnlNuevoAdministrador.getTxtSueldo().getText());
-        int telefono = Integer.parseInt(pnlNuevoAdministrador.getTxtTelefono().getText());
         boolean administradorExistente = administradorDAO.verificarPersonaExistente("administrador", pnlNuevoAdministrador.getTxtNombreUsuario().getText());
         boolean usuarioExistente = usuarioDAO.verificarPersonaExistente("usuario", pnlNuevoAdministrador.getTxtNombreUsuario().getText());
         boolean cedulaExistente = administradorDAO.verificarPersonaExistente("cedula", pnlNuevoAdministrador.getTxtCedula().getText());
@@ -878,7 +874,7 @@ public final class ControllerNuevoAdministrador implements MouseListener, KeyLis
                     administrador.setApellido(pnlNuevoAdministrador.getTxtApellido().getText());
                     administrador.setNombre_usuario(pnlNuevoAdministrador.getTxtNombreUsuario().getText());
                     administrador.setContraseña(pnlNuevoAdministrador.getPswContrasenia().getText());
-                    administrador.setTelefono(telefono);
+                    administrador.setTelefono(pnlNuevoAdministrador.getTxtTelefono().getText());
                     administrador.setCedula(pnlNuevoAdministrador.getTxtCedula().getText());
                     if (administradorDAO.enviarPesonasDB(administrador)) {
                         JOptionPane.showMessageDialog(

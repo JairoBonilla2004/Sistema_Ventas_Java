@@ -48,6 +48,7 @@ public class ControllerActualizarAdministradores implements MouseListener, KeyLi
         this.pnlActualizarAdministradores.getTxtCargo().addMouseListener(this);
         this.pnlActualizarAdministradores.getTxtSueldo().addMouseListener(this);
         this.pnlActualizarAdministradores.getTxtCedula().addMouseListener(this);
+        this.pnlActualizarAdministradores.getBtnGuardar().setEnabled(false);
     }
 
     public void iniciar() {
@@ -313,7 +314,9 @@ public class ControllerActualizarAdministradores implements MouseListener, KeyLi
                 || pnlActualizarAdministradores.getTxtTelefono().getText().equals("Ingrese su número de telefono") || pnlActualizarAdministradores.getTxtTelefono().getText().isEmpty()
                 || pnlActualizarAdministradores.getTxtCargo().getText().equals("Ingrese su cargo en la empresa") || pnlActualizarAdministradores.getTxtCargo().getText().isEmpty()
                 || pnlActualizarAdministradores.getTxtSueldo().getText().equals("Sueldo del Administrador") || pnlActualizarAdministradores.getTxtSueldo().getText().isEmpty()
-                || pnlActualizarAdministradores.getTxtCedula().getText().equals("Ingrese su cédula") || pnlActualizarAdministradores.getTxtCedula().getText().isBlank()) {
+                || pnlActualizarAdministradores.getTxtCedula().getText().equals("Ingrese su cédula") || pnlActualizarAdministradores.getTxtCedula().getText().isBlank()
+                || pnlActualizarAdministradores.getTxtCedula().getText().equals("Ingrese su cédula") || pnlActualizarAdministradores.getTxtCedula().getText().isBlank()
+                || !pnlActualizarAdministradores.getLblTextoSueldo().getText().isEmpty()) {
             pnlActualizarAdministradores.getBtnGuardar().setEnabled(false);
 
         } else {
@@ -552,12 +555,11 @@ public class ControllerActualizarAdministradores implements MouseListener, KeyLi
         JLabel lbl = new JLabel();
         Administrador administrador = new Administrador();
         double sueldo = Double.parseDouble(pnlActualizarAdministradores.getTxtSueldo().getText());
-        int telefono = Integer.parseInt(pnlActualizarAdministradores.getTxtTelefono().getText());
         administrador.setId(id);
         administrador.setNombre(pnlActualizarAdministradores.getTxtNombre().getText());
         administrador.setApellido(pnlActualizarAdministradores.getTxtApellido().getText());
         administrador.setNombre_usuario(pnlActualizarAdministradores.getTxtAdministrador().getText());
-        administrador.setTelefono(telefono);
+        administrador.setTelefono(pnlActualizarAdministradores.getTxtTelefono().getText());
         administrador.setCargo(pnlActualizarAdministradores.getTxtCargo().getText());
         administrador.setSueldo(sueldo);
         boolean respuesta_actualizacion = administradorDAO.actualizarDatos(administrador);
@@ -605,32 +607,50 @@ public class ControllerActualizarAdministradores implements MouseListener, KeyLi
     @Override
     public void mousePressed(MouseEvent e) {
         if (e.getSource() == pnlActualizarAdministradores.getTxtNombre()) {
+            vaciarLblTextoValidaciones();
             animmacionTextoNombre();
         }
 
         if (e.getSource() == pnlActualizarAdministradores.getTxtApellido()) {
+            vaciarLblTextoValidaciones();
+
             animacionTextoApellido();
         }
 
         if (e.getSource() == pnlActualizarAdministradores.getTxtAdministrador()) {
+            vaciarLblTextoValidaciones();
+
             animacionTextoUsuarioAdministrador();
         }
 
         if (e.getSource() == pnlActualizarAdministradores.getTxtTelefono()) {
+            vaciarLblTextoValidaciones();
+
             animacionTextoTelefono();
         }
 
         if (e.getSource() == pnlActualizarAdministradores.getTxtCargo()) {
+            vaciarLblTextoValidaciones();
             animmacionTextoCargo();
         }
 
         if (e.getSource() == pnlActualizarAdministradores.getTxtSueldo()) {
+            vaciarLblTextoValidaciones();
             animacionTextoSueldo();
         }
 
         if (e.getSource() == pnlActualizarAdministradores.getTxtCedula()) {
+            vaciarLblTextoValidaciones();
             animacionTextoCedula();
         }
+    }
+
+    public void vaciarLblTextoValidaciones() {
+        pnlActualizarAdministradores.getLblTextoApellido().setText("");
+        pnlActualizarAdministradores.getLblTextoCedula().setText("");
+        pnlActualizarAdministradores.getLblTextoTelefono().setText("");
+        pnlActualizarAdministradores.getLblTextoNombre().setText("");
+
     }
 
     @Override
@@ -723,21 +743,33 @@ public class ControllerActualizarAdministradores implements MouseListener, KeyLi
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if (e.getSource() == pnlActualizarAdministradores.getTxtNombre()) {
+         if (e.getSource() == pnlActualizarAdministradores.getTxtNombre()) {
             validarDatos();
         }
+
         if (e.getSource() == pnlActualizarAdministradores.getTxtApellido()) {
             validarDatos();
         }
+
         if (e.getSource() == pnlActualizarAdministradores.getTxtAdministrador()) {
             validarDatos();
         }
-        if (e.getSource() == pnlActualizarAdministradores.getTxtTelefono()) {
+        if (e.getSource() == pnlActualizarAdministradores.getTxtCedula()) {
             validarDatos();
         }
+
         if (e.getSource() == pnlActualizarAdministradores.getTxtCargo()) {
             validarDatos();
         }
+
+        if (e.getSource() == pnlActualizarAdministradores.getTxtCargo()) {
+            validarDatos();
+        }
+
+        if (e.getSource() == pnlActualizarAdministradores.getTxtTelefono()) {
+            validarDatos();
+        }
+        
         if (e.getSource() == pnlActualizarAdministradores.getTxtSueldo()) {
             validarDatos();
             if (!ControllerNuevoAdministrador.esSueldoValido(pnlActualizarAdministradores.getTxtSueldo().getText())) {
@@ -746,6 +778,7 @@ public class ControllerActualizarAdministradores implements MouseListener, KeyLi
             } else {
                 pnlActualizarAdministradores.getLblTextoSueldo().setText("");
             }
+            validarDatos();
         }
         if (e.getSource() == pnlActualizarAdministradores.getTxtCedula()) {
             validarDatos();

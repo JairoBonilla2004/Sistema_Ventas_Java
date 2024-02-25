@@ -11,13 +11,13 @@ public class Administrador extends Usuario{
     private String cargo;
     private ObjectId object;
     private double sueldo;
-    public Administrador(String id, String nombre, String Apellido, String nombre_usuario, String contraseña, int telefono, String cargo, double sueldo){
+    public Administrador(String id, String nombre, String Apellido, String nombre_usuario, String contraseña, String telefono, String cargo, double sueldo){
         super(id, nombre, Apellido, nombre_usuario, contraseña, telefono);
         this.cargo = cargo;
         this.sueldo = sueldo;
     }
 
-    public Administrador(String cargo, double sueldo, String nombre, String Apellido, String nombre_usuario, String contraseña, int telefono) {
+    public Administrador(String cargo, double sueldo, String nombre, String Apellido, String nombre_usuario, String contraseña, String telefono) {
         super(nombre, Apellido, nombre_usuario, contraseña, telefono);
         this.cargo = cargo;
         this.sueldo = sueldo;

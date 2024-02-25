@@ -84,7 +84,7 @@ public class AdministradorDAO implements PersonaDAO<Administrador> {
                         documento_administrador.getString("apellido"),
                         documento_administrador.getString("administrador"),
                         documento_administrador.getString("contraseña"),
-                        documento_administrador.getInteger("telefono"),
+                        documento_administrador.getString("telefono"),
                         documento_administrador.getString("cargo"),
                         documento_administrador.getDouble("sueldo"));
                 administrador.setCedula(documento_administrador.getString("cedula"));
@@ -112,7 +112,7 @@ public class AdministradorDAO implements PersonaDAO<Administrador> {
                         documento_administrador.getString("apellido"),
                         documento_administrador.getString("administrador"),
                         documento_administrador.getString("contraseña"),
-                        documento_administrador.getInteger("telefono"),
+                        documento_administrador.getString("telefono"),
                         documento_administrador.getString("cargo"),
                         documento_administrador.getDouble("sueldo"));
                 administrador.setCedula(documento_administrador.getString("cedula"));
@@ -141,7 +141,7 @@ public class AdministradorDAO implements PersonaDAO<Administrador> {
                         document_database.getString("apellido"),
                         document_database.getString("administrador"),
                         document_database.getString("contraseña"),
-                        document_database.getInteger("telefono"));
+                        document_database.getString("telefono"));
                 administrador.setCedula(document_database.getString("cedula"));
 
             }

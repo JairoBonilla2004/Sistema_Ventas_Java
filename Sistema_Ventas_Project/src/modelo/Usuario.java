@@ -12,10 +12,10 @@ public class Usuario {
     protected String Apellido;
     protected String nombre_usuario;
     protected String contraseña;
-    protected int telefono;
+    protected String telefono;
     
 
-    public Usuario(String cedula, String nombre, String Apellido, String nombre_usuario, String contraseña, int telefono) {
+    public Usuario(String cedula, String nombre, String Apellido, String nombre_usuario, String contraseña, String telefono) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.Apellido = Apellido;
@@ -24,7 +24,7 @@ public class Usuario {
         this.telefono = telefono;
     }
 
-    public Usuario(String nombre, String Apellido, String nombre_usuario, String contraseña, int telefono) {
+    public Usuario(String nombre, String Apellido, String nombre_usuario, String contraseña, String telefono) {
         this.nombre = nombre;
         this.Apellido = Apellido;
         this.nombre_usuario = nombre_usuario;
@@ -32,18 +32,11 @@ public class Usuario {
         this.telefono = telefono;
     }
 
-    public Usuario(String nombre, String Apellido, int telefono, String cedula) {
+    public Usuario(String nombre, String Apellido, String telefono, String cedula) {
         this.nombre = nombre;
         this.Apellido = Apellido;
         this.telefono = telefono;
         this.cedula = cedula;
-    }
-
-    public Usuario(String cedula, String nombre, String Apellido, int telefono) {
-        this.cedula = cedula;
-        this.nombre = nombre;
-        this.Apellido = Apellido;
-        this.telefono = telefono;
     }
 
     public Usuario() {
@@ -97,11 +90,11 @@ public class Usuario {
         this.Apellido = Apellido;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

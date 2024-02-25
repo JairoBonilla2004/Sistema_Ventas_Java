@@ -153,7 +153,7 @@ public class ControllerGestionarAdministradores implements MouseListener, KeyLis
     }
 
     public void añadirNuevoUsuario() {
-        boolean respuesta = administradorDAO.verificarPersonaExistente("administrador", pnlGestionarAdministradores.getNombreUsuario());
+        boolean respuesta = administradorDAO.verificarPersonaExistente("_id", objectId);
         if (respuesta) {
             PnlNuevoAdministrador pnlNuevoAdministrador = new PnlNuevoAdministrador();
             pnlNuevoAdministrador.setSize(1000, 600);

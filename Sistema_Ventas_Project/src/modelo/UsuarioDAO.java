@@ -89,7 +89,7 @@ public class UsuarioDAO implements PersonaDAO<Usuario> {
                         documentos_dataBase.getString("apellido"),
                         documentos_dataBase.getString("usuario"),
                         documentos_dataBase.getString("contraseña"),
-                        documentos_dataBase.getInteger("telefono"));
+                        documentos_dataBase.getString("telefono"));
                 usuarios.add(usuario);
             }
         } catch (MongoException mongoException) {
@@ -114,7 +114,7 @@ public class UsuarioDAO implements PersonaDAO<Usuario> {
                         documento.getString("apellido"),
                         documento.getString("usuario"),
                         documento.getString("contraseña"),
-                        documento.getInteger("telefono")
+                        documento.getString("telefono")
                 );
                 usuarios.add(usuario);
             }
@@ -140,7 +140,7 @@ public class UsuarioDAO implements PersonaDAO<Usuario> {
                         documentoUsuario.getString("apellido"),
                         documentoUsuario.getString("usuario"),
                         documentoUsuario.getString("contraseña"),
-                        documentoUsuario.getInteger("telefono")
+                        documentoUsuario.getString("telefono")
                 );
             }
         } catch (IllegalArgumentException e) {
