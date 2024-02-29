@@ -10,6 +10,7 @@ import vista.FrmLogin;
 import vista.FrmMenu;
 import vista.PnlBienvenida;
 import vista.PnlGestionarAdministradores;
+import vista.PnlGestionarEmpleados;
 
 /**
  *
@@ -25,6 +26,7 @@ public final class ControllerMenu implements  ActionListener{
         this.frmMenu.getBtnIntroduccion().addActionListener(this);
         this.frmMenu.getBtnCerrarSesion().addActionListener(this);
         this.frmMenu.getBtnAdministrador().addActionListener(this);
+        this.frmMenu.getBtnEmpleado().addActionListener(this);
         iniciarPnlBienvenida();
     }
     
@@ -40,6 +42,10 @@ public final class ControllerMenu implements  ActionListener{
         
         if(e.getSource() == frmMenu.getBtnAdministrador()){
             verificarAdministrador();
+        }
+        
+        if(e.getSource() == frmMenu.getBtnEmpleado()){
+            iniciarPnlEmpleado();
         }
         
         if(e.getSource() == frmMenu.getBtnCerrarSesion()){
@@ -76,6 +82,16 @@ public final class ControllerMenu implements  ActionListener{
         this.frmMenu.getPnlContenido().add(pnlBienvenida, BorderLayout.CENTER);
         this.frmMenu.getPnlContenido().revalidate();
         this.frmMenu.getPnlContenido().repaint();
+    }
+    
+    public void iniciarPnlEmpleado(){
+        PnlGestionarEmpleados pnlGestionarUsuario = new PnlGestionarEmpleados(frmMenu.getNombreDeUsuario());
+        pnlGestionarUsuario.setSize(1000, 600);
+        pnlGestionarUsuario.setLocation(0, 0);
+        frmMenu.getPnlContenido().removeAll();
+        frmMenu.getPnlContenido().add(pnlGestionarUsuario, BorderLayout.CENTER);
+        frmMenu.getPnlContenido().revalidate();
+        frmMenu.getPnlContenido().repaint();
     }
     
     public void verificarAdministrador() {

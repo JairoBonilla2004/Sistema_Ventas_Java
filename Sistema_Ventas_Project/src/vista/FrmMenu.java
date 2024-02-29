@@ -86,6 +86,12 @@ public class FrmMenu extends javax.swing.JFrame {
     public JButton getBtnCerrarSesion() {
         return btnCerrarSesion;
     }
+
+    public JButton getBtnEmpleado() {
+        return btnEmpleado;
+    }
+    
+    
     
 
     /**
@@ -103,7 +109,7 @@ public class FrmMenu extends javax.swing.JFrame {
         btnCerrarSesion = new javax.swing.JButton();
         btnIntroduccion = new javax.swing.JButton();
         btnAdministrador = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
+        btnEmpleado = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
@@ -164,17 +170,17 @@ public class FrmMenu extends javax.swing.JFrame {
         btnAdministrador.setIconTextGap(15);
         jPanel2.add(btnAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 280, 60));
 
-        jButton13.setBackground(new java.awt.Color(21, 101, 192));
-        jButton13.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jButton13.setForeground(new java.awt.Color(255, 255, 255));
-        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-usuarios-35 (1).png"))); // NOI18N
-        jButton13.setText("EMPLEADOS");
-        jButton13.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
-        jButton13.setBorderPainted(false);
-        jButton13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton13.setIconTextGap(15);
-        jPanel2.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 280, 60));
+        btnEmpleado.setBackground(new java.awt.Color(21, 101, 192));
+        btnEmpleado.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btnEmpleado.setForeground(new java.awt.Color(255, 255, 255));
+        btnEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-usuarios-35 (1).png"))); // NOI18N
+        btnEmpleado.setText("EMPLEADOS");
+        btnEmpleado.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnEmpleado.setBorderPainted(false);
+        btnEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnEmpleado.setIconTextGap(15);
+        jPanel2.add(btnEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 280, 60));
 
         jButton14.setBackground(new java.awt.Color(21, 101, 192));
         jButton14.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
@@ -310,8 +316,8 @@ public class FrmMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdministrador;
     private javax.swing.JButton btnCerrarSesion;
+    private javax.swing.JButton btnEmpleado;
     private javax.swing.JButton btnIntroduccion;
-    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;

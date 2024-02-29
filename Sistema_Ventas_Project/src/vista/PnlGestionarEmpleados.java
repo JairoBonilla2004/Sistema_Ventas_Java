@@ -13,8 +13,14 @@ public class PnlGestionarEmpleados extends javax.swing.JPanel {
     /**
      * Creates new form PnlGestionarEmpleados
      */
-    public PnlGestionarEmpleados() {
+    private  String nombreUsuario;
+    public PnlGestionarEmpleados(String nombreUsuario) {
+        this.nombreUsuario = this.nombreUsuario;
         initComponents();
+    }
+    
+    String getNombreUsuario(){
+        return nombreUsuario;
     }
 
     /**
