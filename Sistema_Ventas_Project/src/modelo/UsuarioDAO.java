@@ -109,7 +109,7 @@ public class UsuarioDAO implements PersonaDAO<Usuario> {
             while (cursor.hasNext()) {
                 Document documento = cursor.next();
                 Usuario usuario = new Usuario(
-                        documento.getObjectId("_id").toString(),
+                        documento.getString("cedula"),
                         documento.getString("nombre"),
                         documento.getString("apellido"),
                         documento.getString("usuario"),

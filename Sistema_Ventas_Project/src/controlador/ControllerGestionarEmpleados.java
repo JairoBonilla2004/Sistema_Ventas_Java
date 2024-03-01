@@ -1,8 +1,11 @@
-
 package controlador;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -15,26 +18,28 @@ import vista.PnlGestionarEmpleados;
  *
  * @author Jairo Smith Bonilla Hidalgo
  */
-public final class ControllerGestionarEmpleados {
-    
+public final class ControllerGestionarEmpleados implements KeyListener, MouseListener {
+
     private final PnlGestionarEmpleados pnlGestionarEmpleados;
     private final UsuarioDAO usuarioDAO;
-    private  DefaultTableModel modeloTabla = new DefaultTableModel();
+    private final DefaultTableModel modeloTabla = new DefaultTableModel();
 
     public ControllerGestionarEmpleados(PnlGestionarEmpleados pnlGestionarEmpleados, UsuarioDAO usuarioDAO) {
         this.pnlGestionarEmpleados = pnlGestionarEmpleados;
         this.usuarioDAO = usuarioDAO;
-        iniciar();
+        this.pnlGestionarEmpleados.getTxtBuscarEmpleado().addKeyListener(this);
+        this.pnlGestionarEmpleados.getTxtBuscarEmpleado().addMouseListener(this);
+        this.pnlGestionarEmpleados.getTblEmpleados().addMouseListener(this);
     }
-    
-    public void iniciar(){
+
+    public void iniciar() {
         pnlGestionarEmpleados.getTxtBuscarEmpleado().setBackground(Color.WHITE);
         inicializarNombresTabla();
         llenarDatosTabla();
     }
-    
+
     public void inicializarNombresTabla() {
-        
+
         String nombres[] = {"CÉDULA", "NOMBRE", "APELLIDO", "USUARIO", "TELEFONO"};
         modeloTabla.setColumnIdentifiers(nombres);
         pnlGestionarEmpleados.getTblEmpleados().setModel(modeloTabla);
@@ -67,12 +72,12 @@ public final class ControllerGestionarEmpleados {
         }
         return null;
     }
-    
+
     public ImageIcon activarVistoVerde() {
         java.net.URL imageURL = getClass().getResource("/img/greenSeen.png");
         ImageIcon icono = null;
         if (imageURL != null) {
-             icono = new ImageIcon(imageURL);
+            icono = new ImageIcon(imageURL);
         }
         return icono;
     }
@@ -107,14 +112,13 @@ public final class ControllerGestionarEmpleados {
 
     public void llenarDatosTblMedianteBusqueda() {
         vaciarTabla(modeloTabla);
-       List<Usuario> usuarios = usuarioDAO.buscarPersonasPorTextoRegEx(pnlGestionarEmpleados.getTxtBuscarEmpleado().getText());
+        List<Usuario> usuarios = usuarioDAO.buscarPersonasPorTextoRegEx(pnlGestionarEmpleados.getTxtBuscarEmpleado().getText());
         for (Usuario u : usuarios) {
             Object object[] = {u.getCedula(), u.getNombre(), u.getApellido(), u.getNombre_usuario(), u.getTelefono()};
             modeloTabla.addRow(object);
         }
         pnlGestionarEmpleados.getTblEmpleados().setModel(modeloTabla);
     }
-
 
     public void eliminarUsuarios() {
         int fila = pnlGestionarEmpleados.getTblEmpleados().getSelectedRow();
@@ -132,12 +136,58 @@ public final class ControllerGestionarEmpleados {
                     modeloTabla.removeRow(fila);
                     pnlGestionarEmpleados.getTxtBuscarEmpleado().setForeground(Color.GRAY);
                     pnlGestionarEmpleados.getTxtBuscarEmpleado().setText("Ingrese el nombre del usuario que desea buscar");
-                    
+
                 }
             }
         } else {
             JOptionPane.showMessageDialog(null, "SELECCIONE UNA FILA DE LA TABLA", "MESSAGE", JOptionPane.ERROR_MESSAGE);
         }
 
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        if (e.getSource() == pnlGestionarEmpleados.getTxtBuscarEmpleado()) {
+            llenarDatosTblMedianteBusqueda();
+        }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        if (e.getSource() == pnlGestionarEmpleados.getTblEmpleados()) {
+            String nombre_seleccionado = obtenerNombreSeleccionado();
+            pnlGestionarEmpleados.getTxtBuscarEmpleado().setForeground(Color.BLACK);
+            pnlGestionarEmpleados.getTxtBuscarEmpleado().setText(nombre_seleccionado);
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        if (e.getSource() == pnlGestionarEmpleados.getTxtBuscarEmpleado()) {
+            if (pnlGestionarEmpleados.getTxtBuscarEmpleado().getText().equals("Ingrese el nombre del empleado que desea buscar")) {
+                pnlGestionarEmpleados.getTxtBuscarEmpleado().setText("");
+                pnlGestionarEmpleados.getTxtBuscarEmpleado().setForeground(Color.GRAY);
+            }
+        }
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
     }
 }
