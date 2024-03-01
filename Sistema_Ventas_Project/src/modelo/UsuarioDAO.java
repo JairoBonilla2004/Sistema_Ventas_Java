@@ -182,8 +182,7 @@ public class UsuarioDAO implements PersonaDAO<Usuario> {
     public boolean eliminarPersona(String id) {
         boolean respuesta = false;
         try {
-            ObjectId objectId = new ObjectId(id);
-            Document filtro = new Document("_id", objectId);
+            Document filtro = new Document("cedula", id);
             MongoCursor<Document> cursor = usuarioCollection.find(filtro).iterator();
             if (cursor.hasNext()) {
                 usuarioCollection.deleteOne(filtro);

@@ -29,6 +29,7 @@ public final class ControllerGestionarEmpleados implements KeyListener, MouseLis
         this.usuarioDAO = usuarioDAO;
         this.pnlGestionarEmpleados.getTxtBuscarEmpleado().addKeyListener(this);
         this.pnlGestionarEmpleados.getTxtBuscarEmpleado().addMouseListener(this);
+        this.pnlGestionarEmpleados.getBtnEliminar().addMouseListener(this);
         this.pnlGestionarEmpleados.getTblEmpleados().addMouseListener(this);
     }
 
@@ -135,7 +136,7 @@ public final class ControllerGestionarEmpleados implements KeyListener, MouseLis
                             activarVistoVerde());
                     modeloTabla.removeRow(fila);
                     pnlGestionarEmpleados.getTxtBuscarEmpleado().setForeground(Color.GRAY);
-                    pnlGestionarEmpleados.getTxtBuscarEmpleado().setText("Ingrese el nombre del usuario que desea buscar");
+                    pnlGestionarEmpleados.getTxtBuscarEmpleado().setText("Ingrese el nombre del empleado que desea buscar");
 
                 }
             }
@@ -166,6 +167,14 @@ public final class ControllerGestionarEmpleados implements KeyListener, MouseLis
             String nombre_seleccionado = obtenerNombreSeleccionado();
             pnlGestionarEmpleados.getTxtBuscarEmpleado().setForeground(Color.BLACK);
             pnlGestionarEmpleados.getTxtBuscarEmpleado().setText(nombre_seleccionado);
+        }
+
+        if (e.getSource() == pnlGestionarEmpleados.getBtnEliminar()) {
+            if (!usuarioDAO.verificarPersonaExistente("usuario", pnlGestionarEmpleados.getNombreUsuario())) {
+                eliminarUsuarios();
+            } else {
+                JOptionPane.showMessageDialog(null, "SOLO LOS ADMINISTRADORES TIENEN ACCESO A ESTA OPCION", "MESSAGE", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 
