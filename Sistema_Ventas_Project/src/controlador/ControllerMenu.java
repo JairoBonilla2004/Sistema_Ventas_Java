@@ -92,6 +92,9 @@ public final class ControllerMenu implements  ActionListener{
         frmMenu.getPnlContenido().add(pnlGestionarUsuario, BorderLayout.CENTER);
         frmMenu.getPnlContenido().revalidate();
         frmMenu.getPnlContenido().repaint();
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        ControllerGestionarEmpleados controllerGestionarEmpleados = new ControllerGestionarEmpleados(pnlGestionarUsuario, usuarioDAO);
+        controllerGestionarEmpleados.iniciar();
     }
     
     public void verificarAdministrador() {

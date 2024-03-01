@@ -4,6 +4,10 @@
  */
 package vista;
 
+import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Jairo Smith Bonilla Hidalgo
@@ -19,9 +23,31 @@ public class PnlGestionarEmpleados extends javax.swing.JPanel {
         initComponents();
     }
     
-    String getNombreUsuario(){
+    private String getNombreUsuario(){
         return nombreUsuario;
     }
+
+    public JTextField getTxtBuscarEmpleado() {
+        return txtBuscarEmpleado;
+    }
+
+    public JButton getBtnActualizar() {
+        return btnActualizar;
+    }
+
+    public JButton getBtnEliminar() {
+        return btnEliminar;
+    }
+
+    public JButton getBtnNuevoUsuario() {
+        return btnNuevoUsuario;
+    }
+
+    public JTable getTblEmpleados() {
+        return tblEmpleados;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,10 +62,10 @@ public class PnlGestionarEmpleados extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        tblEmpleados = new javax.swing.JTable();
+        txtBuscarEmpleado = new javax.swing.JTextField();
         btnNuevoUsuario = new javax.swing.JButton();
-        btnEliminar1 = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -52,7 +78,7 @@ public class PnlGestionarEmpleados extends javax.swing.JPanel {
         jLabel1.setText("EMPLEADOS");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblEmpleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -63,15 +89,15 @@ public class PnlGestionarEmpleados extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblEmpleados);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 980, 380));
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField1.setText("Ingrese el nombre del empleado que desea buscar");
-        jTextField1.setBorder(null);
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 70, 790, 20));
+        txtBuscarEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtBuscarEmpleado.setForeground(new java.awt.Color(153, 153, 153));
+        txtBuscarEmpleado.setText("Ingrese el nombre del empleado que desea buscar");
+        txtBuscarEmpleado.setBorder(null);
+        jPanel1.add(txtBuscarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 70, 790, 20));
 
         btnNuevoUsuario.setBackground(new java.awt.Color(21, 101, 192));
         btnNuevoUsuario.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
@@ -85,17 +111,17 @@ public class PnlGestionarEmpleados extends javax.swing.JPanel {
         btnNuevoUsuario.setIconTextGap(15);
         jPanel1.add(btnNuevoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 530, 130, 30));
 
-        btnEliminar1.setBackground(new java.awt.Color(255, 0, 0));
-        btnEliminar1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        btnEliminar1.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-eliminar-25.png"))); // NOI18N
-        btnEliminar1.setText("Borrar");
-        btnEliminar1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
-        btnEliminar1.setBorderPainted(false);
-        btnEliminar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnEliminar1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnEliminar1.setIconTextGap(15);
-        jPanel1.add(btnEliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 530, 130, 30));
+        btnEliminar.setBackground(new java.awt.Color(255, 0, 0));
+        btnEliminar.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-eliminar-25.png"))); // NOI18N
+        btnEliminar.setText("Borrar");
+        btnEliminar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnEliminar.setBorderPainted(false);
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnEliminar.setIconTextGap(15);
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 530, 130, 30));
 
         btnActualizar.setBackground(new java.awt.Color(21, 101, 192));
         btnActualizar.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
@@ -124,13 +150,13 @@ public class PnlGestionarEmpleados extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
-    private javax.swing.JButton btnEliminar1;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnNuevoUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tblEmpleados;
+    private javax.swing.JTextField txtBuscarEmpleado;
     // End of variables declaration//GEN-END:variables
 }
