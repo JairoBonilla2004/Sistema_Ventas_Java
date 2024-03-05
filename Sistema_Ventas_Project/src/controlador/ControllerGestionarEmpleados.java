@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
 import vista.PnlGestionarEmpleados;
+import vista.PnlNuevoEmpleado;
 
 /**
  *
@@ -31,6 +32,7 @@ public final class ControllerGestionarEmpleados implements KeyListener, MouseLis
         this.pnlGestionarEmpleados.getTxtBuscarEmpleado().addMouseListener(this);
         this.pnlGestionarEmpleados.getBtnEliminar().addMouseListener(this);
         this.pnlGestionarEmpleados.getTblEmpleados().addMouseListener(this);
+        this.pnlGestionarEmpleados.getBtnNuevoUsuario().addMouseListener(this);
     }
 
     public void iniciar() {
@@ -176,6 +178,11 @@ public final class ControllerGestionarEmpleados implements KeyListener, MouseLis
                 JOptionPane.showMessageDialog(null, "SOLO LOS ADMINISTRADORES TIENEN ACCESO A ESTA OPCION", "MESSAGE", JOptionPane.ERROR_MESSAGE);
             }
         }
+        
+        if(e.getSource() == pnlGestionarEmpleados.getBtnNuevoUsuario()){
+            añadirNuevoEmpleado();
+        }
+        
     }
 
     @Override
@@ -198,5 +205,17 @@ public final class ControllerGestionarEmpleados implements KeyListener, MouseLis
 
     @Override
     public void mouseExited(MouseEvent e) {
+    }
+
+    public void añadirNuevoEmpleado() {
+        PnlNuevoEmpleado pnlNuevoEmpleado = new PnlNuevoEmpleado();
+        pnlNuevoEmpleado.setSize(1000, 600);
+        pnlNuevoEmpleado.setLocation(0, 0);
+        pnlGestionarEmpleados.getPnlContenido().removeAll();
+        pnlGestionarEmpleados.getPnlContenido().add(pnlNuevoEmpleado, BorderLayout.CENTER);
+        pnlGestionarEmpleados.getPnlContenido().revalidate();
+        pnlGestionarEmpleados.getPnlContenido().repaint();
+        ControllerPnlNuevoEmpleado controllerPnlNuevoEmpleado = new ControllerPnlNuevoEmpleado(pnlNuevoEmpleado, usuarioDAO);
+        controllerPnlNuevoEmpleado.iniciar();
     }
 }
