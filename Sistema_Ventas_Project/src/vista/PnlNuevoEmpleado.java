@@ -189,22 +189,22 @@ public class PnlNuevoEmpleado extends javax.swing.JPanel {
 
         txtUsuarioEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtUsuarioEmpleado.setForeground(new java.awt.Color(153, 153, 153));
-        txtUsuarioEmpleado.setText("Ingrese el nombre del empleado");
+        txtUsuarioEmpleado.setText("Ingrese el nombre de usuario");
         txtUsuarioEmpleado.setBorder(null);
 
         txtTelefonoEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtTelefonoEmpleado.setForeground(new java.awt.Color(153, 153, 153));
-        txtTelefonoEmpleado.setText("Ingrese el nombre del empleado");
+        txtTelefonoEmpleado.setText("Ingrese el numero de teléfono");
         txtTelefonoEmpleado.setBorder(null);
 
         txtCedulaEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtCedulaEmpleado.setForeground(new java.awt.Color(153, 153, 153));
-        txtCedulaEmpleado.setText("Ingrese el nombre del empleado");
+        txtCedulaEmpleado.setText("Ingrese la cédula del empleado");
         txtCedulaEmpleado.setBorder(null);
 
         txtSueldoEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtSueldoEmpleado.setForeground(new java.awt.Color(153, 153, 153));
-        txtSueldoEmpleado.setText("Ingrese el nombre del empleado");
+        txtSueldoEmpleado.setText("Ingrese el sueldo del empleado");
         txtSueldoEmpleado.setBorder(null);
 
         pswContraseniaEmpleado.setForeground(new java.awt.Color(153, 153, 153));
