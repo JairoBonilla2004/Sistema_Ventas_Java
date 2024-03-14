@@ -184,25 +184,25 @@ public class PnlNuevoEmpleado extends javax.swing.JPanel {
 
         txtApellidoEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtApellidoEmpleado.setForeground(new java.awt.Color(153, 153, 153));
-        txtApellidoEmpleado.setText("Ingrese el nombre del empleado");
+        txtApellidoEmpleado.setText("Ingrese el apellido del empleado");
         txtApellidoEmpleado.setBorder(null);
 
-        txtUsuarioEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtUsuarioEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtUsuarioEmpleado.setForeground(new java.awt.Color(153, 153, 153));
         txtUsuarioEmpleado.setText("Ingrese el nombre de usuario");
         txtUsuarioEmpleado.setBorder(null);
 
-        txtTelefonoEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtTelefonoEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtTelefonoEmpleado.setForeground(new java.awt.Color(153, 153, 153));
-        txtTelefonoEmpleado.setText("Ingrese el numero de teléfono");
+        txtTelefonoEmpleado.setText("Ingrese el número de teléfono");
         txtTelefonoEmpleado.setBorder(null);
 
-        txtCedulaEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtCedulaEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtCedulaEmpleado.setForeground(new java.awt.Color(153, 153, 153));
         txtCedulaEmpleado.setText("Ingrese la cédula del empleado");
         txtCedulaEmpleado.setBorder(null);
 
-        txtSueldoEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtSueldoEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtSueldoEmpleado.setForeground(new java.awt.Color(153, 153, 153));
         txtSueldoEmpleado.setText("Ingrese el sueldo del empleado");
         txtSueldoEmpleado.setBorder(null);

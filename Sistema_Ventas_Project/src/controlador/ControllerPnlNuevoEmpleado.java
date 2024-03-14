@@ -11,8 +11,8 @@ import vista.PnlNuevoEmpleado;
  *
  * @author Jairo Smith Bonilla Hidalgo
  */
-public class ControllerPnlNuevoEmpleado implements MouseListener{
-    
+public class ControllerPnlNuevoEmpleado implements MouseListener {
+
     private final PnlNuevoEmpleado pnlNuevoEmpleado;
     private final UsuarioDAO usuarioDAO;
 
@@ -26,11 +26,14 @@ public class ControllerPnlNuevoEmpleado implements MouseListener{
         this.pnlNuevoEmpleado.getTxtCedulaEmpleado().addMouseListener(this);
         this.pnlNuevoEmpleado.getTxtSueldoEmpleado().addMouseListener(this);
         this.pnlNuevoEmpleado.getPswContraseniaEmpleado().addMouseListener(this);
+        this.pnlNuevoEmpleado.getBtnGuardar().addMouseListener(this);
     }
-    public void iniciar(){
+
+    public void iniciar() {
         cambiarColorTextos();
+        this.pnlNuevoEmpleado.getBtnGuardar().setVisible(false);
     }
-    
+
     public void cambiarColorTextos() {
         pnlNuevoEmpleado.getTxtNombreEmpleado().setBackground(Color.WHITE);
         pnlNuevoEmpleado.getTxtCedulaEmpleado().setBackground(Color.WHITE);
@@ -41,8 +44,8 @@ public class ControllerPnlNuevoEmpleado implements MouseListener{
         pnlNuevoEmpleado.getTxtSueldoEmpleado().setBackground(Color.WHITE);
         pnlNuevoEmpleado.getPswContraseniaEmpleado().setBackground(Color.WHITE);
     }
-    
-        public void mostrarImagenAlertaUsuario() {
+
+    public void mostrarImagenAlertaUsuario() {
         java.net.URL imageURL = getClass().getResource("/img/alert.png");
         if (imageURL != null) {
             ImageIcon icono = new ImageIcon(imageURL);
@@ -137,6 +140,7 @@ public class ControllerPnlNuevoEmpleado implements MouseListener{
             this.pnlNuevoEmpleado.getLblAlertaTelefono().setIcon(icono);
         }
     }
+
     public ImageIcon activarVistoVerde() {
         java.net.URL imageURL = getClass().getResource("/img/greenSeen.png");
         ImageIcon icono = null;
@@ -177,7 +181,7 @@ public class ControllerPnlNuevoEmpleado implements MouseListener{
             mostrarImagenBlancaContraseña();
         }
 
-        if (this.pnlNuevoEmpleado.getTxtTelefonoEmpleado().getText().equals("Ingrese el numero de teléfono") || this.pnlNuevoEmpleado.getTxtTelefonoEmpleado().getText().isEmpty()) {
+        if (this.pnlNuevoEmpleado.getTxtTelefonoEmpleado().getText().equals("Ingrese el número de teléfono") || this.pnlNuevoEmpleado.getTxtTelefonoEmpleado().getText().isEmpty()) {
             mostrarImagenAlertaTelefono();
         } else {
             mostrarImagenBlancaTelefono();
@@ -197,12 +201,303 @@ public class ControllerPnlNuevoEmpleado implements MouseListener{
 
     }
 
+    public void animmacionTextoCedulaEmpleado() {
+        if (pnlNuevoEmpleado.getTxtCedulaEmpleado().getText().equals("Ingrese la cédula del empleado")) {
+            pnlNuevoEmpleado.getTxtCedulaEmpleado().setText("");
+            pnlNuevoEmpleado.getTxtCedulaEmpleado().setForeground(Color.BLACK);
+        }
+
+        if (pnlNuevoEmpleado.getTxtNombreEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtNombreEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtNombreEmpleado().setText("Ingrese el nombre del empleado");
+        }
+
+        if (pnlNuevoEmpleado.getTxtApellidoEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtApellidoEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtApellidoEmpleado().setText("Ingrese el apellido del empleado");
+        }
+
+        if (pnlNuevoEmpleado.getTxtUsuarioEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtUsuarioEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtUsuarioEmpleado().setText("Ingrese el nombre de usuario");
+        }
+
+        if (pnlNuevoEmpleado.getPswContraseniaEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getPswContraseniaEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getPswContraseniaEmpleado().setText("****************************");
+        }
+
+        if (pnlNuevoEmpleado.getTxtTelefonoEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtTelefonoEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtTelefonoEmpleado().setText("Ingrese el número de teléfono");
+        }
+        
+        if (pnlNuevoEmpleado.getTxtSueldoEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtSueldoEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtSueldoEmpleado().setText("Ingrese el sueldo del empleado");
+        }
+    }
+
+    public void animacionTextoNombre() {
+        if (pnlNuevoEmpleado.getTxtNombreEmpleado().getText().equals("Ingrese el nombre del empleado")) {
+            pnlNuevoEmpleado.getTxtNombreEmpleado().setText("");
+            pnlNuevoEmpleado.getTxtNombreEmpleado().setForeground(Color.BLACK);
+        }
+
+        if (pnlNuevoEmpleado.getTxtCedulaEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtCedulaEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtCedulaEmpleado().setText("Ingrese la cédula del empleado");
+        }
+
+        if (pnlNuevoEmpleado.getTxtApellidoEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtApellidoEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtApellidoEmpleado().setText("Ingrese el apellido del empleado");
+        }
+
+        if (pnlNuevoEmpleado.getTxtUsuarioEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtUsuarioEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtUsuarioEmpleado().setText("Ingrese el nombre de usuario");
+        }
+
+        if (pnlNuevoEmpleado.getPswContraseniaEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getPswContraseniaEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getPswContraseniaEmpleado().setText("****************************");
+        }
+
+        if (pnlNuevoEmpleado.getTxtTelefonoEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtTelefonoEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtTelefonoEmpleado().setText("Ingrese el número de teléfono");
+        }
+        
+        if (pnlNuevoEmpleado.getTxtSueldoEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtSueldoEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtSueldoEmpleado().setText("Ingrese el sueldo del empleado");
+        }
+    }
+
+    public void animacionTextoApellido() {
+        if (pnlNuevoEmpleado.getTxtApellidoEmpleado().getText().equals("Ingrese el apellido del empleado")) {
+            pnlNuevoEmpleado.getTxtApellidoEmpleado().setText("");
+            pnlNuevoEmpleado.getTxtApellidoEmpleado().setForeground(Color.BLACK);
+        }
+
+        if (pnlNuevoEmpleado.getTxtNombreEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtNombreEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtNombreEmpleado().setText("Ingrese el nombre del empleado");
+        }
+
+        if (pnlNuevoEmpleado.getTxtCedulaEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtCedulaEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtCedulaEmpleado().setText("Ingrese la cédula del empleado");
+        }
+
+        if (pnlNuevoEmpleado.getTxtUsuarioEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtUsuarioEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtUsuarioEmpleado().setText("Ingrese el nombre de usuario");
+        }
+
+        if (pnlNuevoEmpleado.getPswContraseniaEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getPswContraseniaEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getPswContraseniaEmpleado().setText("****************************");
+        }
+
+        if (pnlNuevoEmpleado.getTxtTelefonoEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtTelefonoEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtTelefonoEmpleado().setText("Ingrese el número de teléfono");
+        }
+        
+        if (pnlNuevoEmpleado.getTxtSueldoEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtSueldoEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtSueldoEmpleado().setText("Ingrese el sueldo del empleado");
+        }
+    }
+
+    public void animacionTextoTelefono() {
+        if (pnlNuevoEmpleado.getTxtTelefonoEmpleado().getText().equals("Ingrese el número de teléfono")) {
+            pnlNuevoEmpleado.getTxtTelefonoEmpleado().setText("");
+            pnlNuevoEmpleado.getTxtTelefonoEmpleado().setForeground(Color.BLACK);
+        }
+
+        if (pnlNuevoEmpleado.getTxtNombreEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtNombreEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtNombreEmpleado().setText("Ingrese el nombre del empleado");
+        }
+
+        if (pnlNuevoEmpleado.getTxtCedulaEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtCedulaEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtCedulaEmpleado().setText("Ingrese la cédula del empleado");
+        }
+
+        if (pnlNuevoEmpleado.getTxtUsuarioEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtUsuarioEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtUsuarioEmpleado().setText("Ingrese el nombre de usuario");
+        }
+
+        if (pnlNuevoEmpleado.getPswContraseniaEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getPswContraseniaEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getPswContraseniaEmpleado().setText("****************************");
+        }
+
+        if (pnlNuevoEmpleado.getTxtApellidoEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtApellidoEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtApellidoEmpleado().setText("Ingrese el apellido del empleado");
+        }
+        
+        if (pnlNuevoEmpleado.getTxtSueldoEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtSueldoEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtSueldoEmpleado().setText("Ingrese el sueldo del empleado");
+        }
+    }
+
+    public void animacionTextoUsuario() {
+        if (pnlNuevoEmpleado.getTxtUsuarioEmpleado().getText().equals("Ingrese el nombre de usuario")) {
+            pnlNuevoEmpleado.getTxtUsuarioEmpleado().setText("");
+            pnlNuevoEmpleado.getTxtUsuarioEmpleado().setForeground(Color.BLACK);
+        }
+        
+        if (pnlNuevoEmpleado.getTxtTelefonoEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtTelefonoEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtTelefonoEmpleado().setText("Ingrese el número de teléfono");
+        }
+
+        if (pnlNuevoEmpleado.getTxtNombreEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtNombreEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtNombreEmpleado().setText("Ingrese el nombre del empleado");
+        }
+
+        if (pnlNuevoEmpleado.getTxtCedulaEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtCedulaEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtCedulaEmpleado().setText("Ingrese la cédula del empleado");
+        }
+
+        if (pnlNuevoEmpleado.getPswContraseniaEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getPswContraseniaEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getPswContraseniaEmpleado().setText("****************************");
+        }
+
+        if (pnlNuevoEmpleado.getTxtApellidoEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtApellidoEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtApellidoEmpleado().setText("Ingrese el apellido del empleado");
+        }
+
+        if (pnlNuevoEmpleado.getTxtSueldoEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtSueldoEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtSueldoEmpleado().setText("Ingrese el sueldo del empleado");
+        }
+    }
+
+    public void animacionTextoSueldo() {
+        if (pnlNuevoEmpleado.getTxtSueldoEmpleado().getText().equals("Ingrese el sueldo del empleado")) {
+            pnlNuevoEmpleado.getTxtSueldoEmpleado().setText("");
+            pnlNuevoEmpleado.getTxtSueldoEmpleado().setForeground(Color.BLACK);
+        }
+
+        if (pnlNuevoEmpleado.getTxtNombreEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtNombreEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtNombreEmpleado().setText("Ingrese el nombre del empleado");
+        }
+
+        if (pnlNuevoEmpleado.getTxtCedulaEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtCedulaEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtCedulaEmpleado().setText("Ingrese la cédula del empleado");
+        }
+
+        if (pnlNuevoEmpleado.getTxtUsuarioEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtUsuarioEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtUsuarioEmpleado().setText("Ingrese el nombre de usuario");
+        }
+
+        if (pnlNuevoEmpleado.getPswContraseniaEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getPswContraseniaEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getPswContraseniaEmpleado().setText("****************************");
+        }
+
+        if (pnlNuevoEmpleado.getTxtApellidoEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtApellidoEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtApellidoEmpleado().setText("Ingrese el apellido del empleado");
+        }
+        
+        if (pnlNuevoEmpleado.getTxtTelefonoEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtTelefonoEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtTelefonoEmpleado().setText("Ingrese el número de teléfono");
+        }
+    }
+
+    public void animacionTextoContrasenia() {
+        if (pnlNuevoEmpleado.getPswContraseniaEmpleado().getText().equals("****************************")) {
+            pnlNuevoEmpleado.getPswContraseniaEmpleado().setText("");
+            pnlNuevoEmpleado.getPswContraseniaEmpleado().setForeground(Color.BLACK);
+        }
+        
+        if (pnlNuevoEmpleado.getTxtSueldoEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtSueldoEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtSueldoEmpleado().setText("Ingrese el sueldo del empleado");
+        }
+        
+        if (pnlNuevoEmpleado.getTxtTelefonoEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtTelefonoEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtTelefonoEmpleado().setText("Ingrese el número de teléfono");
+        }
+
+        if (pnlNuevoEmpleado.getTxtNombreEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtNombreEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtNombreEmpleado().setText("Ingrese el nombre del empleado");
+        }
+
+        if (pnlNuevoEmpleado.getTxtCedulaEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtCedulaEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtCedulaEmpleado().setText("Ingrese la cédula del empleado");
+        }
+
+        if (pnlNuevoEmpleado.getTxtUsuarioEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtUsuarioEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtUsuarioEmpleado().setText("Ingrese el nombre de usuario");
+        }
+
+        if (pnlNuevoEmpleado.getTxtApellidoEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtApellidoEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtApellidoEmpleado().setText("Ingrese el apellido del empleado");
+        }
+        
+        if (pnlNuevoEmpleado.getTxtApellidoEmpleado().getText().isEmpty()) {
+            pnlNuevoEmpleado.getTxtApellidoEmpleado().setForeground(Color.GRAY);
+            pnlNuevoEmpleado.getTxtApellidoEmpleado().setText("Ingrese el apellido del empleado");
+        }
+    }
+
     @Override
     public void mouseClicked(MouseEvent e) {
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
+        if (e.getSource() == pnlNuevoEmpleado.getTxtNombreEmpleado()) {
+            animacionTextoNombre();
+        }
+
+        if (e.getSource() == pnlNuevoEmpleado.getTxtApellidoEmpleado()) {
+            animacionTextoApellido();
+        }
+
+        if (e.getSource() == pnlNuevoEmpleado.getTxtUsuarioEmpleado()) {
+            animacionTextoUsuario();
+        }
+
+        if (e.getSource() == pnlNuevoEmpleado.getTxtTelefonoEmpleado()) {
+            animacionTextoTelefono();
+        }
+
+        if (e.getSource() == pnlNuevoEmpleado.getTxtCedulaEmpleado()) {
+            animmacionTextoCedulaEmpleado();
+        }
+
+        if (e.getSource() == pnlNuevoEmpleado.getTxtSueldoEmpleado()) {
+            animacionTextoSueldo();
+        }
+
+        if (e.getSource() == pnlNuevoEmpleado.getPswContraseniaEmpleado()) {
+            animacionTextoContrasenia();
+        }
     }
 
     @Override
@@ -216,6 +511,5 @@ public class ControllerPnlNuevoEmpleado implements MouseListener{
     @Override
     public void mouseExited(MouseEvent e) {
     }
-    
-    
+
 }
