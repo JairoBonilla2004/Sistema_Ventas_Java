@@ -19,8 +19,8 @@ import vista.PnlNuevoAdministrador;
 public final class ControllerNuevoAdministrador implements MouseListener, KeyListener {
 
     private final PnlNuevoAdministrador pnlNuevoAdministrador;
-    private AdministradorDAO administradorDAO;
-    private Administrador administrador;
+    private final AdministradorDAO administradorDAO;
+    private final Administrador administrador;
 
     public ControllerNuevoAdministrador(PnlNuevoAdministrador pnlNuevoAdministrador, AdministradorDAO administradorDAO, Administrador administrador) {
         this.pnlNuevoAdministrador = pnlNuevoAdministrador;
