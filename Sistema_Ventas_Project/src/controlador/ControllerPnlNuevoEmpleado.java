@@ -529,8 +529,8 @@ public class ControllerPnlNuevoEmpleado implements MouseListener, KeyListener {
         String telefono = pnlNuevoEmpleado.getTxtTelefonoEmpleado().getText();
         Usuario usuario = new Usuario(pnlNuevoEmpleado.getTxtNombreEmpleado().getText(), pnlNuevoEmpleado.getTxtApellidoEmpleado().getText(), pnlNuevoEmpleado.getTxtUsuarioEmpleado().getText(), pnlNuevoEmpleado.getPswContraseniaEmpleado().getText(), telefono);
         usuario.setCedula(pnlNuevoEmpleado.getTxtCedulaEmpleado().getText());
-        boolean usuarioExistente = usuarioDAO.verificarPersonaExistente("usuario", pnlNuevoEmpleado.getTxtUsuarioEmpleado().getText());
-        boolean administradorExistente = administradorDAO.verificarPersonaExistente("administrador", pnlNuevoEmpleado.getTxtUsuarioEmpleado().getText());
+        boolean usuarioExistente = usuarioDAO.verificarPersonaExistente("usuario", pnlNuevoEmpleado.getTxtUsuarioEmpleado().getText().trim());
+        boolean administradorExistente = administradorDAO.verificarPersonaExistente("administrador", pnlNuevoEmpleado.getTxtUsuarioEmpleado().getText().trim());
         if ((usuarioExistente == true) || (administradorExistente == true)) {
             JOptionPane.showMessageDialog(null, "ESTE NOMBRE DE USUARIO YA ESTÁ REGISTRADO EN USUARIOS O ADMINISTRADORES\n               DIGITE OTRO NOMBRE DE USUARIO!", "MESSAGE", JOptionPane.ERROR_MESSAGE);
             pnlNuevoEmpleado.getTxtUsuarioEmpleado().setForeground(Color.GRAY);
@@ -614,6 +614,73 @@ public class ControllerPnlNuevoEmpleado implements MouseListener, KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
+        if(e.getSource() == pnlNuevoEmpleado.getTxtNombreEmpleado()){
+            char c = e.getKeyChar();
+            if (!Character.isLetter(c) && c != 8) {
+                e.consume();
+                pnlNuevoEmpleado.getLblTextoAlertaEmpleado().setForeground(Color.red);
+                pnlNuevoEmpleado.getLblTextoAlertaEmpleado().setText("Solo se permiten caracteres");
+
+            } else {
+                pnlNuevoEmpleado.getLblTextoAlertaEmpleado().setText("");
+            }
+        }
+        
+        if(e.getSource() == pnlNuevoEmpleado.getTxtApellidoEmpleado()){
+            char c = e.getKeyChar();
+            if (!Character.isLetter(c) && c != 8) {
+                e.consume();
+                pnlNuevoEmpleado.getLblTextoApellido().setForeground(Color.red);
+                pnlNuevoEmpleado.getLblTextoApellido().setText("Solo se permiten caracteres");
+            } else {
+                pnlNuevoEmpleado.getLblTextoApellido().setText("");
+            }
+        }
+        
+        if(e.getSource() == pnlNuevoEmpleado.getTxtCedulaEmpleado()){
+            char c = e.getKeyChar();
+            if (!Character.isDigit(c) && c != 8) {
+                e.consume();
+                pnlNuevoEmpleado.getLblTextoAlertaCedula().setForeground(Color.red);
+                pnlNuevoEmpleado.getLblTextoAlertaCedula().setText("Solo se permiten dígitos");
+                mostrarImagenAlertaCedulaEmpleado();
+            } else {
+                pnlNuevoEmpleado.getLblTextoAlertaCedula().setText("");
+                mostrarImagenBlancaCedulaEmpleado();
+                if (pnlNuevoEmpleado.getTxtCedulaEmpleado().getText().length() >= 10) {
+                    e.consume();
+                    pnlNuevoEmpleado.getLblTextoAlertaCedula().setForeground(Color.red);
+                    pnlNuevoEmpleado.getLblTextoAlertaCedula().setText("La cédula debe tener solo 10 dígitos");
+                    mostrarImagenAlertaCedulaEmpleado();
+                } else {
+                    mostrarImagenBlancaCedulaEmpleado();
+                }
+            }
+            
+        }
+        
+        if (e.getSource() == pnlNuevoEmpleado.getTxtTelefonoEmpleado()) {
+            char c = e.getKeyChar();
+            if (!Character.isDigit(c) && c != 8) {
+                e.consume();
+                pnlNuevoEmpleado.getLblAlertaTextoTelefono().setForeground(Color.red);
+                pnlNuevoEmpleado.getLblAlertaTextoTelefono().setText("Solo se permiten dígitos");
+            } else {
+                pnlNuevoEmpleado.getLblAlertaTextoTelefono().setText("");
+                if (pnlNuevoEmpleado.getTxtTelefonoEmpleado().getText().length() >= 10) {
+                    e.consume();
+                    pnlNuevoEmpleado.getLblAlertaTextoTelefono().setForeground(Color.red);
+                    pnlNuevoEmpleado.getLblAlertaTextoTelefono().setText("La teléfono debe tener solo 10 dígitos");
+                }
+            }
+        }
+        
+        if (e.getSource() == pnlNuevoEmpleado.getTxtSueldoEmpleado()) {
+            char c = e.getKeyChar();
+            if (Character.isSpaceChar(c)) {
+                e.consume();
+            }
+        }
     }
 
     @Override

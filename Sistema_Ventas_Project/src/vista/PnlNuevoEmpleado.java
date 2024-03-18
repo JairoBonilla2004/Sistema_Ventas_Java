@@ -85,6 +85,24 @@ public class PnlNuevoEmpleado extends javax.swing.JPanel {
     public JLabel getLblAlertaTextoSueldo() {
         return lblAlertaTextoSueldo;
     }
+
+    public JLabel getLblTextoAlertaEmpleado() {
+        return lblTextoAlertaEmpleado;
+    }
+
+    public JLabel getLblTextoApellido() {
+        return lblTextoApellido;
+    }
+
+    public JLabel getLblTextoAlertaCedula() {
+        return lblTextoAlertaCedula;
+    }
+
+    public JLabel getLblAlertaTextoTelefono() {
+        return lblAlertaTextoTelefono;
+    }
+    
+    
     
     
 
@@ -129,6 +147,10 @@ public class PnlNuevoEmpleado extends javax.swing.JPanel {
         pswContraseniaEmpleado = new javax.swing.JPasswordField();
         btnGuardar = new javax.swing.JButton();
         lblAlertaTextoSueldo = new javax.swing.JLabel();
+        lblTextoAlertaEmpleado = new javax.swing.JLabel();
+        lblTextoApellido = new javax.swing.JLabel();
+        lblTextoAlertaCedula = new javax.swing.JLabel();
+        lblAlertaTextoTelefono = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -261,6 +283,10 @@ public class PnlNuevoEmpleado extends javax.swing.JPanel {
 
         lblAlertaTextoSueldo.setForeground(new java.awt.Color(255, 0, 0));
         jPanel1.add(lblAlertaTextoSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, 280, -1));
+        jPanel1.add(lblTextoAlertaEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 166, 290, 20));
+        jPanel1.add(lblTextoApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 274, 290, -1));
+        jPanel1.add(lblTextoAlertaCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, 300, 20));
+        jPanel1.add(lblAlertaTextoTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 290, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -299,8 +325,12 @@ public class PnlNuevoEmpleado extends javax.swing.JPanel {
     private javax.swing.JLabel lblAlertaSueldo;
     private javax.swing.JLabel lblAlertaTelefono;
     private javax.swing.JLabel lblAlertaTextoSueldo;
+    private javax.swing.JLabel lblAlertaTextoTelefono;
     private javax.swing.JLabel lblAlertaUsuario;
     private javax.swing.JLabel lblCedulaEmpleado;
+    private javax.swing.JLabel lblTextoAlertaCedula;
+    private javax.swing.JLabel lblTextoAlertaEmpleado;
+    private javax.swing.JLabel lblTextoApellido;
     private javax.swing.JPasswordField pswContraseniaEmpleado;
     private javax.swing.JTextField txtApellidoEmpleado;
     private javax.swing.JTextField txtCedulaEmpleado;
