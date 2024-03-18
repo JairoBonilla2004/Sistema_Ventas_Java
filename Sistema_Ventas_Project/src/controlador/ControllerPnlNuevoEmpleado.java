@@ -564,13 +564,61 @@ public class ControllerPnlNuevoEmpleado implements MouseListener, KeyListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(e.getSource() == pnlNuevoEmpleado.getBtnGuardar()){
+        if (e.getSource() == pnlNuevoEmpleado.getBtnGuardar()) {
             enviarDatosDb();
         }
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
+        if (e.getSource() == pnlNuevoEmpleado.getTxtApellidoEmpleado()) {
+            pnlNuevoEmpleado.getLblTextoAlertaEmpleado().setText("");
+            pnlNuevoEmpleado.getLblTextoApellido().setText("");
+            pnlNuevoEmpleado.getLblTextoAlertaCedula().setText("");
+            pnlNuevoEmpleado.getLblAlertaTextoTelefono().setText("");
+            pnlNuevoEmpleado.getLblAlertaTextoSueldo().setText("");
+        }
+
+        if (e.getSource() == pnlNuevoEmpleado.getTxtNombreEmpleado()) {
+            pnlNuevoEmpleado.getLblTextoAlertaEmpleado().setText("");
+            pnlNuevoEmpleado.getLblTextoApellido().setText("");
+            pnlNuevoEmpleado.getLblTextoAlertaCedula().setText("");
+            pnlNuevoEmpleado.getLblAlertaTextoTelefono().setText("");
+            pnlNuevoEmpleado.getLblAlertaTextoSueldo().setText("");
+        }
+
+        if (e.getSource() == pnlNuevoEmpleado.getTxtUsuarioEmpleado()) {
+            pnlNuevoEmpleado.getLblTextoAlertaEmpleado().setText("");
+            pnlNuevoEmpleado.getLblTextoApellido().setText("");
+            pnlNuevoEmpleado.getLblTextoAlertaCedula().setText("");
+            pnlNuevoEmpleado.getLblAlertaTextoTelefono().setText("");
+            pnlNuevoEmpleado.getLblAlertaTextoSueldo().setText("");
+        }
+
+        if (e.getSource() == pnlNuevoEmpleado.getTxtCedulaEmpleado()) {
+            pnlNuevoEmpleado.getLblTextoAlertaEmpleado().setText("");
+            pnlNuevoEmpleado.getLblTextoApellido().setText("");
+            pnlNuevoEmpleado.getLblTextoAlertaCedula().setText("");
+            pnlNuevoEmpleado.getLblAlertaTextoTelefono().setText("");
+            pnlNuevoEmpleado.getLblAlertaTextoSueldo().setText("");
+        }
+
+        if (e.getSource() == pnlNuevoEmpleado.getTxtSueldoEmpleado()) {
+            pnlNuevoEmpleado.getLblTextoAlertaEmpleado().setText("");
+            pnlNuevoEmpleado.getLblTextoApellido().setText("");
+            pnlNuevoEmpleado.getLblTextoAlertaCedula().setText("");
+            pnlNuevoEmpleado.getLblAlertaTextoTelefono().setText("");
+            pnlNuevoEmpleado.getLblAlertaTextoSueldo().setText("");
+        }
+
+        if (e.getSource() == pnlNuevoEmpleado.getPswContraseniaEmpleado()) {
+            pnlNuevoEmpleado.getLblTextoAlertaEmpleado().setText("");
+            pnlNuevoEmpleado.getLblTextoApellido().setText("");
+            pnlNuevoEmpleado.getLblTextoAlertaCedula().setText("");
+            pnlNuevoEmpleado.getLblAlertaTextoTelefono().setText("");
+            pnlNuevoEmpleado.getLblAlertaTextoSueldo().setText("");
+        }
+
         if (e.getSource() == pnlNuevoEmpleado.getTxtNombreEmpleado()) {
             animacionTextoNombre();
         }
@@ -614,7 +662,7 @@ public class ControllerPnlNuevoEmpleado implements MouseListener, KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
-        if(e.getSource() == pnlNuevoEmpleado.getTxtNombreEmpleado()){
+        if (e.getSource() == pnlNuevoEmpleado.getTxtNombreEmpleado()) {
             char c = e.getKeyChar();
             if (!Character.isLetter(c) && c != 8) {
                 e.consume();
@@ -625,8 +673,8 @@ public class ControllerPnlNuevoEmpleado implements MouseListener, KeyListener {
                 pnlNuevoEmpleado.getLblTextoAlertaEmpleado().setText("");
             }
         }
-        
-        if(e.getSource() == pnlNuevoEmpleado.getTxtApellidoEmpleado()){
+
+        if (e.getSource() == pnlNuevoEmpleado.getTxtApellidoEmpleado()) {
             char c = e.getKeyChar();
             if (!Character.isLetter(c) && c != 8) {
                 e.consume();
@@ -636,8 +684,8 @@ public class ControllerPnlNuevoEmpleado implements MouseListener, KeyListener {
                 pnlNuevoEmpleado.getLblTextoApellido().setText("");
             }
         }
-        
-        if(e.getSource() == pnlNuevoEmpleado.getTxtCedulaEmpleado()){
+
+        if (e.getSource() == pnlNuevoEmpleado.getTxtCedulaEmpleado()) {
             char c = e.getKeyChar();
             if (!Character.isDigit(c) && c != 8) {
                 e.consume();
@@ -656,9 +704,9 @@ public class ControllerPnlNuevoEmpleado implements MouseListener, KeyListener {
                     mostrarImagenBlancaCedulaEmpleado();
                 }
             }
-            
+
         }
-        
+
         if (e.getSource() == pnlNuevoEmpleado.getTxtTelefonoEmpleado()) {
             char c = e.getKeyChar();
             if (!Character.isDigit(c) && c != 8) {
@@ -674,7 +722,7 @@ public class ControllerPnlNuevoEmpleado implements MouseListener, KeyListener {
                 }
             }
         }
-        
+
         if (e.getSource() == pnlNuevoEmpleado.getTxtSueldoEmpleado()) {
             char c = e.getKeyChar();
             if (Character.isSpaceChar(c)) {
