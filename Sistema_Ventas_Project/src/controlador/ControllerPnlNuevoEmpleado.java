@@ -511,6 +511,7 @@ public class ControllerPnlNuevoEmpleado implements MouseListener, KeyListener {
         pnlNuevoEmpleado.getTxtTelefonoEmpleado().setForeground(Color.GRAY);
         pnlNuevoEmpleado.getPswContraseniaEmpleado().setForeground(Color.GRAY);
         pnlNuevoEmpleado.getTxtCedulaEmpleado().setForeground(Color.GRAY);
+        pnlNuevoEmpleado.getTxtSueldoEmpleado().setForeground(Color.GRAY);
     }
 
     public void vaciarCampos() {

@@ -13,12 +13,12 @@ import javax.swing.JTextField;
  *
  * @author Jairo Smith Bonilla Hidalgo
  */
-public class PnlNuevoEmpleado extends javax.swing.JPanel {
+public class PnlActualizarEmpleados extends javax.swing.JPanel {
 
     /**
      * Creates new form PnlNuevoEmpleado
      */
-    public PnlNuevoEmpleado() {
+    public PnlActualizarEmpleados() {
         initComponents();
     }
 
@@ -156,7 +156,7 @@ public class PnlNuevoEmpleado extends javax.swing.JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
-        jLabel8.setText("NUEVO EMPLEADO");
+        jLabel8.setText("ACTUALIZAR EMPLEADO");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
