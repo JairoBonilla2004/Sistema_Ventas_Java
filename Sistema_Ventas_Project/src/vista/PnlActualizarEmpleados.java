@@ -127,13 +127,10 @@ public class PnlActualizarEmpleados extends javax.swing.JPanel {
         lblAlertaApellido = new javax.swing.JLabel();
         lblAlertaUsuario = new javax.swing.JLabel();
         lblAlertaTelefono = new javax.swing.JLabel();
-        lblAlertaContraseña = new javax.swing.JLabel();
         lblCedulaEmpleado = new javax.swing.JLabel();
         jSeparator7 = new javax.swing.JSeparator();
-        jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jSeparator8 = new javax.swing.JSeparator();
@@ -144,13 +141,13 @@ public class PnlActualizarEmpleados extends javax.swing.JPanel {
         txtTelefonoEmpleado = new javax.swing.JTextField();
         txtCedulaEmpleado = new javax.swing.JTextField();
         txtSueldoEmpleado = new javax.swing.JTextField();
-        pswContraseniaEmpleado = new javax.swing.JPasswordField();
         btnGuardar = new javax.swing.JButton();
         lblAlertaTextoSueldo = new javax.swing.JLabel();
         lblTextoAlertaEmpleado = new javax.swing.JLabel();
         lblTextoApellido = new javax.swing.JLabel();
         lblTextoAlertaCedula = new javax.swing.JLabel();
         lblAlertaTextoTelefono = new javax.swing.JLabel();
+        btnGuardar1 = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -192,17 +189,11 @@ public class PnlActualizarEmpleados extends javax.swing.JPanel {
         lblAlertaTelefono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alert.png"))); // NOI18N
         jPanel1.add(lblAlertaTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 480, 20, 20));
 
-        lblAlertaContraseña.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alert.png"))); // NOI18N
-        jPanel1.add(lblAlertaContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 360, 20, 20));
-
         lblCedulaEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alert.png"))); // NOI18N
         jPanel1.add(lblCedulaEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 130, 20, 20));
 
         jSeparator7.setForeground(new java.awt.Color(51, 153, 255));
         jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, 290, 20));
-
-        jSeparator5.setForeground(new java.awt.Color(51, 153, 255));
-        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, 290, 20));
 
         jSeparator6.setForeground(new java.awt.Color(51, 153, 255));
         jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 290, 20));
@@ -210,10 +201,6 @@ public class PnlActualizarEmpleados extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setText("TELEFONO");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel5.setText("CONTRASEÑA");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel7.setText("CÉDULA");
@@ -265,21 +252,16 @@ public class PnlActualizarEmpleados extends javax.swing.JPanel {
         txtSueldoEmpleado.setBorder(null);
         jPanel1.add(txtSueldoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 290, 20));
 
-        pswContraseniaEmpleado.setForeground(new java.awt.Color(153, 153, 153));
-        pswContraseniaEmpleado.setText("****************************");
-        pswContraseniaEmpleado.setBorder(null);
-        jPanel1.add(pswContraseniaEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 360, 290, 20));
-
         btnGuardar.setBackground(new java.awt.Color(21, 101, 192));
-        btnGuardar.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        btnGuardar.setFont(new java.awt.Font("Segoe UI Black", 1, 20)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-actualizar-25.png"))); // NOI18N
-        btnGuardar.setText("GUARDAR");
+        btnGuardar.setText("CAMBIAR CONTRASEÑA");
         btnGuardar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         btnGuardar.setBorderPainted(false);
         btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGuardar.setIconTextGap(15);
-        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, 300, 60));
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, 320, 70));
 
         lblAlertaTextoSueldo.setForeground(new java.awt.Color(255, 0, 0));
         jPanel1.add(lblAlertaTextoSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, 280, -1));
@@ -287,6 +269,17 @@ public class PnlActualizarEmpleados extends javax.swing.JPanel {
         jPanel1.add(lblTextoApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 274, 290, -1));
         jPanel1.add(lblTextoAlertaCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, 300, 20));
         jPanel1.add(lblAlertaTextoTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 290, 20));
+
+        btnGuardar1.setBackground(new java.awt.Color(21, 101, 192));
+        btnGuardar1.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        btnGuardar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-actualizar-25.png"))); // NOI18N
+        btnGuardar1.setText("GUARDAR");
+        btnGuardar1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnGuardar1.setBorderPainted(false);
+        btnGuardar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardar1.setIconTextGap(15);
+        jPanel1.add(btnGuardar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 430, 320, 70));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -303,10 +296,10 @@ public class PnlActualizarEmpleados extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnGuardar1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -315,12 +308,10 @@ public class PnlActualizarEmpleados extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JLabel lblAlertaApellido;
-    private javax.swing.JLabel lblAlertaContraseña;
     private javax.swing.JLabel lblAlertaNombre;
     private javax.swing.JLabel lblAlertaSueldo;
     private javax.swing.JLabel lblAlertaTelefono;
@@ -331,7 +322,6 @@ public class PnlActualizarEmpleados extends javax.swing.JPanel {
     private javax.swing.JLabel lblTextoAlertaCedula;
     private javax.swing.JLabel lblTextoAlertaEmpleado;
     private javax.swing.JLabel lblTextoApellido;
-    private javax.swing.JPasswordField pswContraseniaEmpleado;
     private javax.swing.JTextField txtApellidoEmpleado;
     private javax.swing.JTextField txtCedulaEmpleado;
     private javax.swing.JTextField txtNombreEmpleado;
