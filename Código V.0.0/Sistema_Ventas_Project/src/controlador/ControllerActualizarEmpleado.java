@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.ImageIcon;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
 import vista.PnlActualizarEmpleados;
@@ -41,6 +42,7 @@ public class ControllerActualizarEmpleado implements MouseListener, KeyListener 
         extrarDatosEmpleado(cedula);
         mostrarLetrasNegras();
         cambiarBackground();
+        validarDatos();
     }
 
     public void mostrarLetrasNegras() {
@@ -354,6 +356,166 @@ public class ControllerActualizarEmpleado implements MouseListener, KeyListener 
         }
 
     }
+    
+    
+    public void validarDatos() {
+        if (this.pnlActualizarEmpleados.getTxtNombreEmpleado().getText().equals("Ingrese el nombre del empleado") || this.pnlActualizarEmpleados.getTxtNombreEmpleado().getText().isBlank()) {
+            mostrarImagenAlertaNombre();
+        } else {
+            mostrarImagenBlancaNombre();
+        }
+
+        if (this.pnlActualizarEmpleados.getTxtApellidoEmpleado().getText().equals("Ingrese el apellido del empleado") || this.pnlActualizarEmpleados.getTxtApellidoEmpleado().getText().isBlank()) {
+            mostrarImagenAlertaApellido();
+        } else {
+            mostrarImagenBlancaApellido();
+        }
+
+        if (this.pnlActualizarEmpleados.getTxtUsuarioEmpleado().getText().equals("Ingrese el nombre de usuario") || this.pnlActualizarEmpleados.getTxtUsuarioEmpleado().getText().isBlank()) {
+            mostrarImagenAlertaUsuario();
+        } else {
+            mostrarImagenBlancaUsuario();
+        }
+
+        if (this.pnlActualizarEmpleados.getTxtTelefonoEmpleado().getText().equals("Ingrese el número de teléfono") || this.pnlActualizarEmpleados.getTxtTelefonoEmpleado().getText().isBlank()) {
+            mostrarImagenAlertaTelefono();
+        } else {
+            mostrarImagenBlancaTelefono();
+        }
+
+        if (this.pnlActualizarEmpleados.getTxtCedulaEmpleado().getText().equals("Ingrese la cédula del empleado") || this.pnlActualizarEmpleados.getTxtCedulaEmpleado().getText().isBlank()) {
+            mostrarImagenAlertaCedulaEmpleado();
+        } else {
+            mostrarImagenBlancaCedulaEmpleado();
+        }
+
+        if (this.pnlActualizarEmpleados.getTxtSueldoEmpleado().getText().equals("Ingrese el sueldo del empleado") || this.pnlActualizarEmpleados.getTxtSueldoEmpleado().getText().isBlank()) {
+            mostrarImagenAlertaSueldo();
+        } else {
+            mostrarImagenBlancaSueldo();
+        }
+
+
+        if (this.pnlActualizarEmpleados.getTxtNombreEmpleado().getText().equals("Ingrese el nombre del empleado") || this.pnlActualizarEmpleados.getTxtNombreEmpleado().getText().isBlank()
+                || this.pnlActualizarEmpleados.getTxtApellidoEmpleado().getText().equals("Ingrese el apellido del empleado") || this.pnlActualizarEmpleados.getTxtApellidoEmpleado().getText().isBlank()
+                || this.pnlActualizarEmpleados.getTxtUsuarioEmpleado().getText().equals("Ingrese el nombre de usuario") || this.pnlActualizarEmpleados.getTxtUsuarioEmpleado().getText().isBlank()
+                || this.pnlActualizarEmpleados.getTxtTelefonoEmpleado().getText().equals("Ingrese el número de teléfono") || this.pnlActualizarEmpleados.getTxtTelefonoEmpleado().getText().isBlank()
+                || this.pnlActualizarEmpleados.getTxtCedulaEmpleado().getText().equals("Ingrese la cédula del empleado") || this.pnlActualizarEmpleados.getTxtCedulaEmpleado().getText().isBlank()
+                || this.pnlActualizarEmpleados.getTxtSueldoEmpleado().getText().equals("Ingrese el sueldo del empleado") || this.pnlActualizarEmpleados.getTxtSueldoEmpleado().getText().isBlank()
+                || !pnlActualizarEmpleados.getLblAlertaTextoSueldo().getText().isEmpty()) {
+            this.pnlActualizarEmpleados.getBtnGuardar().setEnabled(false);
+
+        } else {
+            this.pnlActualizarEmpleados.getBtnGuardar().setEnabled(true);
+        }
+
+    }
+    
+        public void mostrarImagenAlertaUsuario() {
+        java.net.URL imageURL = getClass().getResource("/img/alert.png");
+        if (imageURL != null) {
+            ImageIcon icono = new ImageIcon(imageURL);
+            this.pnlActualizarEmpleados.getLblAlertaUsuario().setIcon(icono);
+        }
+    }
+
+    public void mostrarImagenBlancaUsuario() {
+        java.net.URL imageURL = getClass().getResource("/img/whiteSeen.png");
+        if (imageURL != null) {
+            ImageIcon icono = new ImageIcon(imageURL);
+            this.pnlActualizarEmpleados.getLblAlertaUsuario().setIcon(icono);
+        }
+    }
+
+    public void mostrarImagenAlertaCedulaEmpleado() {
+        java.net.URL imageURL = getClass().getResource("/img/alert.png");
+        if (imageURL != null) {
+            ImageIcon icono = new ImageIcon(imageURL);
+            this.pnlActualizarEmpleados.getLblCedulaEmpleado().setIcon(icono);
+        }
+    }
+
+    public void mostrarImagenBlancaCedulaEmpleado() {
+        java.net.URL imageURL = getClass().getResource("/img/whiteSeen.png");
+        if (imageURL != null) {
+            ImageIcon icono = new ImageIcon(imageURL);
+            this.pnlActualizarEmpleados.getLblCedulaEmpleado().setIcon(icono);
+        }
+    }
+
+    public void mostrarImagenAlertaNombre() {
+        java.net.URL imageURL = getClass().getResource("/img/alert.png");
+        if (imageURL != null) {
+            ImageIcon icono = new ImageIcon(imageURL);
+            this.pnlActualizarEmpleados.getLblAlertaNombre().setIcon(icono);
+        }
+    }
+
+    public void mostrarImagenBlancaNombre() {
+        java.net.URL imageURL = getClass().getResource("/img/whiteSeen.png");
+        if (imageURL != null) {
+            ImageIcon icono = new ImageIcon(imageURL);
+            this.pnlActualizarEmpleados.getLblAlertaNombre().setIcon(icono);
+        }
+    }
+
+    public void mostrarImagenAlertaApellido() {
+        java.net.URL imageURL = getClass().getResource("/img/alert.png");
+        if (imageURL != null) {
+            ImageIcon icono = new ImageIcon(imageURL);
+            this.pnlActualizarEmpleados.getLblAlertaApellido().setIcon(icono);
+        }
+    }
+
+    public void mostrarImagenBlancaApellido() {
+        java.net.URL imageURL = getClass().getResource("/img/whiteSeen.png");
+        if (imageURL != null) {
+            ImageIcon icono = new ImageIcon(imageURL);
+            this.pnlActualizarEmpleados.getLblAlertaApellido().setIcon(icono);
+        }
+    }
+
+    public void mostrarImagenAlertaTelefono() {
+        java.net.URL imageURL = getClass().getResource("/img/alert.png");
+        if (imageURL != null) {
+            ImageIcon icono = new ImageIcon(imageURL);
+            this.pnlActualizarEmpleados.getLblAlertaTelefono().setIcon(icono);
+        }
+    }
+
+    public void mostrarImagenBlancaTelefono() {
+        java.net.URL imageURL = getClass().getResource("/img/whiteSeen.png");
+        if (imageURL != null) {
+            ImageIcon icono = new ImageIcon(imageURL);
+            this.pnlActualizarEmpleados.getLblAlertaTelefono().setIcon(icono);
+        }
+    }
+
+    public void mostrarImagenAlertaSueldo() {
+        java.net.URL imageURL = getClass().getResource("/img/alert.png");
+        if (imageURL != null) {
+            ImageIcon icono = new ImageIcon(imageURL);
+            this.pnlActualizarEmpleados.getLblAlertaSueldo().setIcon(icono);
+        }
+    }
+
+    public void mostrarImagenBlancaSueldo() {
+        java.net.URL imageURL = getClass().getResource("/img/whiteSeen.png");
+        if (imageURL != null) {
+            ImageIcon icono = new ImageIcon(imageURL);
+            this.pnlActualizarEmpleados.getLblAlertaSueldo().setIcon(icono);
+        }
+    }
+
+    public ImageIcon activarVistoVerde() {
+        java.net.URL imageURL = getClass().getResource("/img/greenSeen.png");
+        ImageIcon icono = null;
+        if (imageURL != null) {
+            icono = new ImageIcon(imageURL);
+        }
+        return icono;
+    }
+
 
     @Override
     public void mouseReleased(MouseEvent e) {
