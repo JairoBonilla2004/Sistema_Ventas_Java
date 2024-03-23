@@ -94,6 +94,11 @@ public class PnlActualizarEmpleados extends javax.swing.JPanel {
     public JLabel getLblAlertaTextoTelefono() {
         return lblAlertaTextoTelefono;
     }
+
+    public JLabel getLblTextoSueldo() {
+        return lblTextoSueldo;
+    }
+    
     
     
     
@@ -141,6 +146,7 @@ public class PnlActualizarEmpleados extends javax.swing.JPanel {
         lblTextoAlertaCedula = new javax.swing.JLabel();
         lblAlertaTextoTelefono = new javax.swing.JLabel();
         btnGuardar1 = new javax.swing.JButton();
+        lblTextoSueldo = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -274,6 +280,9 @@ public class PnlActualizarEmpleados extends javax.swing.JPanel {
         btnGuardar1.setIconTextGap(15);
         jPanel1.add(btnGuardar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 430, 320, 70));
 
+        lblTextoSueldo.setText("jLabel1");
+        jPanel1.add(lblTextoSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, 290, 20));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -315,6 +324,7 @@ public class PnlActualizarEmpleados extends javax.swing.JPanel {
     private javax.swing.JLabel lblTextoAlertaCedula;
     private javax.swing.JLabel lblTextoAlertaEmpleado;
     private javax.swing.JLabel lblTextoApellido;
+    private javax.swing.JLabel lblTextoSueldo;
     private javax.swing.JTextField txtApellidoEmpleado;
     private javax.swing.JTextField txtCedulaEmpleado;
     private javax.swing.JTextField txtNombreEmpleado;

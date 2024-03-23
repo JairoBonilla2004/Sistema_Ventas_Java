@@ -735,6 +735,9 @@ public class ControllerPnlNuevoEmpleado implements MouseListener, KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        if(e.getSource() == pnlNuevoEmpleado.getTxtNombreEmpleado()){
+            validarDatos();
+        }
     }
 
     @Override

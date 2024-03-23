@@ -535,10 +535,43 @@ public class ControllerActualizarEmpleado implements MouseListener, KeyListener 
 
     @Override
     public void keyPressed(KeyEvent e) {
+
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
+                  if (e.getSource() == pnlActualizarEmpleados.getTxtNombreEmpleado()) {
+            validarDatos();
+        }
+
+        if (e.getSource() == pnlActualizarEmpleados.getTxtApellidoEmpleado()) {
+            validarDatos();
+        }
+
+        if (e.getSource() == pnlActualizarEmpleados.getTxtUsuarioEmpleado()) {
+            validarDatos();
+        }
+        if (e.getSource() == pnlActualizarEmpleados.getTxtCedulaEmpleado()) {
+            validarDatos();
+        }
+
+        if (e.getSource() == pnlActualizarEmpleados.getTxtTelefonoEmpleado()) {
+            validarDatos();
+        }
+        
+        if (e.getSource() == pnlActualizarEmpleados.getTxtSueldoEmpleado()) {
+            validarDatos();
+            if (!ControllerNuevoAdministrador.esSueldoValido(pnlActualizarEmpleados.getTxtSueldoEmpleado().getText())) {
+                pnlActualizarEmpleados.getLblTextoSueldo().setForeground(Color.red);
+                pnlActualizarEmpleados.getLblTextoSueldo().setText("El sueldo no tiene el formato correcto");
+            } else {
+                pnlActualizarEmpleados.getLblTextoSueldo().setText("");
+            }
+            validarDatos();
+        }
+        if (e.getSource() == pnlActualizarEmpleados.getTxtCedulaEmpleado()) {
+            validarDatos();
+        }
     }
 
 }
