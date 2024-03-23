@@ -9,7 +9,7 @@ import org.bson.types.ObjectId;
 public class Administrador extends Usuario{
     
     private String cargo;
-    private ObjectId object;
+    private ObjectId objectID;
     private double sueldo;
     public Administrador(String id, String nombre, String Apellido, String nombre_usuario, String contraseña, String telefono, String cargo, double sueldo){
         super(id, nombre, Apellido, nombre_usuario, contraseña, telefono);
@@ -24,11 +24,11 @@ public class Administrador extends Usuario{
     }
 
     public void setObject(ObjectId object) {
-        this.object = object;
+        this.objectID = object;
     }
     
     public ObjectId getObjectID(){
-        return object;
+        return objectID;
     }
 
     public Administrador(String nombre_usuario, String contraseña) {

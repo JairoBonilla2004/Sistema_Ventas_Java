@@ -156,8 +156,7 @@ public class AdministradorDAO implements PersonaDAO<Administrador> {
     public boolean actualizarDatos(Administrador administrador) {
         boolean respuesta = false;
         try {
-            ObjectId objectId = new ObjectId(administrador.getId());
-            Document filtro = new Document("_id", objectId);
+            Document filtro = new Document("_id", administrador.getObjectID());
             MongoCursor<Document> cursor = collection.find(filtro).iterator();
             if (cursor.hasNext()) {
                 Document datos_actualizar = new Document("$set", new Document(
@@ -166,7 +165,8 @@ public class AdministradorDAO implements PersonaDAO<Administrador> {
                         .append("administrador", administrador.getNombre_usuario())
                         .append("telefono", administrador.getTelefono())
                         .append("cargo", administrador.getCargo())
-                        .append("sueldo", administrador.getSueldo()));
+                        .append("sueldo", administrador.getSueldo())
+                .append("cedula", administrador.getCedula()));
                 UpdateResult updateResult = collection.updateOne(filtro, datos_actualizar);
                 if(updateResult.getModifiedCount()>=1){
                     respuesta = true;

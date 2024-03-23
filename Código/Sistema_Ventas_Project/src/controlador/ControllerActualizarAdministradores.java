@@ -557,12 +557,13 @@ public class ControllerActualizarAdministradores implements MouseListener, KeyLi
         JLabel lbl = new JLabel();
         Administrador administrador = new Administrador();
         double sueldo = Double.parseDouble(pnlActualizarAdministradores.getTxtSueldo().getText());
-        administrador.setId(id);
+        administrador.setObject(new ObjectId(id));
         administrador.setNombre(pnlActualizarAdministradores.getTxtNombre().getText());
         administrador.setApellido(pnlActualizarAdministradores.getTxtApellido().getText());
         administrador.setNombre_usuario(pnlActualizarAdministradores.getTxtAdministrador().getText());
         administrador.setTelefono(pnlActualizarAdministradores.getTxtTelefono().getText());
         administrador.setCargo(pnlActualizarAdministradores.getTxtCargo().getText());
+        administrador.setCedula(pnlActualizarAdministradores.getTxtCedula().getText());
         administrador.setSueldo(sueldo);
         boolean respuesta_actualizacion = administradorDAO.actualizarDatos(administrador);
         if (respuesta_actualizacion) {
@@ -582,8 +583,9 @@ public class ControllerActualizarAdministradores implements MouseListener, KeyLi
     public void guardarDatosActualizados() {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         boolean administrador_existente = administradorDAO.verificarPersonaExistente("administrador", pnlActualizarAdministradores.getTxtAdministrador().getText());
-        boolean usuario_existente = usuarioDAO.verificarPersonaExistente("administrador", pnlActualizarAdministradores.getTxtAdministrador().getText());
+        boolean usuario_existente = usuarioDAO.verificarPersonaExistente("usuario", pnlActualizarAdministradores.getTxtAdministrador().getText());
         Administrador administradorByID = administradorDAO.buscarAdministradorPorUsuario("_id", new ObjectId(id));
+        
         if (administrador_existente == false && usuario_existente == false) {
             actualizar();
         } else {
