@@ -23,7 +23,7 @@ public class PnlGestionarEmpleados extends javax.swing.JPanel {
         this.nombreUsuario = nombreUsuario;
         initComponents();
     }
-
+    
     public String getNombreUsuario() {
         return nombreUsuario;
     }

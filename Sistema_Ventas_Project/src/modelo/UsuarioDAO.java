@@ -52,7 +52,8 @@ public class UsuarioDAO implements PersonaDAO<Usuario> {
                     .append("usuario", usuario.getNombre_usuario())
                     .append("contraseña", usuario.getContraseña())
                     .append("telefono", usuario.getTelefono())
-                    .append("cedula", usuario.getCedula());
+                    .append("cedula", usuario.getCedula())
+                    .append("sueldo", usuario.getSueldoEmpleado());
                     
             usuarioCollection.insertOne(nuevoDocumento_usuario);
             respuesta = true;
@@ -90,6 +91,7 @@ public class UsuarioDAO implements PersonaDAO<Usuario> {
                         documentos_dataBase.getString("usuario"),
                         documentos_dataBase.getString("contraseña"),
                         documentos_dataBase.getString("telefono"));
+                usuario.setSueldoEmpleado(documentos_dataBase.getString("sueldo"));
                 usuarios.add(usuario);
             }
         } catch (MongoException mongoException) {
@@ -124,12 +126,11 @@ public class UsuarioDAO implements PersonaDAO<Usuario> {
     }
 
     @Override
-    public Usuario extraerPersonaID(String id) {
+    public Usuario extraerPersonaID(String cedula) {
         Usuario usuario = null;
 
         try {
-            ObjectId objectId = new ObjectId(id);
-            Document filtro = new Document("_id", objectId);
+            Document filtro = new Document("cedula", cedula);
 
             MongoCursor<Document> cursor = usuarioCollection.find(filtro).iterator();
 
@@ -142,9 +143,11 @@ public class UsuarioDAO implements PersonaDAO<Usuario> {
                         documentoUsuario.getString("contraseña"),
                         documentoUsuario.getString("telefono")
                 );
+                usuario.setCedula(documentoUsuario.getString("cedula"));
+                usuario.setSueldoEmpleado(documentoUsuario.getString("sueldo"));
             }
         } catch (IllegalArgumentException e) {
-            System.out.println("ID no válido: " + id);
+            System.out.println("ID no válido: " + cedula);
         } catch (MongoException e) {
             System.out.println("Error al extraer el usuario: " + e);
         }

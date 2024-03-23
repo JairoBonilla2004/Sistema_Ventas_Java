@@ -30,9 +30,6 @@ public class PnlActualizarEmpleados extends javax.swing.JPanel {
         return lblAlertaApellido;
     }
 
-    public JLabel getLblAlertaContraseña() {
-        return lblAlertaContraseña;
-    }
 
     public JLabel getLblAlertaNombre() {
         return lblAlertaNombre;
@@ -52,10 +49,6 @@ public class PnlActualizarEmpleados extends javax.swing.JPanel {
 
     public JLabel getLblCedulaEmpleado() {
         return lblCedulaEmpleado;
-    }
-
-    public JPasswordField getPswContraseniaEmpleado() {
-        return pswContraseniaEmpleado;
     }
 
     public JTextField getTxtApellidoEmpleado() {

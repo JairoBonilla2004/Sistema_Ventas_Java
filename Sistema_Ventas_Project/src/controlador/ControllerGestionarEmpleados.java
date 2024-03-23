@@ -10,8 +10,11 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import modelo.AdministradorDAO;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
+import org.bson.types.ObjectId;
+import vista.PnlActualizarEmpleados;
 import vista.PnlGestionarEmpleados;
 import vista.PnlNuevoEmpleado;
 
@@ -24,6 +27,7 @@ public final class ControllerGestionarEmpleados implements KeyListener, MouseLis
     private final PnlGestionarEmpleados pnlGestionarEmpleados;
     private final UsuarioDAO usuarioDAO;
     private final DefaultTableModel modeloTabla = new DefaultTableModel();
+    private ObjectId objectId;
 
     public ControllerGestionarEmpleados(PnlGestionarEmpleados pnlGestionarEmpleados, UsuarioDAO usuarioDAO) {
         this.pnlGestionarEmpleados = pnlGestionarEmpleados;
@@ -33,6 +37,7 @@ public final class ControllerGestionarEmpleados implements KeyListener, MouseLis
         this.pnlGestionarEmpleados.getBtnEliminar().addMouseListener(this);
         this.pnlGestionarEmpleados.getTblEmpleados().addMouseListener(this);
         this.pnlGestionarEmpleados.getBtnNuevoUsuario().addMouseListener(this);
+        this.pnlGestionarEmpleados.getBtnActualizar().addMouseListener(this);
     }
 
     public void iniciar() {
@@ -43,7 +48,7 @@ public final class ControllerGestionarEmpleados implements KeyListener, MouseLis
 
     public void inicializarNombresTabla() {
 
-        String nombres[] = {"CÉDULA", "NOMBRE", "APELLIDO", "USUARIO", "TELEFONO"};
+        String nombres[] = {"CÉDULA", "NOMBRE", "APELLIDO", "USUARIO", "TELEFONO", "SUELDO"};
         modeloTabla.setColumnIdentifiers(nombres);
         pnlGestionarEmpleados.getTblEmpleados().setModel(modeloTabla);
         pnlGestionarEmpleados.getTblEmpleados().setDefaultEditor(Object.class, null);
@@ -99,7 +104,7 @@ public final class ControllerGestionarEmpleados implements KeyListener, MouseLis
     public void llenarDatosTabla() {
         List<Usuario> usuarios = usuarioDAO.extraerPersonas();
         for (Usuario u : usuarios) {
-            Object object[] = {u.getCedula(), u.getNombre(), u.getApellido(), u.getNombre_usuario(), u.getTelefono()};
+            Object object[] = {u.getCedula(), u.getNombre(), u.getApellido(), u.getNombre_usuario(), u.getTelefono(), u.getSueldoEmpleado()};
             modeloTabla.addRow(object);
         }
         pnlGestionarEmpleados.getTblEmpleados().setModel(modeloTabla);
@@ -183,6 +188,10 @@ public final class ControllerGestionarEmpleados implements KeyListener, MouseLis
             añadirNuevoEmpleado();
         }
         
+        if(e.getSource() == pnlGestionarEmpleados.getBtnActualizar()){
+            actualizarEmpleado();
+        }
+        
     }
 
     @Override
@@ -217,5 +226,41 @@ public final class ControllerGestionarEmpleados implements KeyListener, MouseLis
         pnlGestionarEmpleados.getPnlContenido().repaint();
         ControllerPnlNuevoEmpleado controllerPnlNuevoEmpleado = new ControllerPnlNuevoEmpleado(pnlNuevoEmpleado, usuarioDAO);
         controllerPnlNuevoEmpleado.iniciar();
+    }
+    
+    public String obtenerCampoFilaSeleccionado(int columna) {
+        int filaSeleccionada = pnlGestionarEmpleados.getTblEmpleados().getSelectedRow();
+        if (filaSeleccionada >= 0) {
+            Object nombreAdministrador = pnlGestionarEmpleados.getTblEmpleados().getValueAt(filaSeleccionada, columna);
+            if (nombreAdministrador != null) {
+                return nombreAdministrador.toString();
+            }
+        }
+        return null;
+    }
+    
+    public void actualizarEmpleado(){
+        String id = obtenerCedulaSeleccionado();
+        String usuario = obtenerUsuario();
+        if ((id != null) && (usuario != null)) {
+            AdministradorDAO administradorDAO = new AdministradorDAO();
+            boolean administradorExistente = administradorDAO.verificarPersonaExistente("administrador",pnlGestionarEmpleados.getNombreUsuario());
+            if (usuario.equals(pnlGestionarEmpleados.getNombreUsuario()) || (administradorExistente == true)) {
+                PnlActualizarEmpleados pnlActualizarUsuarios = new PnlActualizarEmpleados();
+                pnlActualizarUsuarios.setSize(1000, 600);
+                pnlActualizarUsuarios.setLocation(0, 0);
+                pnlGestionarEmpleados.getPnlContenido().removeAll();
+                pnlGestionarEmpleados.getPnlContenido().add(pnlActualizarUsuarios, BorderLayout.CENTER);
+                pnlGestionarEmpleados.getPnlContenido().revalidate();
+                pnlGestionarEmpleados.getPnlContenido().repaint();
+                ControllerActualizarEmpleado controllerActualizarEmpleado = new ControllerActualizarEmpleado(pnlActualizarUsuarios, usuarioDAO);
+                controllerActualizarEmpleado.iniciar(obtenerCampoFilaSeleccionado(0));
+
+            } else {
+                JOptionPane.showMessageDialog(null, "NO ES PERMITIDO MODIFICAR LOS DATOS DE OTROS EMPLEADOS", "MESSAGE", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "SELECCIONE UNA FILA DE LA TABLA", "MESSAGE", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }

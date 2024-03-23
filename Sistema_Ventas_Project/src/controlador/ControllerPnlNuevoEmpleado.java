@@ -530,6 +530,7 @@ public class ControllerPnlNuevoEmpleado implements MouseListener, KeyListener {
         String telefono = pnlNuevoEmpleado.getTxtTelefonoEmpleado().getText();
         Usuario usuario = new Usuario(pnlNuevoEmpleado.getTxtNombreEmpleado().getText(), pnlNuevoEmpleado.getTxtApellidoEmpleado().getText(), pnlNuevoEmpleado.getTxtUsuarioEmpleado().getText(), pnlNuevoEmpleado.getPswContraseniaEmpleado().getText(), telefono);
         usuario.setCedula(pnlNuevoEmpleado.getTxtCedulaEmpleado().getText());
+        usuario.setSueldoEmpleado(pnlNuevoEmpleado.getTxtSueldoEmpleado().getText());
         boolean usuarioExistente = usuarioDAO.verificarPersonaExistente("usuario", pnlNuevoEmpleado.getTxtUsuarioEmpleado().getText().trim());
         boolean administradorExistente = administradorDAO.verificarPersonaExistente("administrador", pnlNuevoEmpleado.getTxtUsuarioEmpleado().getText().trim());
         if ((usuarioExistente == true) || (administradorExistente == true)) {

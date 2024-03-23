@@ -13,7 +13,7 @@ public class Usuario {
     protected String nombre_usuario;
     protected String contraseña;
     protected String telefono;
-    
+    private String sueldoEmpleado;
 
     public Usuario(String cedula, String nombre, String Apellido, String nombre_usuario, String contraseña, String telefono) {
         this.cedula = cedula;
@@ -42,6 +42,15 @@ public class Usuario {
     public Usuario() {
 
     }
+
+    public String getSueldoEmpleado() {
+        return sueldoEmpleado;
+    }
+
+    public void setSueldoEmpleado(String sueldo) {
+        this.sueldoEmpleado = sueldo;
+    }
+    
 
     //Constructor que inicializa cada objeto
     public Usuario(String nombre_usuario, String contraseña) {

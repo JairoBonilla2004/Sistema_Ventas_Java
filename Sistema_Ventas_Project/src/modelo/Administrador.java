@@ -38,14 +38,6 @@ public class Administrador extends Usuario{
     public Administrador(){
         
     }
-    
-    public String getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
-    }
 
     public double getSueldo() {
         return sueldo;
@@ -53,6 +45,14 @@ public class Administrador extends Usuario{
 
     public void setSueldo(double sueldo) {
         this.sueldo = sueldo;
+    }
+    
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 
     @Override
