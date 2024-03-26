@@ -186,6 +186,7 @@ public class ControllerGestionarAdministradores implements MouseListener, KeyLis
                 String objectString = String.valueOf(objectId);
                 ControllerActualizarAdministradores controllerActualizarAdministradores = new ControllerActualizarAdministradores(pnlActualizarAdministrador, administradorDAO, objectString);
                 controllerActualizarAdministradores.iniciar();
+                controllerActualizarAdministradores.setId(objectString);
 
             } else {
                 JOptionPane.showMessageDialog(null, "NO ES PERMITIDO MODIFICAR LOS DATOS DE OTROS ADMINISTRADORES", "MESSAGE", JOptionPane.ERROR_MESSAGE);

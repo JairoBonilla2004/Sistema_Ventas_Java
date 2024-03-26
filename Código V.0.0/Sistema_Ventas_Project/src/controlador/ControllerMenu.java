@@ -95,6 +95,7 @@ public final class ControllerMenu implements  ActionListener{
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         ControllerGestionarEmpleados controllerGestionarEmpleados = new ControllerGestionarEmpleados(pnlGestionarUsuario, usuarioDAO);
         controllerGestionarEmpleados.iniciar();
+        controllerGestionarEmpleados.setObjectId(frmMenu.getObjectId());
     }
     
     public void verificarAdministrador() {

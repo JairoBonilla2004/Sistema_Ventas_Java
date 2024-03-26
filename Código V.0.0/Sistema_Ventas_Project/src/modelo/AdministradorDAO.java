@@ -126,11 +126,10 @@ public class AdministradorDAO implements PersonaDAO<Administrador> {
     }
 
     @Override
-    public Administrador extraerPersonaID(String id) {
+    public <Type> Administrador extraerPersonaID(String keybusqueda, Type id) {
         Administrador administrador = null;
         try {
-            ObjectId objectId = new ObjectId(id);
-            Document filtro = new Document("_id", objectId);
+            Document filtro = new Document(keybusqueda, id);
             MongoCursor<Document> cursor = collection.find(filtro).iterator();
             if (cursor.hasNext()) {
                 Document document_database = cursor.next();

@@ -61,7 +61,7 @@ public class ControllerActualizarAdministradores implements MouseListener, KeyLi
     }
 
     public void extraerDatosAdministrador() {
-        Administrador nuevo_administrador = administradorDAO.extraerPersonaID(id);
+        Administrador nuevo_administrador = administradorDAO.extraerPersonaID("_id",new ObjectId(getId()));
         String telefono = String.valueOf(nuevo_administrador.getTelefono());
         String sueldo = String.valueOf(nuevo_administrador.getSueldo());
         pnlActualizarAdministradores.getTxtAdministrador().setText(nuevo_administrador.getNombre_usuario());
@@ -325,6 +325,14 @@ public class ControllerActualizarAdministradores implements MouseListener, KeyLi
             pnlActualizarAdministradores.getBtnGuardar().setEnabled(true);
         }
 
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void animacionTextoApellido() {

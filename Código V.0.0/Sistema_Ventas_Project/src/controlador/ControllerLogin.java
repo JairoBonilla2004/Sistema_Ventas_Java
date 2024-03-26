@@ -19,7 +19,6 @@ import vista.FrmMenu;
  *
  * @author Jairo Smith Bonilla Hidalgo
  */
-
 public class ControllerLogin implements MouseListener, KeyListener {
 
     private final UsuarioDAO usuarioDAO;
@@ -115,6 +114,7 @@ public class ControllerLogin implements MouseListener, KeyListener {
         if (respuestaUsuario) {
             frmLogin.setVisible(false);
             FrmMenu frmMenu = FrmMenu.getInstance(frmLogin.getTxtUsuario().getText());
+            frmMenu.setObjectID(usuarioDAO.buscarEmpleadoPorUsuario(frmLogin.getTxtUsuario().getText()).getObjectId());
             ControllerMenu controllerMenu = new ControllerMenu(frmMenu);
             controllerMenu.iniciar();
             frmMenu.setVisible(true);
@@ -122,7 +122,7 @@ public class ControllerLogin implements MouseListener, KeyListener {
             if (respuestaAdministrador) {
                 frmLogin.setVisible(false);
                 FrmMenu frmMenu = FrmMenu.getInstance(frmLogin.getTxtUsuario().getText());
-                frmMenu.setObjectID(administradorDAO.buscarAdministradorPorUsuario("administrador",frmLogin.getTxtUsuario().getText()).getObjectID());
+                frmMenu.setObjectID(administradorDAO.buscarAdministradorPorUsuario("administrador", frmLogin.getTxtUsuario().getText()).getObjectID());
                 ControllerMenu controllerMenu = new ControllerMenu(frmMenu);
                 controllerMenu.iniciar();
                 frmMenu.setVisible(true);

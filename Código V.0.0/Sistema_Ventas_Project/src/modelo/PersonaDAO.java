@@ -5,6 +5,7 @@ import java.util.List;
 /**
  *
  * @author Jairo Smith Bonilla Hidalgo
+ * @param <T>
  */
 public interface PersonaDAO<T> {
     
@@ -16,7 +17,7 @@ public interface PersonaDAO<T> {
 
     public  List<T> buscarPersonasPorTextoRegEx(String texto);
 
-    public  T extraerPersonaID(String id);
+    public  <TypeBusqueda>T extraerPersonaID(String keyBusqueda, TypeBusqueda typeBuskeda);
 
     public  boolean actualizarDatos(T tipo);
     

@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 import org.bson.Document;
 import org.bson.conversions.Bson;
-import org.bson.types.ObjectId;
 import utils.DBConexion;
 
 /**
@@ -25,7 +24,6 @@ public class UsuarioDAO implements PersonaDAO<Usuario> {
         usuarioCollection = dBConexion.getDatabase().getCollection("Usuarios");//mediante la coleccion yo puedo manipular los datos
     }
 
-    
     public boolean verificarCamposCorrectosUsuarioAdministrador(Usuario usuario) {
         //paso 1 creamos el documento
         Document filtro = new Document("$and", Arrays.asList(
@@ -54,7 +52,7 @@ public class UsuarioDAO implements PersonaDAO<Usuario> {
                     .append("telefono", usuario.getTelefono())
                     .append("cedula", usuario.getCedula())
                     .append("sueldo", usuario.getSueldoEmpleado());
-                    
+
             usuarioCollection.insertOne(nuevoDocumento_usuario);
             respuesta = true;
         } catch (MongoException e) {
@@ -64,7 +62,7 @@ public class UsuarioDAO implements PersonaDAO<Usuario> {
     }
 
     @Override
-    public <TypeBusqueda>boolean verificarPersonaExistente(String keyBusqueda, TypeBusqueda typeBusqueda) {
+    public <TypeBusqueda> boolean verificarPersonaExistente(String keyBusqueda, TypeBusqueda typeBusqueda) {
         boolean respuesta = true;
         Document filtro = new Document(keyBusqueda, typeBusqueda);
         MongoCursor<Document> cursor = usuarioCollection.find(filtro).iterator();
@@ -91,7 +89,7 @@ public class UsuarioDAO implements PersonaDAO<Usuario> {
                         documentos_dataBase.getString("usuario"),
                         documentos_dataBase.getString("contraseña"),
                         documentos_dataBase.getString("telefono"));
-                usuario.setSueldoEmpleado(documentos_dataBase.getString("sueldo"));
+                usuario.setSueldoEmpleado(documentos_dataBase.getDouble("sueldo"));
                 usuarios.add(usuario);
             }
         } catch (MongoException mongoException) {
@@ -126,15 +124,22 @@ public class UsuarioDAO implements PersonaDAO<Usuario> {
     }
 
     @Override
-    public Usuario extraerPersonaID(String cedula) {
+    public <TypeBusqueda> Usuario extraerPersonaID(String keyBusqueda, TypeBusqueda typeBusqueda) {
         Usuario usuario = null;
 
         try {
-            Document filtro = new Document("cedula", cedula);
+            Document filtro = null;
+            if (keyBusqueda.equals("cedula")) {
+                filtro = new Document("cedula", typeBusqueda);
+            }
+            if(keyBusqueda.equals("_id")){
+                filtro = new Document("_id", typeBusqueda );
+            }
 
             MongoCursor<Document> cursor = usuarioCollection.find(filtro).iterator();
 
             if (cursor.hasNext()) {
+                System.out.println("ENCONTRO");
                 Document documentoUsuario = cursor.next();
                 usuario = new Usuario(
                         documentoUsuario.getString("nombre"),
@@ -144,10 +149,10 @@ public class UsuarioDAO implements PersonaDAO<Usuario> {
                         documentoUsuario.getString("telefono")
                 );
                 usuario.setCedula(documentoUsuario.getString("cedula"));
-                usuario.setSueldoEmpleado(documentoUsuario.getString("sueldo"));
+                usuario.setSueldoEmpleado(documentoUsuario.getDouble("sueldo"));
             }
         } catch (IllegalArgumentException e) {
-            System.out.println("ID no válido: " + cedula);
+            System.out.println("ID no válido: " + keyBusqueda);
         } catch (MongoException e) {
             System.out.println("Error al extraer el usuario: " + e);
         }
@@ -159,16 +164,16 @@ public class UsuarioDAO implements PersonaDAO<Usuario> {
     public boolean actualizarDatos(Usuario user) {
         boolean respuesta = false;
         try {
-            ObjectId objectId = new ObjectId(user.getId());
-            Document filtro = new Document("_id", objectId);
+            Document filtro = new Document("cedula", user.getId());
             MongoCursor<Document> cursor = usuarioCollection.find(filtro).iterator();
             if (cursor.hasNext()) {
                 // Construir el documento con los campos a actualizar
                 Document documento = new Document("$set", new Document("nombre", user.getNombre())
                         .append("apellido", user.getApellido())
                         .append("usuario", user.getNombre_usuario())
-                        .append("contraseña", user.getContraseña())
-                        .append("telefono", user.getTelefono()));
+                        .append("telefono", user.getTelefono())
+                        .append("cedula", user.getCedula())
+                        .append("sueldo", user.getSueldoEmpleado()));
                 usuarioCollection.updateOne(filtro, documento);
                 respuesta = true;
             }
@@ -196,6 +201,19 @@ public class UsuarioDAO implements PersonaDAO<Usuario> {
             System.out.println("No se pudo eliminar" + e);
         }
         return respuesta;
+    }
+    
+    public Usuario buscarEmpleadoPorUsuario(String nombreUsuario){
+        Document filtro = new Document("usuario", nombreUsuario);
+        Usuario usuario = null;
+        MongoCursor<Document> cursor = usuarioCollection.find(filtro).iterator();
+        if(cursor.hasNext()){
+            Document documentoDB = cursor.next();
+            usuario = new Usuario();
+            usuario.setObjectId(documentoDB.getObjectId("_id"));
+            usuario.setNombre_usuario(documentoDB.getString("usuario"));
+        }
+        return usuario;
     }
 
 }

@@ -21,10 +21,6 @@ public class ClienteDAO implements PersonaDAO<Cliente>{
         collection = dBConexion.getDatabase().getCollection("Cliente");
     }
 
-    @Override
-    public boolean enviarPesonasDB(Cliente tipo) {
-        return  true;
-    }
 
     @Override
     public <TypeBusqueda> boolean verificarPersonaExistente(String keyBusqueda, TypeBusqueda typeBusqueda) {
@@ -42,6 +38,10 @@ public class ClienteDAO implements PersonaDAO<Cliente>{
     }
 
     @Override
+    public boolean enviarPesonasDB(Cliente tipo) {
+    }
+
+    @Override
     public List<Cliente> extraerPersonas() {
     }
 
@@ -50,7 +50,7 @@ public class ClienteDAO implements PersonaDAO<Cliente>{
     }
 
     @Override
-    public Cliente extraerPersonaID(String id) {
+    public <TypeBusqueda> Cliente extraerPersonaID(String keyBusqueda, TypeBusqueda typeBuskeda) {
     }
 
     @Override
@@ -60,5 +60,5 @@ public class ClienteDAO implements PersonaDAO<Cliente>{
     @Override
     public boolean eliminarPersona(String dato) {
     }
-    
+
 }

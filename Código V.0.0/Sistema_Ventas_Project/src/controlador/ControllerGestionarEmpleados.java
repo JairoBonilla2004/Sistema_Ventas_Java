@@ -46,6 +46,15 @@ public final class ControllerGestionarEmpleados implements KeyListener, MouseLis
         llenarDatosTabla();
     }
 
+    public ObjectId getObjectId() {
+        return objectId;
+    }
+
+    public void setObjectId(ObjectId objectId) {
+        this.objectId = objectId;
+    }
+    
+
     public void inicializarNombresTabla() {
 
         String nombres[] = {"CÉDULA", "NOMBRE", "APELLIDO", "USUARIO", "TELEFONO", "SUELDO"};
@@ -255,6 +264,7 @@ public final class ControllerGestionarEmpleados implements KeyListener, MouseLis
                 pnlGestionarEmpleados.getPnlContenido().repaint();
                 ControllerActualizarEmpleado controllerActualizarEmpleado = new ControllerActualizarEmpleado(pnlActualizarUsuarios, usuarioDAO);
                 controllerActualizarEmpleado.iniciar(obtenerCampoFilaSeleccionado(0));
+                controllerActualizarEmpleado.setObjectIDInicioSecion(objectId);
 
             } else {
                 JOptionPane.showMessageDialog(null, "NO ES PERMITIDO MODIFICAR LOS DATOS DE OTROS EMPLEADOS", "MESSAGE", JOptionPane.ERROR_MESSAGE);

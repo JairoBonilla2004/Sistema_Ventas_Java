@@ -6,8 +6,13 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import modelo.AdministradorDAO;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
+import org.bson.types.ObjectId;
+import vista.FrmMenu;
 import vista.PnlActualizarEmpleados;
 
 /**
@@ -18,6 +23,7 @@ public class ControllerActualizarEmpleado implements MouseListener, KeyListener 
 
     private PnlActualizarEmpleados pnlActualizarEmpleados;
     private UsuarioDAO usuarioDAO;
+    private ObjectId objectIDInicioSecion;
 
     public ControllerActualizarEmpleado(PnlActualizarEmpleados pnlActualizarEmpleados, UsuarioDAO usuarioDAO) {
         this.pnlActualizarEmpleados = pnlActualizarEmpleados;
@@ -36,6 +42,15 @@ public class ControllerActualizarEmpleado implements MouseListener, KeyListener 
         this.pnlActualizarEmpleados.getTxtSueldoEmpleado().addKeyListener(this);
         this.pnlActualizarEmpleados.getBtnGuardar().addKeyListener(this);
         this.pnlActualizarEmpleados.getBtnGuardar().addMouseListener(this);
+        this.pnlActualizarEmpleados.getBtnCambiarContrasenia().addMouseListener(this);
+    }
+
+    public ObjectId getObjectIDInicioSecion() {
+        return objectIDInicioSecion;
+    }
+
+    public void setObjectIDInicioSecion(ObjectId objectIDInicioSecion) {
+        this.objectIDInicioSecion = objectIDInicioSecion;
     }
 
     public void iniciar(String cedula) {
@@ -65,14 +80,14 @@ public class ControllerActualizarEmpleado implements MouseListener, KeyListener 
 
     public void extrarDatosEmpleado(String cedula) {
         mostrarLetrasNegras();
-        Usuario usuario = usuarioDAO.extraerPersonaID(cedula);
+        Usuario usuario = usuarioDAO.extraerPersonaID("cedula", cedula);
         pnlActualizarEmpleados.getTxtNombreEmpleado().setText(usuario.getNombre());
         pnlActualizarEmpleados.getTxtApellidoEmpleado().setText(usuario.getApellido());
         pnlActualizarEmpleados.getTxtTelefonoEmpleado().setText(usuario.getTelefono());
         pnlActualizarEmpleados.getTxtUsuarioEmpleado().setText(usuario.getNombre_usuario());
         pnlActualizarEmpleados.getTxtCedulaEmpleado().setText(usuario.getCedula());
-        pnlActualizarEmpleados.getTxtSueldoEmpleado().setText(usuario.getSueldoEmpleado());
-        
+        pnlActualizarEmpleados.getTxtSueldoEmpleado().setText(String.valueOf(usuario.getSueldoEmpleado()));
+
     }
 
     public void animmacionTextoCedulaEmpleado() {
@@ -287,6 +302,9 @@ public class ControllerActualizarEmpleado implements MouseListener, KeyListener 
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        if (e.getSource() == pnlActualizarEmpleados.getBtnGuardar()) {
+            actualizarDatos();
+        }
     }
 
     @Override
@@ -356,8 +374,7 @@ public class ControllerActualizarEmpleado implements MouseListener, KeyListener 
         }
 
     }
-    
-    
+
     public void validarDatos() {
         if (this.pnlActualizarEmpleados.getTxtNombreEmpleado().getText().equals("Ingrese el nombre del empleado") || this.pnlActualizarEmpleados.getTxtNombreEmpleado().getText().isBlank()) {
             mostrarImagenAlertaNombre();
@@ -395,14 +412,13 @@ public class ControllerActualizarEmpleado implements MouseListener, KeyListener 
             mostrarImagenBlancaSueldo();
         }
 
-
         if (this.pnlActualizarEmpleados.getTxtNombreEmpleado().getText().equals("Ingrese el nombre del empleado") || this.pnlActualizarEmpleados.getTxtNombreEmpleado().getText().isBlank()
                 || this.pnlActualizarEmpleados.getTxtApellidoEmpleado().getText().equals("Ingrese el apellido del empleado") || this.pnlActualizarEmpleados.getTxtApellidoEmpleado().getText().isBlank()
                 || this.pnlActualizarEmpleados.getTxtUsuarioEmpleado().getText().equals("Ingrese el nombre de usuario") || this.pnlActualizarEmpleados.getTxtUsuarioEmpleado().getText().isBlank()
                 || this.pnlActualizarEmpleados.getTxtTelefonoEmpleado().getText().equals("Ingrese el número de teléfono") || this.pnlActualizarEmpleados.getTxtTelefonoEmpleado().getText().isBlank()
                 || this.pnlActualizarEmpleados.getTxtCedulaEmpleado().getText().equals("Ingrese la cédula del empleado") || this.pnlActualizarEmpleados.getTxtCedulaEmpleado().getText().isBlank()
                 || this.pnlActualizarEmpleados.getTxtSueldoEmpleado().getText().equals("Ingrese el sueldo del empleado") || this.pnlActualizarEmpleados.getTxtSueldoEmpleado().getText().isBlank()
-                || !pnlActualizarEmpleados.getLblAlertaTextoSueldo().getText().isEmpty()) {
+                || !pnlActualizarEmpleados.getLblTextoSueldo().getText().isEmpty()) {
             this.pnlActualizarEmpleados.getBtnGuardar().setEnabled(false);
 
         } else {
@@ -410,8 +426,59 @@ public class ControllerActualizarEmpleado implements MouseListener, KeyListener 
         }
 
     }
-    
-        public void mostrarImagenAlertaUsuario() {
+
+    public ImageIcon activarVistoVerde() {
+        java.net.URL imageURL = getClass().getResource("/img/greenSeen.png");
+        ImageIcon icono = null;
+        if (imageURL != null) {
+            icono = new ImageIcon(imageURL);
+        }
+        return icono;
+    }
+
+    public void actualizar() {
+        Usuario nuevoUsuario = new Usuario(pnlActualizarEmpleados.getTxtNombreEmpleado().getText(), pnlActualizarEmpleados.getTxtApellidoEmpleado().getText(), pnlActualizarEmpleados.getTxtTelefonoEmpleado().getText(), pnlActualizarEmpleados.getTxtCedulaEmpleado().getText());
+        nuevoUsuario.setNombre_usuario(pnlActualizarEmpleados.getTxtUsuarioEmpleado().getText());
+        nuevoUsuario.setSueldoEmpleado(Double.valueOf(pnlActualizarEmpleados.getTxtSueldoEmpleado().getText()));
+        usuarioDAO.actualizarDatos(nuevoUsuario);  
+        JOptionPane.showMessageDialog(
+                null,
+                "USUARIO ACTUALIZADO CON ÉXITO",
+                "MESSAGE",
+                JOptionPane.INFORMATION_MESSAGE,
+                activarVistoVerde());
+        if (!usuarioDAO.verificarPersonaExistente("_id", objectIDInicioSecion)) {
+            JLabel lbl = new JLabel(nuevoUsuario.getNombre_usuario());
+            FrmMenu frmMenu = FrmMenu.getInstance(lbl.getText());
+            frmMenu.setLblNombreUsuarioLoing(lbl);
+            frmMenu.getLblNombreUsuarioLoing().setVisible(true);
+        }
+    }
+
+    public void actualizarDatos() {
+        AdministradorDAO administradorDAO = new AdministradorDAO();
+        String nombreUsuario = pnlActualizarEmpleados.getTxtUsuarioEmpleado().getText();
+        System.out.println(objectIDInicioSecion);
+        Usuario usuario = usuarioDAO.buscarEmpleadoPorUsuario(nombreUsuario);
+        if (!nombreUsuario.equals(usuario.getNombre_usuario())) {
+            boolean usuarioExistente = usuarioDAO.verificarPersonaExistente("usuario", nombreUsuario);
+            boolean administradorExistente = administradorDAO.verificarPersonaExistente("administrador", nombreUsuario);
+            if ((usuarioExistente == true) || (administradorExistente == true)) {
+                JOptionPane.showMessageDialog(null, "ESTE NOMBRE DE USUARIO YA ESTÁ REGISTRADO EN USUARIOS O ADMINISTRADORES\n               DIGITE OTRO NOMBRE DE USUARIO!", "MESSAGE", JOptionPane.ERROR_MESSAGE);
+                pnlActualizarEmpleados.getTxtUsuarioEmpleado().setForeground(Color.GRAY);
+                pnlActualizarEmpleados.getTxtUsuarioEmpleado().setText("Ingrese el nombre de usuario");
+                validarDatos();
+            } else {
+                actualizar();
+
+            }
+        } else {
+            actualizar();
+        }
+
+    }
+
+    public void mostrarImagenAlertaUsuario() {
         java.net.URL imageURL = getClass().getResource("/img/alert.png");
         if (imageURL != null) {
             ImageIcon icono = new ImageIcon(imageURL);
@@ -507,16 +574,6 @@ public class ControllerActualizarEmpleado implements MouseListener, KeyListener 
         }
     }
 
-    public ImageIcon activarVistoVerde() {
-        java.net.URL imageURL = getClass().getResource("/img/greenSeen.png");
-        ImageIcon icono = null;
-        if (imageURL != null) {
-            icono = new ImageIcon(imageURL);
-        }
-        return icono;
-    }
-
-
     @Override
     public void mouseReleased(MouseEvent e) {
     }
@@ -540,7 +597,7 @@ public class ControllerActualizarEmpleado implements MouseListener, KeyListener 
 
     @Override
     public void keyReleased(KeyEvent e) {
-                  if (e.getSource() == pnlActualizarEmpleados.getTxtNombreEmpleado()) {
+        if (e.getSource() == pnlActualizarEmpleados.getTxtNombreEmpleado()) {
             validarDatos();
         }
 
@@ -558,7 +615,7 @@ public class ControllerActualizarEmpleado implements MouseListener, KeyListener 
         if (e.getSource() == pnlActualizarEmpleados.getTxtTelefonoEmpleado()) {
             validarDatos();
         }
-        
+
         if (e.getSource() == pnlActualizarEmpleados.getTxtSueldoEmpleado()) {
             validarDatos();
             if (!ControllerNuevoAdministrador.esSueldoValido(pnlActualizarEmpleados.getTxtSueldoEmpleado().getText())) {

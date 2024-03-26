@@ -1,5 +1,7 @@
 package modelo;
 
+import org.bson.types.ObjectId;
+
 /**
  *
  * @author Jairo Smith Bonilla Hidalgo
@@ -13,7 +15,8 @@ public class Usuario {
     protected String nombre_usuario;
     protected String contraseña;
     protected String telefono;
-    private String sueldoEmpleado;
+    private Double sueldoEmpleado;
+    private ObjectId objectId;
 
     public Usuario(String cedula, String nombre, String Apellido, String nombre_usuario, String contraseña, String telefono) {
         this.cedula = cedula;
@@ -43,11 +46,19 @@ public class Usuario {
 
     }
 
-    public String getSueldoEmpleado() {
+    public ObjectId getObjectId() {
+        return objectId;
+    }
+
+    public void setObjectId(ObjectId objectId) {
+        this.objectId = objectId;
+    }
+
+    public Double getSueldoEmpleado() {
         return sueldoEmpleado;
     }
 
-    public void setSueldoEmpleado(String sueldo) {
+    public void setSueldoEmpleado(Double sueldo) {
         this.sueldoEmpleado = sueldo;
     }
     

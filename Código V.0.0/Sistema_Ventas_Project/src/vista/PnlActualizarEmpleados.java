@@ -98,6 +98,10 @@ public class PnlActualizarEmpleados extends javax.swing.JPanel {
     public JLabel getLblTextoSueldo() {
         return lblTextoSueldo;
     }
+
+    public JButton getBtnCambiarContrasenia() {
+        return btnCambiarContrasenia;
+    }
     
     
     
@@ -139,13 +143,13 @@ public class PnlActualizarEmpleados extends javax.swing.JPanel {
         txtTelefonoEmpleado = new javax.swing.JTextField();
         txtCedulaEmpleado = new javax.swing.JTextField();
         txtSueldoEmpleado = new javax.swing.JTextField();
-        btnGuardar = new javax.swing.JButton();
+        btnCambiarContrasenia = new javax.swing.JButton();
         lblAlertaTextoSueldo = new javax.swing.JLabel();
         lblTextoAlertaEmpleado = new javax.swing.JLabel();
         lblTextoApellido = new javax.swing.JLabel();
         lblTextoAlertaCedula = new javax.swing.JLabel();
         lblAlertaTextoTelefono = new javax.swing.JLabel();
-        btnGuardar1 = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
         lblTextoSueldo = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -251,16 +255,16 @@ public class PnlActualizarEmpleados extends javax.swing.JPanel {
         txtSueldoEmpleado.setBorder(null);
         jPanel1.add(txtSueldoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 290, 20));
 
-        btnGuardar.setBackground(new java.awt.Color(21, 101, 192));
-        btnGuardar.setFont(new java.awt.Font("Segoe UI Black", 1, 20)); // NOI18N
-        btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
-        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-actualizar-25.png"))); // NOI18N
-        btnGuardar.setText("CAMBIAR CONTRASEÑA");
-        btnGuardar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
-        btnGuardar.setBorderPainted(false);
-        btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnGuardar.setIconTextGap(15);
-        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, 320, 70));
+        btnCambiarContrasenia.setBackground(new java.awt.Color(21, 101, 192));
+        btnCambiarContrasenia.setFont(new java.awt.Font("Segoe UI Black", 1, 20)); // NOI18N
+        btnCambiarContrasenia.setForeground(new java.awt.Color(255, 255, 255));
+        btnCambiarContrasenia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-actualizar-25.png"))); // NOI18N
+        btnCambiarContrasenia.setText("CAMBIAR CONTRASEÑA");
+        btnCambiarContrasenia.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnCambiarContrasenia.setBorderPainted(false);
+        btnCambiarContrasenia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCambiarContrasenia.setIconTextGap(15);
+        jPanel1.add(btnCambiarContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, 320, 70));
 
         lblAlertaTextoSueldo.setForeground(new java.awt.Color(255, 0, 0));
         jPanel1.add(lblAlertaTextoSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, 280, -1));
@@ -269,18 +273,16 @@ public class PnlActualizarEmpleados extends javax.swing.JPanel {
         jPanel1.add(lblTextoAlertaCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, 300, 20));
         jPanel1.add(lblAlertaTextoTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 290, 20));
 
-        btnGuardar1.setBackground(new java.awt.Color(21, 101, 192));
-        btnGuardar1.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
-        btnGuardar1.setForeground(new java.awt.Color(255, 255, 255));
-        btnGuardar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-actualizar-25.png"))); // NOI18N
-        btnGuardar1.setText("GUARDAR");
-        btnGuardar1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
-        btnGuardar1.setBorderPainted(false);
-        btnGuardar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnGuardar1.setIconTextGap(15);
-        jPanel1.add(btnGuardar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 430, 320, 70));
-
-        lblTextoSueldo.setText("jLabel1");
+        btnGuardar.setBackground(new java.awt.Color(21, 101, 192));
+        btnGuardar.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-actualizar-25.png"))); // NOI18N
+        btnGuardar.setText("GUARDAR");
+        btnGuardar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnGuardar.setBorderPainted(false);
+        btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardar.setIconTextGap(15);
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 430, 320, 70));
         jPanel1.add(lblTextoSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, 290, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -297,8 +299,8 @@ public class PnlActualizarEmpleados extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCambiarContrasenia;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnGuardar1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

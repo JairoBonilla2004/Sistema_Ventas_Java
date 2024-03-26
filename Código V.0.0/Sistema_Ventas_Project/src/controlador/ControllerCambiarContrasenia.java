@@ -58,12 +58,12 @@ public class ControllerCambiarContrasenia implements MouseListener, KeyListener 
 
     public void extraerDatos(String typeClass) {
         if (typeClass.equals("Administrador")) {
-            Administrador administrador = administradorDAO.extraerPersonaID(String.valueOf(frmCambiarContraseña.getObjectId()));
+            Administrador administrador = administradorDAO.extraerPersonaID("_id",frmCambiarContraseña.getObjectId());
             frmCambiarContraseña.getLblNombreApellido().setText(administrador.getNombre() + "  " + administrador.getApellido());
             frmCambiarContraseña.getLblCargo().setText("( " + administrador.getCargo() + " )");
         }
         if (typeClass.equals("Usuario")) {
-            Usuario usuario = usuarioDAO.extraerPersonaID(String.valueOf(frmCambiarContraseña.getObjectId()));
+            Usuario usuario = usuarioDAO.extraerPersonaID("_id",frmCambiarContraseña.getObjectId());
             frmCambiarContraseña.getLblNombreApellido().setText(usuario.getNombre() + "  " + usuario.getApellido());
             frmCambiarContraseña.getLblCargo().setText("EMPLEADO");
         }
@@ -110,7 +110,7 @@ public class ControllerCambiarContrasenia implements MouseListener, KeyListener 
     }
 
     public void guarDarContraseñaActual() {
-        Administrador administrador = administradorDAO.extraerPersonaID(String.valueOf(frmCambiarContraseña.getObjectId()));
+        Administrador administrador = administradorDAO.extraerPersonaID("_id",frmCambiarContraseña.getObjectId());
 
         if (administrador.getContraseña().equals(frmCambiarContraseña.getPswContraseniaAnterior().getText())) {
             boolean respuesta = administradorDAO.actualizarContraseñaAdministrador(String.valueOf(frmCambiarContraseña.getObjectId()), frmCambiarContraseña.getPswContraseniaActual().getText());
