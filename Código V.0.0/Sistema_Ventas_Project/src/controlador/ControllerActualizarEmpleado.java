@@ -65,7 +65,6 @@ public class ControllerActualizarEmpleado implements MouseListener, KeyListener 
 
     public void iniciar(ObjectId objectId) {
         this.objectIdTablaSeleccionada = objectId;
-        System.out.println("--------"+objectId);
         extrarDatosEmpleado(objectId);
         mostrarLetrasNegras();
         cambiarBackground();
