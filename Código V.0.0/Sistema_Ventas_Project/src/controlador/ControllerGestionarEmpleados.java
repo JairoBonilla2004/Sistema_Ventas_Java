@@ -253,6 +253,7 @@ public final class ControllerGestionarEmpleados implements KeyListener, MouseLis
         String usuario = obtenerUsuario();
         if ((id != null) && (usuario != null)) {
             AdministradorDAO administradorDAO = new AdministradorDAO();
+            Usuario usuerTablaSeleccionada = usuarioDAO.buscarEmpleadoPorUsuario(obtenerCampoFilaSeleccionado(3));
             boolean administradorExistente = administradorDAO.verificarPersonaExistente("administrador",pnlGestionarEmpleados.getNombreUsuario());
             if (usuario.equals(pnlGestionarEmpleados.getNombreUsuario()) || (administradorExistente == true)) {
                 PnlActualizarEmpleados pnlActualizarUsuarios = new PnlActualizarEmpleados();
@@ -263,7 +264,7 @@ public final class ControllerGestionarEmpleados implements KeyListener, MouseLis
                 pnlGestionarEmpleados.getPnlContenido().revalidate();
                 pnlGestionarEmpleados.getPnlContenido().repaint();
                 ControllerActualizarEmpleado controllerActualizarEmpleado = new ControllerActualizarEmpleado(pnlActualizarUsuarios, usuarioDAO);
-                controllerActualizarEmpleado.iniciar(obtenerCampoFilaSeleccionado(0));
+                controllerActualizarEmpleado.iniciar(usuerTablaSeleccionada.getObjectId());
                 controllerActualizarEmpleado.setObjectIDInicioSecion(objectId);
 
             } else {

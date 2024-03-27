@@ -139,7 +139,6 @@ public class UsuarioDAO implements PersonaDAO<Usuario> {
             MongoCursor<Document> cursor = usuarioCollection.find(filtro).iterator();
 
             if (cursor.hasNext()) {
-                System.out.println("ENCONTRO");
                 Document documentoUsuario = cursor.next();
                 usuario = new Usuario(
                         documentoUsuario.getString("nombre"),
@@ -163,8 +162,9 @@ public class UsuarioDAO implements PersonaDAO<Usuario> {
     @Override
     public boolean actualizarDatos(Usuario user) {
         boolean respuesta = false;
+        System.out.println("---> "+user.getObjectId());
         try {
-            Document filtro = new Document("cedula", user.getId());
+            Document filtro = new Document("_id", user.getObjectId());
             MongoCursor<Document> cursor = usuarioCollection.find(filtro).iterator();
             if (cursor.hasNext()) {
                 // Construir el documento con los campos a actualizar
@@ -172,7 +172,7 @@ public class UsuarioDAO implements PersonaDAO<Usuario> {
                         .append("apellido", user.getApellido())
                         .append("usuario", user.getNombre_usuario())
                         .append("telefono", user.getTelefono())
-                        .append("cedula", user.getCedula())
+                        .append("cedula", user.getId())
                         .append("sueldo", user.getSueldoEmpleado()));
                 usuarioCollection.updateOne(filtro, documento);
                 respuesta = true;

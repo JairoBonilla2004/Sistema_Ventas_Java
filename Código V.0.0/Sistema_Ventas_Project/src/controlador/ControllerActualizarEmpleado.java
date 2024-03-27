@@ -24,6 +24,7 @@ public class ControllerActualizarEmpleado implements MouseListener, KeyListener 
     private PnlActualizarEmpleados pnlActualizarEmpleados;
     private UsuarioDAO usuarioDAO;
     private ObjectId objectIDInicioSecion;
+    private ObjectId objectIdTablaSeleccionada;
 
     public ControllerActualizarEmpleado(PnlActualizarEmpleados pnlActualizarEmpleados, UsuarioDAO usuarioDAO) {
         this.pnlActualizarEmpleados = pnlActualizarEmpleados;
@@ -53,8 +54,19 @@ public class ControllerActualizarEmpleado implements MouseListener, KeyListener 
         this.objectIDInicioSecion = objectIDInicioSecion;
     }
 
-    public void iniciar(String cedula) {
-        extrarDatosEmpleado(cedula);
+    public ObjectId getObjectIdTablaSeleccionada() {
+        return objectIdTablaSeleccionada;
+    }
+
+    public void setObjectIdTablaSeleccionada(ObjectId objectIdTablaSeleccionada) {
+        this.objectIdTablaSeleccionada = objectIdTablaSeleccionada;
+    }
+    
+
+    public void iniciar(ObjectId objectId) {
+        this.objectIdTablaSeleccionada = objectId;
+        System.out.println("--------"+objectId);
+        extrarDatosEmpleado(objectId);
         mostrarLetrasNegras();
         cambiarBackground();
         validarDatos();
@@ -78,9 +90,9 @@ public class ControllerActualizarEmpleado implements MouseListener, KeyListener 
         pnlActualizarEmpleados.getTxtSueldoEmpleado().setBackground(Color.WHITE);
     }
 
-    public void extrarDatosEmpleado(String cedula) {
+    public void extrarDatosEmpleado(ObjectId cedula) {
         mostrarLetrasNegras();
-        Usuario usuario = usuarioDAO.extraerPersonaID("cedula", cedula);
+        Usuario usuario = usuarioDAO.extraerPersonaID("_id", cedula);
         pnlActualizarEmpleados.getTxtNombreEmpleado().setText(usuario.getNombre());
         pnlActualizarEmpleados.getTxtApellidoEmpleado().setText(usuario.getApellido());
         pnlActualizarEmpleados.getTxtTelefonoEmpleado().setText(usuario.getTelefono());
@@ -439,7 +451,9 @@ public class ControllerActualizarEmpleado implements MouseListener, KeyListener 
     public void actualizar() {
         Usuario nuevoUsuario = new Usuario(pnlActualizarEmpleados.getTxtNombreEmpleado().getText(), pnlActualizarEmpleados.getTxtApellidoEmpleado().getText(), pnlActualizarEmpleados.getTxtTelefonoEmpleado().getText(), pnlActualizarEmpleados.getTxtCedulaEmpleado().getText());
         nuevoUsuario.setNombre_usuario(pnlActualizarEmpleados.getTxtUsuarioEmpleado().getText());
+        nuevoUsuario.setObjectId(objectIdTablaSeleccionada);
         nuevoUsuario.setSueldoEmpleado(Double.valueOf(pnlActualizarEmpleados.getTxtSueldoEmpleado().getText()));
+        nuevoUsuario.setId(pnlActualizarEmpleados.getTxtCedulaEmpleado().getText());
         usuarioDAO.actualizarDatos(nuevoUsuario);  
         JOptionPane.showMessageDialog(
                 null,
@@ -458,7 +472,6 @@ public class ControllerActualizarEmpleado implements MouseListener, KeyListener 
     public void actualizarDatos() {
         AdministradorDAO administradorDAO = new AdministradorDAO();
         String nombreUsuario = pnlActualizarEmpleados.getTxtUsuarioEmpleado().getText();
-        System.out.println(objectIDInicioSecion);
         Usuario usuario = usuarioDAO.buscarEmpleadoPorUsuario(nombreUsuario);
         if (!nombreUsuario.equals(usuario.getNombre_usuario())) {
             boolean usuarioExistente = usuarioDAO.verificarPersonaExistente("usuario", nombreUsuario);
