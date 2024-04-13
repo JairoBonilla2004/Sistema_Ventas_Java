@@ -61,7 +61,6 @@ public class ControllerActualizarEmpleado implements MouseListener, KeyListener 
     public void setObjectIdTablaSeleccionada(ObjectId objectIdTablaSeleccionada) {
         this.objectIdTablaSeleccionada = objectIdTablaSeleccionada;
     }
-    
 
     public void iniciar(ObjectId objectId) {
         this.objectIdTablaSeleccionada = objectId;
@@ -448,30 +447,31 @@ public class ControllerActualizarEmpleado implements MouseListener, KeyListener 
     }
 
     public void actualizar() {
-        Usuario nuevoUsuario = new Usuario(pnlActualizarEmpleados.getTxtNombreEmpleado().getText(), pnlActualizarEmpleados.getTxtApellidoEmpleado().getText(), pnlActualizarEmpleados.getTxtTelefonoEmpleado().getText(), pnlActualizarEmpleados.getTxtCedulaEmpleado().getText());
-        nuevoUsuario.setNombre_usuario(pnlActualizarEmpleados.getTxtUsuarioEmpleado().getText());
+        Usuario nuevoUsuario = new Usuario(pnlActualizarEmpleados.getTxtNombreEmpleado().getText(), pnlActualizarEmpleados.getTxtApellidoEmpleado().getText().trim(), pnlActualizarEmpleados.getTxtTelefonoEmpleado().getText().trim(), pnlActualizarEmpleados.getTxtCedulaEmpleado().getText().trim());
+        nuevoUsuario.setNombre_usuario(pnlActualizarEmpleados.getTxtUsuarioEmpleado().getText().trim());
         nuevoUsuario.setObjectId(objectIdTablaSeleccionada);
         nuevoUsuario.setSueldoEmpleado(Double.valueOf(pnlActualizarEmpleados.getTxtSueldoEmpleado().getText()));
         nuevoUsuario.setId(pnlActualizarEmpleados.getTxtCedulaEmpleado().getText());
-        usuarioDAO.actualizarDatos(nuevoUsuario);  
+        usuarioDAO.actualizarDatos(nuevoUsuario);
         JOptionPane.showMessageDialog(
                 null,
                 "USUARIO ACTUALIZADO CON ÉXITO",
                 "MESSAGE",
                 JOptionPane.INFORMATION_MESSAGE,
                 activarVistoVerde());
-        if (!usuarioDAO.verificarPersonaExistente("_id", objectIDInicioSecion)) {
+        if (usuarioDAO.verificarPersonaExistente("_id", objectIDInicioSecion)) {
+            System.out.println("TRUE");
             JLabel lbl = new JLabel(nuevoUsuario.getNombre_usuario());
             FrmMenu frmMenu = FrmMenu.getInstance(lbl.getText());
-            frmMenu.setLblNombreUsuarioLoing(lbl);
+            frmMenu.getLblNombreUsuarioLoing().setText(lbl.getText());
             frmMenu.getLblNombreUsuarioLoing().setVisible(true);
         }
     }
 
     public void actualizarDatos() {
         AdministradorDAO administradorDAO = new AdministradorDAO();
-        String nombreUsuario = pnlActualizarEmpleados.getTxtUsuarioEmpleado().getText();
-        Usuario usuario = usuarioDAO.buscarEmpleadoPorUsuario(nombreUsuario);
+        String nombreUsuario = pnlActualizarEmpleados.getTxtUsuarioEmpleado().getText().trim();
+        Usuario usuario = usuarioDAO.extraerPersonaID("_id",objectIdTablaSeleccionada);
         if (!nombreUsuario.equals(usuario.getNombre_usuario())) {
             boolean usuarioExistente = usuarioDAO.verificarPersonaExistente("usuario", nombreUsuario);
             boolean administradorExistente = administradorDAO.verificarPersonaExistente("administrador", nombreUsuario);
@@ -487,7 +487,6 @@ public class ControllerActualizarEmpleado implements MouseListener, KeyListener 
         } else {
             actualizar();
         }
-
     }
 
     public void mostrarImagenAlertaUsuario() {

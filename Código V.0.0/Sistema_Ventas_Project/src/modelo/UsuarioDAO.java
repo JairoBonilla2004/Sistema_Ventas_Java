@@ -162,7 +162,6 @@ public class UsuarioDAO implements PersonaDAO<Usuario> {
     @Override
     public boolean actualizarDatos(Usuario user) {
         boolean respuesta = false;
-        System.out.println("---> "+user.getObjectId());
         try {
             Document filtro = new Document("_id", user.getObjectId());
             MongoCursor<Document> cursor = usuarioCollection.find(filtro).iterator();
