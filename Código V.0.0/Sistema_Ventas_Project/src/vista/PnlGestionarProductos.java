@@ -18,7 +18,7 @@ public class PnlGestionarProductos extends javax.swing.JPanel {
     /**
      * Creates new form PnlGestionarAdministradores
      */
-    public PnlGestionarProductos(String nombreUsuario) {
+    public PnlGestionarProductos() {
         initComponents();
     }
 

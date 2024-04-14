@@ -90,6 +90,12 @@ public class FrmMenu extends javax.swing.JFrame {
     public JButton getBtnEmpleado() {
         return btnEmpleado;
     }
+
+    public JButton getBtnProducto() {
+        return btnProducto;
+    }
+    
+    
     
     
     
@@ -110,7 +116,7 @@ public class FrmMenu extends javax.swing.JFrame {
         btnIntroduccion = new javax.swing.JButton();
         btnAdministrador = new javax.swing.JButton();
         btnEmpleado = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
+        btnProducto = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
         jButton17 = new javax.swing.JButton();
@@ -182,17 +188,17 @@ public class FrmMenu extends javax.swing.JFrame {
         btnEmpleado.setIconTextGap(15);
         jPanel2.add(btnEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 280, 60));
 
-        jButton14.setBackground(new java.awt.Color(21, 101, 192));
-        jButton14.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jButton14.setForeground(new java.awt.Color(255, 255, 255));
-        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-productos-35.png"))); // NOI18N
-        jButton14.setText("PRODUCTO");
-        jButton14.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
-        jButton14.setBorderPainted(false);
-        jButton14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton14.setIconTextGap(15);
-        jPanel2.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 280, 60));
+        btnProducto.setBackground(new java.awt.Color(21, 101, 192));
+        btnProducto.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btnProducto.setForeground(new java.awt.Color(255, 255, 255));
+        btnProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-productos-35.png"))); // NOI18N
+        btnProducto.setText("PRODUCTO");
+        btnProducto.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnProducto.setBorderPainted(false);
+        btnProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnProducto.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnProducto.setIconTextGap(15);
+        jPanel2.add(btnProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 280, 60));
 
         jButton15.setBackground(new java.awt.Color(21, 101, 192));
         jButton15.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
@@ -318,7 +324,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btnEmpleado;
     private javax.swing.JButton btnIntroduccion;
-    private javax.swing.JButton jButton14;
+    private javax.swing.JButton btnProducto;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;

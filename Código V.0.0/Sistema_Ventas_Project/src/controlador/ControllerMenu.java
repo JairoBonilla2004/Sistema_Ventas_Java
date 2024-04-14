@@ -11,6 +11,7 @@ import vista.FrmMenu;
 import vista.PnlBienvenida;
 import vista.PnlGestionarAdministradores;
 import vista.PnlGestionarEmpleados;
+import vista.PnlGestionarProductos;
 
 /**
  *
@@ -27,6 +28,7 @@ public final class ControllerMenu implements  ActionListener{
         this.frmMenu.getBtnCerrarSesion().addActionListener(this);
         this.frmMenu.getBtnAdministrador().addActionListener(this);
         this.frmMenu.getBtnEmpleado().addActionListener(this);
+        this.frmMenu.getBtnProducto().addActionListener(this);
         iniciarPnlBienvenida();
     }
     
@@ -61,6 +63,10 @@ public final class ControllerMenu implements  ActionListener{
         if(e.getSource() == frmMenu.getLblNombreUsuarioLoing()){
             frmMenu.getLblNombreUsuarioLoing().setVisible(true);
         }
+        
+        if(e.getSource() == frmMenu.getBtnProducto()){
+            iniciarPnlGestionarProducto();
+        }
     }
     
     
@@ -76,10 +82,20 @@ public final class ControllerMenu implements  ActionListener{
     
     public void iniciarPnlBienvenida() {
         PnlBienvenida pnlBienvenida = new PnlBienvenida();
-        pnlBienvenida.setSize(970, 510);
+        pnlBienvenida.setSize(1000, 600);
         pnlBienvenida.setLocation(0, 0);
         this.frmMenu.getPnlContenido().removeAll();
         this.frmMenu.getPnlContenido().add(pnlBienvenida, BorderLayout.CENTER);
+        this.frmMenu.getPnlContenido().revalidate();
+        this.frmMenu.getPnlContenido().repaint();
+    }
+    
+    public void iniciarPnlGestionarProducto() {
+        PnlGestionarProductos pnlGestionarProductos = new PnlGestionarProductos();
+        pnlGestionarProductos.setSize(1000, 600);
+        pnlGestionarProductos.setLocation(0, 0);
+        this.frmMenu.getPnlContenido().removeAll();
+        this.frmMenu.getPnlContenido().add(pnlGestionarProductos, BorderLayout.CENTER);
         this.frmMenu.getPnlContenido().revalidate();
         this.frmMenu.getPnlContenido().repaint();
     }
