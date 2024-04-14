@@ -22,11 +22,13 @@ public class ControllerCambiarContrasenia implements MouseListener, KeyListener 
     private final FrmCambiarContraseña frmCambiarContraseña;
     private final AdministradorDAO administradorDAO;
     private final UsuarioDAO usuarioDAO;
+    private final String usuarioORAdministrador;
 
-    public ControllerCambiarContrasenia(FrmCambiarContraseña frmCambiarContraseña, AdministradorDAO administradorDAO, UsuarioDAO usuarioDAO) {
+    public ControllerCambiarContrasenia(FrmCambiarContraseña frmCambiarContraseña, AdministradorDAO administradorDAO, UsuarioDAO usuarioDAO, String usuarioOrAdministrador) {
         this.frmCambiarContraseña = frmCambiarContraseña;
         this.administradorDAO = administradorDAO;
         this.usuarioDAO = usuarioDAO;
+        this.usuarioORAdministrador = usuarioOrAdministrador;
         this.frmCambiarContraseña.getPswContraseniaActual().addMouseListener(this);
         this.frmCambiarContraseña.getPswContraseniaAnterior().addMouseListener(this);
         this.frmCambiarContraseña.getPswContraseniaActual().addKeyListener(this);
@@ -58,12 +60,12 @@ public class ControllerCambiarContrasenia implements MouseListener, KeyListener 
 
     public void extraerDatos(String typeClass) {
         if (typeClass.equals("Administrador")) {
-            Administrador administrador = administradorDAO.extraerPersonaID("_id",frmCambiarContraseña.getObjectId());
+            Administrador administrador = administradorDAO.extraerPersonaID("_id", frmCambiarContraseña.getObjectId());
             frmCambiarContraseña.getLblNombreApellido().setText(administrador.getNombre() + "  " + administrador.getApellido());
             frmCambiarContraseña.getLblCargo().setText("( " + administrador.getCargo() + " )");
         }
         if (typeClass.equals("Usuario")) {
-            Usuario usuario = usuarioDAO.extraerPersonaID("_id",frmCambiarContraseña.getObjectId());
+            Usuario usuario = usuarioDAO.extraerPersonaID("_id", frmCambiarContraseña.getObjectId());
             frmCambiarContraseña.getLblNombreApellido().setText(usuario.getNombre() + "  " + usuario.getApellido());
             frmCambiarContraseña.getLblCargo().setText("EMPLEADO");
         }
@@ -109,11 +111,33 @@ public class ControllerCambiarContrasenia implements MouseListener, KeyListener 
         frmCambiarContraseña.getPswContraseniaAnterior().setForeground(Color.GRAY);
     }
 
-    public void guarDarContraseñaActual() {
-        Administrador administrador = administradorDAO.extraerPersonaID("_id",frmCambiarContraseña.getObjectId());
+    public void guarDarContraseñaActualAdministrador() {
+        Administrador administrador = administradorDAO.extraerPersonaID("_id", frmCambiarContraseña.getObjectId());
 
         if (administrador.getContraseña().equals(frmCambiarContraseña.getPswContraseniaAnterior().getText())) {
             boolean respuesta = administradorDAO.actualizarContraseñaAdministrador(String.valueOf(frmCambiarContraseña.getObjectId()), frmCambiarContraseña.getPswContraseniaActual().getText());
+            if (respuesta) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "CONTRASEÑA ACTUALIZADA",
+                        "MESSAGE",
+                        JOptionPane.INFORMATION_MESSAGE,
+                        activarVistoVerde());
+                quitarCampos();
+                validarCampos();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "LA CONTRASEÑA ANTIGUA ES INCORRECTA", "MESSAGE", JOptionPane.ERROR_MESSAGE);
+            quitarCampos();
+            validarCampos();
+        }
+    }
+
+    public void guarDarContraseñaActualEmpleado() {
+        Usuario usuario = usuarioDAO.extraerPersonaID("_id", frmCambiarContraseña.getObjectId());
+
+        if (usuario.getContraseña().equals(frmCambiarContraseña.getPswContraseniaAnterior().getText())) {
+            boolean respuesta = usuarioDAO.actualizarContraseniaEmpleado(String.valueOf(frmCambiarContraseña.getObjectId()), frmCambiarContraseña.getPswContraseniaActual().getText());
             if (respuesta) {
                 JOptionPane.showMessageDialog(
                         null,
@@ -176,6 +200,15 @@ public class ControllerCambiarContrasenia implements MouseListener, KeyListener 
             frmCambiarContraseña.getPswContraseniaAnterior().setText("********************");
         }
 
+    }
+    
+    public void guarDarContraseñaActual(){
+        if(usuarioORAdministrador.equals("Usuario")){
+            guarDarContraseñaActualEmpleado();
+        }
+        if(usuarioORAdministrador.equals("Administrador")){
+            guarDarContraseñaActualAdministrador();
+        }
     }
 
     @Override

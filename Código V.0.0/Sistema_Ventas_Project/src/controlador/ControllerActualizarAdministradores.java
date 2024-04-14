@@ -804,7 +804,7 @@ public class ControllerActualizarAdministradores implements MouseListener, KeyLi
     public void inicairFrmCambiarContrasennia(){
         FrmCambiarContraseña frmCambiarContraseña = new FrmCambiarContraseña(new ObjectId(id));
         UsuarioDAO usuarioDAO = new UsuarioDAO();
-        ControllerCambiarContrasenia controllerCambiarContrasenia = new ControllerCambiarContrasenia(frmCambiarContraseña, administradorDAO, usuarioDAO);
+        ControllerCambiarContrasenia controllerCambiarContrasenia = new ControllerCambiarContrasenia(frmCambiarContraseña, administradorDAO, usuarioDAO,"Administrador");
         controllerCambiarContrasenia.iniciar("Administrador");
     }
 }

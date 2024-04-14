@@ -12,6 +12,7 @@ import modelo.AdministradorDAO;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
 import org.bson.types.ObjectId;
+import vista.FrmCambiarContraseña;
 import vista.FrmMenu;
 import vista.PnlActualizarEmpleados;
 
@@ -315,6 +316,10 @@ public class ControllerActualizarEmpleado implements MouseListener, KeyListener 
         if (e.getSource() == pnlActualizarEmpleados.getBtnGuardar()) {
             actualizarDatos();
         }
+        
+        if(e.getSource() == pnlActualizarEmpleados.getBtnCambiarContrasenia()){
+            inicairFrmCambiarContrasennia();
+        }
     }
 
     @Override
@@ -383,6 +388,13 @@ public class ControllerActualizarEmpleado implements MouseListener, KeyListener 
             animacionTextoSueldo();
         }
 
+    }
+    
+    public void inicairFrmCambiarContrasennia(){
+        FrmCambiarContraseña frmCambiarContraseña = new FrmCambiarContraseña(objectIdTablaSeleccionada);
+        AdministradorDAO administradorDAO = new AdministradorDAO();
+        ControllerCambiarContrasenia controllerCambiarContrasenia = new ControllerCambiarContrasenia(frmCambiarContraseña, administradorDAO, usuarioDAO, "Usuario");
+        controllerCambiarContrasenia.iniciar("Usuario");
     }
 
     public void validarDatos() {

@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.bson.Document;
 import org.bson.conversions.Bson;
+import org.bson.types.ObjectId;
 import utils.DBConexion;
 
 /**
@@ -213,6 +214,25 @@ public class UsuarioDAO implements PersonaDAO<Usuario> {
             usuario.setNombre_usuario(documentoDB.getString("usuario"));
         }
         return usuario;
+    }
+    
+        public boolean actualizarContraseniaEmpleado(String id, String nueva_contraseña) {
+        boolean respuesta = false;
+        try {
+            ObjectId objectId = new ObjectId(id);
+            Document filtro = new Document("_id", objectId);
+            MongoCursor<Document> cursor = usuarioCollection.find(filtro).iterator();
+            if (cursor.hasNext()) {
+                Document administrador_acturalizado = new Document("$set", new Document(
+                        "contraseña", nueva_contraseña));
+                usuarioCollection.updateOne(filtro, administrador_acturalizado);
+                respuesta = true;
+            }
+
+        } catch (MongoException mongoException) {
+            System.out.println("No se pudo actualizar la contraseña " + mongoException);
+        }
+        return respuesta;
     }
 
 }
