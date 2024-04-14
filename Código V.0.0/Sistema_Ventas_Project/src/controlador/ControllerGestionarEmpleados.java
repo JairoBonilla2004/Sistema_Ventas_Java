@@ -254,8 +254,8 @@ public final class ControllerGestionarEmpleados implements KeyListener, MouseLis
         if ((id != null) && (usuario != null)) {
             AdministradorDAO administradorDAO = new AdministradorDAO();
             Usuario usuerTablaSeleccionada = usuarioDAO.buscarEmpleadoPorUsuario(obtenerCampoFilaSeleccionado(3));
-            boolean administradorExistente = administradorDAO.verificarPersonaExistente("administrador",pnlGestionarEmpleados.getNombreUsuario());
-            if (usuario.equals(pnlGestionarEmpleados.getNombreUsuario()) || (administradorExistente == true)) {
+            boolean administradorExistente = administradorDAO.verificarPersonaExistente("_id",objectId);
+            if (objectId.equals(usuerTablaSeleccionada.getObjectId()) || (administradorExistente == true)) {
                 PnlActualizarEmpleados pnlActualizarUsuarios = new PnlActualizarEmpleados();
                 pnlActualizarUsuarios.setSize(1000, 600);
                 pnlActualizarUsuarios.setLocation(0, 0);

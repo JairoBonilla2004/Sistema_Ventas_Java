@@ -72,7 +72,7 @@ public class PnlGestionarProductos extends javax.swing.JPanel {
         pnlContenido.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
-        jLabel1.setText("ADMINISTRADORES");
+        jLabel1.setText("PRODUCTOS");
 
         jSeparator1.setForeground(new java.awt.Color(51, 153, 255));
 

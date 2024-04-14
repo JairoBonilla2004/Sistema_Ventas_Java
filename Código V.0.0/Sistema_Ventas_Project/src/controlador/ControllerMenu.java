@@ -116,11 +116,11 @@ public final class ControllerMenu implements  ActionListener{
     
     public void verificarAdministrador() {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
-        boolean usuarioExistente = usuarioDAO.verificarPersonaExistente("usuario",frmMenu.getNombreDeUsuario());
+        boolean usuarioExistente = usuarioDAO.verificarPersonaExistente("usuario",frmMenu.getLblNombreUsuarioLoing().getText());
         if (usuarioExistente == true) {
             JOptionPane.showMessageDialog(null, "USTED ESTÁ REGISTRADO COMO EMPLEADO NO PUEDE ACCEDER A ESTA OPCIÓN", "ADVERTENCIA", JOptionPane.ERROR_MESSAGE);
         } else {
-            PnlGestionarAdministradores pnlAdministrador = new PnlGestionarAdministradores(frmMenu.getNombreDeUsuario());
+            PnlGestionarAdministradores pnlAdministrador = new PnlGestionarAdministradores(frmMenu.getLblNombreUsuarioLoing().getText());
             pnlAdministrador.setSize(1000, 600);
             pnlAdministrador.setLocation(0, 0);
             frmMenu.getPnlContenido().removeAll();

@@ -22,8 +22,8 @@ import vista.PnlActualizarEmpleados;
  */
 public class ControllerActualizarEmpleado implements MouseListener, KeyListener {
 
-    private PnlActualizarEmpleados pnlActualizarEmpleados;
-    private UsuarioDAO usuarioDAO;
+    private final PnlActualizarEmpleados pnlActualizarEmpleados;
+    private final UsuarioDAO usuarioDAO;
     private ObjectId objectIDInicioSecion;
     private ObjectId objectIdTablaSeleccionada;
 
@@ -472,7 +472,6 @@ public class ControllerActualizarEmpleado implements MouseListener, KeyListener 
                 JOptionPane.INFORMATION_MESSAGE,
                 activarVistoVerde());
         if (usuarioDAO.verificarPersonaExistente("_id", objectIDInicioSecion)) {
-            System.out.println("TRUE");
             JLabel lbl = new JLabel(nuevoUsuario.getNombre_usuario());
             FrmMenu frmMenu = FrmMenu.getInstance(lbl.getText());
             frmMenu.getLblNombreUsuarioLoing().setText(lbl.getText());
