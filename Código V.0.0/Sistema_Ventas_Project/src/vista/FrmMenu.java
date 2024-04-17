@@ -94,6 +94,11 @@ public class FrmMenu extends javax.swing.JFrame {
     public JButton getBtnProducto() {
         return btnProducto;
     }
+
+    public JButton getBtnCategoria() {
+        return btnCategoria;
+    }
+    
     
     
     
@@ -118,7 +123,7 @@ public class FrmMenu extends javax.swing.JFrame {
         btnEmpleado = new javax.swing.JButton();
         btnProducto = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
+        btnCategoria = new javax.swing.JButton();
         jButton17 = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
         jButton19 = new javax.swing.JButton();
@@ -212,17 +217,17 @@ public class FrmMenu extends javax.swing.JFrame {
         jButton15.setIconTextGap(15);
         jPanel2.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 280, 60));
 
-        jButton16.setBackground(new java.awt.Color(21, 101, 192));
-        jButton16.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jButton16.setForeground(new java.awt.Color(255, 255, 255));
-        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-categorizar-35.png"))); // NOI18N
-        jButton16.setText("CATEGORIA");
-        jButton16.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
-        jButton16.setBorderPainted(false);
-        jButton16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton16.setIconTextGap(15);
-        jPanel2.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 280, 60));
+        btnCategoria.setBackground(new java.awt.Color(21, 101, 192));
+        btnCategoria.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btnCategoria.setForeground(new java.awt.Color(255, 255, 255));
+        btnCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-categorizar-35.png"))); // NOI18N
+        btnCategoria.setText("CATEGORIA");
+        btnCategoria.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnCategoria.setBorderPainted(false);
+        btnCategoria.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCategoria.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnCategoria.setIconTextGap(15);
+        jPanel2.add(btnCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 280, 60));
 
         jButton17.setBackground(new java.awt.Color(21, 101, 192));
         jButton17.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
@@ -321,12 +326,12 @@ public class FrmMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdministrador;
+    private javax.swing.JButton btnCategoria;
     private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btnEmpleado;
     private javax.swing.JButton btnIntroduccion;
     private javax.swing.JButton btnProducto;
     private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;

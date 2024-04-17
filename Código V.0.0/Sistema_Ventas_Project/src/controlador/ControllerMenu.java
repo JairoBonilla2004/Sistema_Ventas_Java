@@ -10,6 +10,7 @@ import vista.FrmLogin;
 import vista.FrmMenu;
 import vista.PnlBienvenida;
 import vista.PnlGestionarAdministradores;
+import vista.PnlGestionarCategorias;
 import vista.PnlGestionarEmpleados;
 import vista.PnlGestionarProductos;
 
@@ -29,6 +30,7 @@ public final class ControllerMenu implements  ActionListener{
         this.frmMenu.getBtnAdministrador().addActionListener(this);
         this.frmMenu.getBtnEmpleado().addActionListener(this);
         this.frmMenu.getBtnProducto().addActionListener(this);
+        this.frmMenu.getBtnCategoria().addActionListener(this);
         iniciarPnlBienvenida();
     }
     
@@ -67,6 +69,10 @@ public final class ControllerMenu implements  ActionListener{
         if(e.getSource() == frmMenu.getBtnProducto()){
             iniciarPnlGestionarProducto();
         }
+        
+        if(e.getSource() == frmMenu.getBtnCategoria()){
+            iniciarPnlCategoria();
+        }
     }
     
     
@@ -86,6 +92,16 @@ public final class ControllerMenu implements  ActionListener{
         pnlBienvenida.setLocation(0, 0);
         this.frmMenu.getPnlContenido().removeAll();
         this.frmMenu.getPnlContenido().add(pnlBienvenida, BorderLayout.CENTER);
+        this.frmMenu.getPnlContenido().revalidate();
+        this.frmMenu.getPnlContenido().repaint();
+    }
+    
+    public void iniciarPnlCategoria() {
+        PnlGestionarCategorias pnlCategoria = new PnlGestionarCategorias();
+        pnlCategoria.setSize(1000, 600);
+        pnlCategoria.setLocation(0, 0);
+        this.frmMenu.getPnlContenido().removeAll();
+        this.frmMenu.getPnlContenido().add(pnlCategoria, BorderLayout.CENTER);
         this.frmMenu.getPnlContenido().revalidate();
         this.frmMenu.getPnlContenido().repaint();
     }
