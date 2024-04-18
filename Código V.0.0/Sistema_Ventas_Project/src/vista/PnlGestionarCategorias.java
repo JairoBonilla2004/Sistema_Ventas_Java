@@ -4,9 +4,13 @@
  */
 package vista;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -21,23 +25,59 @@ public class PnlGestionarCategorias extends javax.swing.JPanel {
         initComponents();
     }
 
-
-    public JButton getBtnEliminar() {
-        return btnEliminar1;
+    public JButton getBtnActualizar() {
+        return btnActualizar;
     }
 
+    public JButton getBtnBauscar() {
+        return btnBauscar;
+    }
 
-    public JButton getBtnNuevoProducto() {
-        return btnNuevoProducto;
+    public JButton getBtnBorrar() {
+        return btnBorrar;
+    }
+
+    public ButtonGroup getButtonGroup1() {
+        return buttonGroup1;
+    }
+
+    public JLabel getLblAlertaUsuario() {
+        return lblAlertaUsuario;
+    }
+
+    public JLabel getLblBuscar() {
+        return lblBuscar;
     }
 
     public JPanel getPnlContenido() {
         return pnlContenido;
     }
 
-    public JTable getTblProducto() {
-        return tblProductos;
+    public JRadioButton getRbtnCategoria() {
+        return rbtnCategoria;
     }
+
+    public JRadioButton getRbtnID() {
+        return rbtnID;
+    }
+
+    public JTable getTblCategorias() {
+        return tblCategorias;
+    }
+
+    public JTextField getTxtBuscarNombreCategoria() {
+        return txtBuscarNombreCategoria;
+    }
+
+    public JTextField getTxtCategoria() {
+        return txtCategoria;
+    }
+
+    public JTextField getTxtID1() {
+        return txtID1;
+    }
+
+
 
 
     
@@ -52,26 +92,27 @@ public class PnlGestionarCategorias extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         pnlContenido = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btnNuevoProducto = new javax.swing.JButton();
+        btnBauscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblProductos = new javax.swing.JTable();
+        tblCategorias = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        btnNuevoProducto1 = new javax.swing.JButton();
-        btnEliminar1 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        btnActualizar = new javax.swing.JButton();
+        btnBorrar = new javax.swing.JButton();
+        txtCategoria = new javax.swing.JTextField();
+        txtID1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        rbtnCategoria = new javax.swing.JRadioButton();
+        rbtnID = new javax.swing.JRadioButton();
         jSeparator1 = new javax.swing.JSeparator();
         lblAlertaUsuario = new javax.swing.JLabel();
         lblBuscar = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtBuscarNombreCategoria = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
 
         pnlContenido.setBackground(new java.awt.Color(255, 255, 255));
@@ -81,19 +122,19 @@ public class PnlGestionarCategorias extends javax.swing.JPanel {
         jLabel1.setText("CATEGORIAS");
         pnlContenido.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        btnNuevoProducto.setBackground(new java.awt.Color(21, 101, 192));
-        btnNuevoProducto.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        btnNuevoProducto.setForeground(new java.awt.Color(255, 255, 255));
-        btnNuevoProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-lupa-25.png"))); // NOI18N
-        btnNuevoProducto.setText("Buscar");
-        btnNuevoProducto.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
-        btnNuevoProducto.setBorderPainted(false);
-        btnNuevoProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnNuevoProducto.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnNuevoProducto.setIconTextGap(15);
-        pnlContenido.add(btnNuevoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 510, 130, 30));
+        btnBauscar.setBackground(new java.awt.Color(21, 101, 192));
+        btnBauscar.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btnBauscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBauscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-lupa-25.png"))); // NOI18N
+        btnBauscar.setText("Buscar");
+        btnBauscar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnBauscar.setBorderPainted(false);
+        btnBauscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBauscar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnBauscar.setIconTextGap(15);
+        pnlContenido.add(btnBauscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 510, 130, 30));
 
-        tblProductos.setModel(new javax.swing.table.DefaultTableModel(
+        tblCategorias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -104,7 +145,7 @@ public class PnlGestionarCategorias extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tblProductos);
+        jScrollPane1.setViewportView(tblCategorias);
 
         pnlContenido.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 1000, 240));
 
@@ -122,37 +163,37 @@ public class PnlGestionarCategorias extends javax.swing.JPanel {
         jLabel6.setText("ID:");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        btnNuevoProducto1.setBackground(new java.awt.Color(21, 101, 192));
-        btnNuevoProducto1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        btnNuevoProducto1.setForeground(new java.awt.Color(255, 255, 255));
-        btnNuevoProducto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-añadir-25.png"))); // NOI18N
-        btnNuevoProducto1.setText("Actualizar");
-        btnNuevoProducto1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
-        btnNuevoProducto1.setBorderPainted(false);
-        btnNuevoProducto1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnNuevoProducto1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnNuevoProducto1.setIconTextGap(15);
-        jPanel2.add(btnNuevoProducto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 130, 30));
+        btnActualizar.setBackground(new java.awt.Color(21, 101, 192));
+        btnActualizar.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-añadir-25.png"))); // NOI18N
+        btnActualizar.setText("Actualizar");
+        btnActualizar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnActualizar.setBorderPainted(false);
+        btnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnActualizar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnActualizar.setIconTextGap(15);
+        jPanel2.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 130, 30));
 
-        btnEliminar1.setBackground(new java.awt.Color(21, 101, 192));
-        btnEliminar1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        btnEliminar1.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-eliminar-25.png"))); // NOI18N
-        btnEliminar1.setText("Borrar");
-        btnEliminar1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
-        btnEliminar1.setBorderPainted(false);
-        btnEliminar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnEliminar1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnEliminar1.setIconTextGap(15);
-        jPanel2.add(btnEliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 130, 30));
+        btnBorrar.setBackground(new java.awt.Color(21, 101, 192));
+        btnBorrar.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btnBorrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-eliminar-25.png"))); // NOI18N
+        btnBorrar.setText("Borrar");
+        btnBorrar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnBorrar.setBorderPainted(false);
+        btnBorrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBorrar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnBorrar.setIconTextGap(15);
+        jPanel2.add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 130, 30));
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jTextField2.setText("Seleccione");
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 240, 30));
+        txtCategoria.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        txtCategoria.setText("Seleccione");
+        jPanel2.add(txtCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 240, 30));
 
-        jTextField3.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        jTextField3.setText("Seleccione");
-        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 240, 30));
+        txtID1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        txtID1.setText("Seleccione");
+        jPanel2.add(txtID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 240, 30));
 
         pnlContenido.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 440, 390, 160));
 
@@ -160,11 +201,14 @@ public class PnlGestionarCategorias extends javax.swing.JPanel {
         jLabel4.setText("BUSCAR");
         pnlContenido.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, -1, -1));
 
-        jRadioButton1.setText("Categoria");
-        pnlContenido.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
+        buttonGroup1.add(rbtnCategoria);
+        rbtnCategoria.setSelected(true);
+        rbtnCategoria.setText("Categoria");
+        pnlContenido.add(rbtnCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
 
-        jRadioButton2.setText("ID");
-        pnlContenido.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, -1, -1));
+        buttonGroup1.add(rbtnID);
+        rbtnID.setText("ID");
+        pnlContenido.add(rbtnID, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, -1, -1));
 
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
         pnlContenido.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, 180, 20));
@@ -176,10 +220,10 @@ public class PnlGestionarCategorias extends javax.swing.JPanel {
         lblBuscar.setText("Campo requerido");
         pnlContenido.add(lblBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 520, -1, -1));
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField1.setText("Nombre de la categoría");
-        jTextField1.setBorder(null);
-        pnlContenido.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, 160, 20));
+        txtBuscarNombreCategoria.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtBuscarNombreCategoria.setText("Nombre de la categoría");
+        txtBuscarNombreCategoria.setBorder(null);
+        pnlContenido.add(txtBuscarNombreCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, 160, 20));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         jLabel3.setText("GESTIONAR");
@@ -199,9 +243,10 @@ public class PnlGestionarCategorias extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEliminar1;
-    private javax.swing.JButton btnNuevoProducto;
-    private javax.swing.JButton btnNuevoProducto1;
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnBauscar;
+    private javax.swing.JButton btnBorrar;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -209,16 +254,16 @@ public class PnlGestionarCategorias extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel lblAlertaUsuario;
     private javax.swing.JLabel lblBuscar;
     private javax.swing.JPanel pnlContenido;
-    private javax.swing.JTable tblProductos;
+    private javax.swing.JRadioButton rbtnCategoria;
+    private javax.swing.JRadioButton rbtnID;
+    private javax.swing.JTable tblCategorias;
+    private javax.swing.JTextField txtBuscarNombreCategoria;
+    private javax.swing.JTextField txtCategoria;
+    private javax.swing.JTextField txtID1;
     // End of variables declaration//GEN-END:variables
 }

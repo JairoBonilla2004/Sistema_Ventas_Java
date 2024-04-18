@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import modelo.AdministradorDAO;
+import modelo.CategoriaDAO;
 import modelo.UsuarioDAO;
 import vista.FrmLogin;
 import vista.FrmMenu;
@@ -18,10 +19,11 @@ import vista.PnlGestionarProductos;
  *
  * @author Jairo Smith Bonilla Hidalgo
  */
-public final class ControllerMenu implements  ActionListener{
-    
+public final class ControllerMenu implements ActionListener {
+
     private final FrmMenu frmMenu;
-    public ControllerMenu(FrmMenu frmMenu){
+
+    public ControllerMenu(FrmMenu frmMenu) {
         this.frmMenu = frmMenu;
         this.frmMenu.getLblNombreUsuarioLoing().setText(this.frmMenu.getNombreDeUsuario());
         llenarLbl();
@@ -33,26 +35,26 @@ public final class ControllerMenu implements  ActionListener{
         this.frmMenu.getBtnCategoria().addActionListener(this);
         iniciarPnlBienvenida();
     }
-    
-    public void iniciar(){
+
+    public void iniciar() {
         frmMenu.setLocationRelativeTo(null);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == frmMenu.getBtnIntroduccion()){
+        if (e.getSource() == frmMenu.getBtnIntroduccion()) {
             iniciarPnlBienvenida();
         }
-        
-        if(e.getSource() == frmMenu.getBtnAdministrador()){
+
+        if (e.getSource() == frmMenu.getBtnAdministrador()) {
             verificarAdministrador();
         }
-        
-        if(e.getSource() == frmMenu.getBtnEmpleado()){
+
+        if (e.getSource() == frmMenu.getBtnEmpleado()) {
             iniciarPnlEmpleado();
         }
-        
-        if(e.getSource() == frmMenu.getBtnCerrarSesion()){
+
+        if (e.getSource() == frmMenu.getBtnCerrarSesion()) {
             frmMenu.dispose();
             FrmMenu.reiniciarInstancia();
             FrmLogin frmLogin = new FrmLogin();
@@ -61,31 +63,30 @@ public final class ControllerMenu implements  ActionListener{
             ControllerLogin controllerLogin = new ControllerLogin(usuarioDAO, frmLogin);
             controllerLogin.iniciarFRM();
         }
-        
-        if(e.getSource() == frmMenu.getLblNombreUsuarioLoing()){
+
+        if (e.getSource() == frmMenu.getLblNombreUsuarioLoing()) {
             frmMenu.getLblNombreUsuarioLoing().setVisible(true);
         }
-        
-        if(e.getSource() == frmMenu.getBtnProducto()){
+
+        if (e.getSource() == frmMenu.getBtnProducto()) {
             iniciarPnlGestionarProducto();
         }
-        
-        if(e.getSource() == frmMenu.getBtnCategoria()){
+
+        if (e.getSource() == frmMenu.getBtnCategoria()) {
             iniciarPnlCategoria();
         }
     }
-    
-    
+
     public void llenarLbl() {
-        UsuarioDAO usuarioDAO= new UsuarioDAO();
-        boolean usuarioExistente = usuarioDAO.verificarPersonaExistente("usuario",frmMenu.getNombreDeUsuario());
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        boolean usuarioExistente = usuarioDAO.verificarPersonaExistente("usuario", frmMenu.getNombreDeUsuario());
         if (usuarioExistente == true) {
             frmMenu.getLblCargo().setText("(EMPLEADO)");
         } else {
             frmMenu.getLblCargo().setText("(ADMINISTRADOR)");
         }
     }
-    
+
     public void iniciarPnlBienvenida() {
         PnlBienvenida pnlBienvenida = new PnlBienvenida();
         pnlBienvenida.setSize(1000, 600);
@@ -95,7 +96,7 @@ public final class ControllerMenu implements  ActionListener{
         this.frmMenu.getPnlContenido().revalidate();
         this.frmMenu.getPnlContenido().repaint();
     }
-    
+
     public void iniciarPnlCategoria() {
         PnlGestionarCategorias pnlCategoria = new PnlGestionarCategorias();
         pnlCategoria.setSize(1000, 600);
@@ -104,8 +105,11 @@ public final class ControllerMenu implements  ActionListener{
         this.frmMenu.getPnlContenido().add(pnlCategoria, BorderLayout.CENTER);
         this.frmMenu.getPnlContenido().revalidate();
         this.frmMenu.getPnlContenido().repaint();
+        CategoriaDAO categoriaDAO = new CategoriaDAO();
+        ControllerGestionarCategorias controllerGestionarCategorias = new ControllerGestionarCategorias(pnlCategoria, categoriaDAO);
+        controllerGestionarCategorias.iniciar();
     }
-    
+
     public void iniciarPnlGestionarProducto() {
         PnlGestionarProductos pnlGestionarProductos = new PnlGestionarProductos();
         pnlGestionarProductos.setSize(1000, 600);
@@ -115,8 +119,8 @@ public final class ControllerMenu implements  ActionListener{
         this.frmMenu.getPnlContenido().revalidate();
         this.frmMenu.getPnlContenido().repaint();
     }
-    
-    public void iniciarPnlEmpleado(){
+
+    public void iniciarPnlEmpleado() {
         PnlGestionarEmpleados pnlGestionarUsuario = new PnlGestionarEmpleados(frmMenu.getNombreDeUsuario());
         pnlGestionarUsuario.setSize(1000, 600);
         pnlGestionarUsuario.setLocation(0, 0);
@@ -129,10 +133,10 @@ public final class ControllerMenu implements  ActionListener{
         controllerGestionarEmpleados.iniciar();
         controllerGestionarEmpleados.setObjectId(frmMenu.getObjectId());
     }
-    
+
     public void verificarAdministrador() {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
-        boolean usuarioExistente = usuarioDAO.verificarPersonaExistente("usuario",frmMenu.getLblNombreUsuarioLoing().getText());
+        boolean usuarioExistente = usuarioDAO.verificarPersonaExistente("usuario", frmMenu.getLblNombreUsuarioLoing().getText());
         if (usuarioExistente == true) {
             JOptionPane.showMessageDialog(null, "USTED ESTÁ REGISTRADO COMO EMPLEADO NO PUEDE ACCEDER A ESTA OPCIÓN", "ADVERTENCIA", JOptionPane.ERROR_MESSAGE);
         } else {
@@ -149,5 +153,5 @@ public final class ControllerMenu implements  ActionListener{
             controllerGestionarAdministradores.setObjectID(frmMenu.getObjectId());
         }
     }
-    
+
 }
