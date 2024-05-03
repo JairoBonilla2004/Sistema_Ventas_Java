@@ -16,12 +16,12 @@ public class ProductoDAO {
     private final MongoCollection<Document> productoCollection;
     
     public ProductoDAO(){
-        productoCollection = DBConexion.getInstance("Sistema_Ventas").getDatabase().getCollection("Producto");
+        productoCollection = DBConexion.getInstance("Sistema_Ventas").getDatabase().getCollection("Productos");
         
     }
     
     public Categoria obtenerCategoria(Document documento_catergoria){
-        Categoria categoria = new Categoria(documento_catergoria.getInteger("id"), documento_catergoria.getString("Categoria"));
+        Categoria categoria = new Categoria(documento_catergoria.getInteger("id"), documento_catergoria.getString("categoria"));
         return categoria;
         
     }
@@ -31,7 +31,7 @@ public class ProductoDAO {
         ArrayList<Producto> productos = new ArrayList<>();
         while(cursor.hasNext()){
             Document producto_document = cursor.next();
-            Document categoriaDB_document = producto_document.get("categoria", Document.class);
+            Document categoriaDB_document = producto_document.get("Categoria", Document.class);
             Categoria categoria = obtenerCategoria(categoriaDB_document);
             Producto producto = new Producto(producto_document.getString("nombre"),
                     producto_document.getInteger("cantidad"), 

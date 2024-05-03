@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import modelo.AdministradorDAO;
 import modelo.CategoriaDAO;
+import modelo.ProductoDAO;
 import modelo.UsuarioDAO;
 import vista.FrmLogin;
 import vista.FrmMenu;
@@ -118,6 +119,9 @@ public final class ControllerMenu implements ActionListener {
         this.frmMenu.getPnlContenido().add(pnlGestionarProductos, BorderLayout.CENTER);
         this.frmMenu.getPnlContenido().revalidate();
         this.frmMenu.getPnlContenido().repaint();
+        ProductoDAO productoDAO = new ProductoDAO();
+        ControllerGestionarProducto controllerGestionarProducto = new ControllerGestionarProducto(pnlGestionarProductos, productoDAO);
+        controllerGestionarProducto.inicializar();
     }
 
     public void iniciarPnlEmpleado() {
